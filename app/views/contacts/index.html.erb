@@ -1,0 +1,34 @@
+<div class="contact-container">
+  <h1>📩 Контакти</h1>
+
+  <p>Якщо маєте питання — напишіть нам, і ми обов’язково відповімо!</p>
+
+  <% if flash[:notice] %>
+    <div class="alert alert-success"><%= flash[:notice] %></div>
+  <% end %>
+
+  <% if flash[:alert] %>
+    <div class="alert alert-danger"><%= flash[:alert] %></div>
+  <% end %>
+
+  <%= form_with model: @message, url: send_message_path, local: true, class: "contact-form" do |f| %>
+
+    <div class="form-group">
+      <%= f.label :name, "Ваше ім'я" %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email, "Email" %>
+      <%= f.email_field :email, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :message, "Повідомлення" %>
+      <%= f.text_area :message, rows: 5, class: "form-control" %>
+    </div>
+
+    <%= f.submit "Надіслати", class: "btn-purple" %>
+
+  <% end %>
+</div>

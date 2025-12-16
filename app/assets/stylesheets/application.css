@@ -1,0 +1,363 @@
+/* === БАЗОВИЙ RESET === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* === ШРИФТ INTER ДЛЯ ВСЬОГО САЙТУ === */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* === ОБНУЛЕННЯ ПІДКРЕСЛЕНЬ УСЮДИ === */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ---- FLASH MESSAGES FIXED TOP-RIGHT ---- */
+
+.flash-wrapper {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    z-index: 9999; /* Щоб були поверх усього */
+    pointer-events: none; /* Щоб не заважали клікам */
+}
+
+.flash-message {
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    opacity: 0.95;
+    min-width: 240px;
+
+    animation: slide-in 0.4s ease-out;
+}
+
+/* NOTICE – зелене повідомлення */
+.flash-notice {
+    background: #1e7b63;
+}
+
+/* ALERT – червоне повідомлення */
+.flash-alert {
+    background: #d9534f;
+}
+
+/* Анімація появи */
+@keyframes slide-in {
+    from {
+        transform: translateX(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 0.95;
+    }
+}
+
+/* ============================================================
+   📱 1. ПРИХОВУЄМО НЕПОТРІБНІ МЕНЮ
+   ============================================================ */
+
+/* На десктопі приховуємо мобільне меню */
+@media (min-width: 769px) {
+  .mobile-navbar {
+    display: none !important;
+  }
+}
+
+/* На мобілці приховуємо десктопне меню */
+@media (max-width: 768px) {
+  .main-navbar {
+    display: none !important;
+  }
+}
+
+/* ============================================================
+   📱 2. МОБІЛЬНЕ МЕНЮ (бургер)
+   ============================================================ */
+@media (max-width: 768px) {
+
+  .mobile-navbar {
+    display: block;
+    width: 100%;
+    background: #fff;
+    padding: 14px 18px;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .mobile-nav-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .mobile-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .mobile-logo-img {
+    width: 30px;
+  }
+
+  .mobile-logo-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0d3b2e;
+  }
+
+  .burger {
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    border-top: 1px solid #ddd;
+    margin-top: 12px;
+    width: 100%;
+  }
+
+  .mobile-menu.open {
+    display: flex;
+  }
+
+  .mobile-menu a,
+  .mobile-menu .logout-btn {
+    padding: 16px;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+    display: block;
+    width: 100%;
+    color: #0d3b2e;
+  }
+
+  .logout-btn {
+    background: none;
+    border: none;
+  }
+}
+
+/* ============================================================
+   📱 3. FLASH-ПОВІДОМЛЕННЯ НА МОБІЛЦІ
+   ============================================================ */
+@media (max-width: 768px) {
+
+  .flash-wrapper {
+    position: fixed;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    z-index: 2000;
+  }
+
+  .flash-message {
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .flash-notice {
+    background: #e8f5e9;
+    color: #0d3b2e;
+    border: 1px solid #b5d7c0;
+  }
+
+  .flash-alert {
+    background: #fdecea;
+    color: #b30000;
+    border: 1px solid #f5b5b0;
+  }
+}
+
+/* ============================================================
+   📱 4. КАТАЛОГ ТОВАРІВ — МОБІЛЬНА ВЕРСІЯ
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* Заголовок */
+  .catalog-title {
+    text-align: center !important;
+    margin-bottom: 20px;
+  }
+
+  .catalog-top-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+
+  /* --- Категорії --- */
+  .catalog-categories .label {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .catalog-categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .catalog-categories .category-btn {
+    display: inline-block;
+    padding: 10px 16px;
+    margin: 5px 8px;
+    font-size: 16px;
+    border-radius: 18px;
+    background: #f1f4f4;
+    white-space: nowrap;
+  }
+
+  /* --- Сортування --- */
+  .catalog-sort {
+    width: 50%;
+    text-align: center;
+  }
+
+  .catalog-sort label {
+    font-size: 17px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .sort-select {
+    width: 115%;
+    margin: 0 auto;
+    font-size: 16px;
+    padding: 12px 12px;
+    display: left;
+  }
+
+  /* --- Сітка товарів --- */
+  .products-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+}
+
+/* ============================================================
+   📱 5. СТОРІНКА ОКРЕМОГО ТОВАРУ
+   ============================================================ */
+@media (max-width: 768px) {
+
+  .product-show {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .product-main-image img {
+    width: 100% !important;
+    max-width: 380px;
+    border-radius: 14px;
+    margin: 0 auto;
+  }
+
+  .product-thumbnails {
+    display: flex;
+    flex-direction: row !important;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .product-thumbnails img {
+    width: 72px;
+    height: 72px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .product-info {
+    width: 100%;
+    padding: 0 10px;
+    text-align: center;
+  }
+
+  .add-to-cart-btn {
+    width: 100%;
+    margin-top: 15px;
+  }
+}
+
+/* ============================================================
+   📱 6. КОШИК
+   ============================================================ */
+@media (max-width: 768px) {
+
+  .cart-table {
+    overflow-x: auto;
+    width: 100%;
+    display: block;
+  }
+
+  .cart-actions {
+    flex-direction: column !important;
+    gap: 12px;
+  }
+
+  .cart-actions button {
+    width: 100% !important;
+  }
+}
+
+/* ============================================================
+   📱 7. ОФОРМЛЕННЯ ЗАМОВЛЕННЯ
+   ============================================================ */
+@media (max-width: 768px) {
+
+  .checkout-page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .checkout-form {
+    order: 1;
+  }
+
+  .checkout-summary {
+    order: 2;
+    width: 100%;
+    text-align: center;
+  }
+}

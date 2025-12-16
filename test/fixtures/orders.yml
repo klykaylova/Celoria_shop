@@ -1,0 +1,23 @@
+one:
+  id: 1
+  name: "Order One"
+  address: "Ivano-Frankivsk, Shevchenka 10"
+  phone: "380501112233"
+  postcode: "76000"
+  delivery_method: "nova_poshta"
+  payment_method: "card"
+  status: "new"
+  total: 450.00
+  user: one
+
+two:
+  id: 2
+  name: "Order Two"
+  address: "Kyiv, Khreshchatyk 1"
+  phone: "380503334455"
+  postcode: "01001"
+  delivery_method: "ukrposhta"
+  payment_method: "cash"
+  status: "confirmed"
+  total: 1200.00
+  user: one

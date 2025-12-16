@@ -1,0 +1,15 @@
+<%= stylesheet_link_tag "admin/admin_feedbacks", media: "all" %>
+
+<h1>Відповідь на повідомлення №<%= @feedback.id %></h1>
+
+<p><strong>Текст повідомлення:</strong></p>
+<div class="admin-message-box"><%= simple_format @feedback.message %></div>
+
+<%= form_with model: @feedback, url: admin_feedback_path(@feedback), method: :patch do |f| %>
+  <div class="form-group">
+    <%= f.label :reply, "Ваша відповідь:" %>
+    <%= f.text_area :reply, rows: 6, class: "form-control" %>
+  </div>
+
+  <%= f.submit "Надіслати відповідь", class: "admin-btn" %>
+<% end %>

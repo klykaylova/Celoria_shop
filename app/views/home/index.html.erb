@@ -1,0 +1,73 @@
+<%= stylesheet_link_tag "home", media: "all" %>
+
+<!-- HERO BLOCK -->
+<div class="hero" style="background-image: url('<%= asset_path "hero-block.png" %>');">
+  <div class="hero-content">
+    <h1>Celoria — стиль у кожному кроці</h1>
+    <p>
+      Оберіть сумку, яка підкреслить вашу унікальність та стиль.
+      Від класичних моделей до сучасних рішень — у нас є все.
+    </p>
+    <%= link_to "Перейти до каталогу", products_path, class: "hero-btn" %>
+  </div>
+</div>
+
+<!-- HOTTEST PICKS -->
+<div class="hot-picks-section">
+  <h2 class="section-title">Hottest Picks</h2>
+  <div class="underline"></div>
+
+  <div class="products-grid">
+    <% @products.limit(4).each do |product| %>
+
+      <%= link_to product_path(product), class: "product-card-link" do %>
+        <div class="product-card">
+
+          <div class="product-img-box">
+            <% if product.images.attached? %>
+              <%= image_tag product.images.first.variant(resize_to_limit: [300, 300]),
+                    class: "product-image",
+                    alt: product.name %>
+            <% else %>
+              <img src="/assets/no-image.png" alt="No image" class="product-image">
+            <% end %>
+          </div>
+
+          <div class="product-info">
+            <h3 class="product-title"><%= product.name %></h3>
+            <p class="price"><%= number_to_currency(product.price, unit: "₴") %></p>
+            <div class="view-more">Переглянути →</div>
+          </div>
+
+        </div>
+      <% end %>
+
+    <% end %>
+  </div>
+</div>
+
+<!-- EMBRACING STYLE SECTION -->
+<div class="style-section">
+  <div class="style-text">
+    <h2>Охоплення стилю та користі</h2>
+
+    <p>
+      В Celoria ми поєднуємо моду та функціональність,
+      створюючи колекції, які підкреслюють ваш стиль
+      і роблять повсякденність комфортною.
+    </p>
+
+    <p>
+      Кожна сумка створена з любов’ю до деталей,
+      щоб доповнювати як ваш образ, так і ваш ритм життя.
+    </p>
+
+    <%= link_to "Переглянути колекцію", products_path, class: "style-main-link single-btn" %>
+  </div>
+
+  <div class="style-image">
+    <%= image_tag "style-section.jpg",
+        alt: "Fashion style",
+        class: "style-img" %>
+  </div>
+</div>

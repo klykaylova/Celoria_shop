@@ -1,0 +1,52 @@
+<%= stylesheet_link_tag "auth", media: "all" %>
+
+<div class="auth-wrapper">
+  <div class="auth-card">
+
+    <h1 class="auth-title">Реєстрація</h1>
+    <p class="auth-subtitle">Створіть акаунт, щоб оформляти замовлення швидше 🤍</p>
+
+    <% if @user.errors.any? %>
+      <div class="auth-alert">
+        <strong>Помилка!</strong>
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form_with model: @user, local: true do |f| %>
+
+      <div class="form-group">
+        <%= f.label :name, "Ваше ім'я" %>
+        <%= f.text_field :name, class: "auth-input", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email, "Email" %>
+        <%= f.email_field :email, class: "auth-input", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, "Пароль" %>
+        <%= f.password_field :password, class: "auth-input", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, "Підтвердження пароля" %>
+        <%= f.password_field :password_confirmation, class: "auth-input", required: true %>
+      </div>
+
+      <%= f.submit "Зареєструватися", class: "auth-btn" %>
+
+    <% end %>
+
+    <p class="auth-foot">
+      Вже маєте акаунт?
+      <%= link_to "Увійти", login_path %>
+    </p>
+
+  </div>
+</div>

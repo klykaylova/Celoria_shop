@@ -1,0 +1,222 @@
+/* ================================
+        ОСНОВНИЙ ЛЕЙАУТ
+================================= */
+.product-show {
+  display: grid;
+  grid-template-columns: 120px 1fr 1fr;
+  gap: 35px;
+  margin: 40px auto;
+  max-width: 1100px;
+}
+
+/* ================================
+          МІНІАТЮРИ
+================================= */
+.product-thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-thumbnails .thumb {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 14px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.2s;
+}
+
+.product-thumbnails .thumb.active,
+.product-thumbnails .thumb:hover {
+  opacity: 1;
+  box-shadow: 0 0 0 3px #0b2f26;
+  border-radius: 14px;
+}
+
+/* ================================
+       ГОЛОВНЕ ЗОБРАЖЕННЯ
+================================= */
+.product-main-image img {
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.09);
+}
+
+/* ================================
+            ІНФО-БЛОК
+================================= */
+.product-info {
+  padding: 10px;
+}
+
+.product-title {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #0b2f26;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #0b2f26;
+}
+
+.description,
+.category {
+  margin-top: 14px;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.45;
+}
+
+/* Кнопка додавання до кошика */
+.btn-add-cart {
+  margin-top: 22px;
+  background: #0b2f26;
+  color: white;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.btn-add-cart:hover {
+  background: #093a2e;
+}
+
+/* ================================
+           ХАРАКТЕРИСТИКИ
+================================= */
+.characteristics-wrapper {
+  max-width: 1100px;
+  margin: 60px auto 30px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #0b2f26;
+  margin-bottom: 20px;
+}
+
+.characteristics-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+.characteristics-list li {
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #222;
+}
+
+/* ================================
+              ВІДГУКИ
+================================= */
+.reviews-wrapper {
+  max-width: 1100px;
+  margin: 60px auto 40px;
+}
+
+.review-item {
+  background: #ffffff;
+  padding: 18px 22px;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  margin-bottom: 18px;
+}
+
+.review-rating {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.review-text {
+  font-size: 16px;
+  color: #222;
+  margin-bottom: 6px;
+}
+
+.review-date {
+  font-size: 13px;
+  color: #777;
+}
+
+/* "Залишити відгук" */
+.leave-review-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0b2f26;
+  margin: 35px 0 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Картка форми */
+.review-form-wrapper {
+  background: #fff;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.review-form-wrapper input,
+.review-form-wrapper textarea {
+  width: 100%;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.review-form-wrapper textarea {
+  height: 120px;
+  resize: none;
+}
+
+.review-form-wrapper input[type="submit"],
+.review-form-wrapper button {
+  background: #0b2f26;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 12px;
+  transition: 0.2s;
+}
+
+.review-form-wrapper input[type="submit"]:hover,
+.review-form-wrapper button:hover {
+  background: #093a2e;
+}
+
+/* ================================
+         НАЗАД ДО КАТАЛОГУ
+================================= */
+.back-link-wrapper {
+  max-width: 1100px;
+  margin: 50px auto;
+}
+
+.back-link {
+  text-decoration: none;
+  color: #0b2f26;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}

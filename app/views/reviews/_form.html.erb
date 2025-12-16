@@ -1,0 +1,15 @@
+<%= form_with(model: [product, product.reviews.build], local: true) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :rating, "Оцінка (1-5):" %>
+    <%= f.number_field :rating, min: 1, max: 5, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :comment, "Ваш коментар:" %>
+    <%= f.text_area :comment, rows: 3, class: "form-control" %>
+  </div>
+
+  <%= f.submit "Надіслати", class: "btn btn-primary mt-2" %>
+
+<% end %>

@@ -1,0 +1,72 @@
+<%= stylesheet_link_tag "admin/admin_orders", media: "all" %>
+
+<div class="admin-orders-page">
+
+<%= link_to "← Повернутись назад", admin_dashboard_path, class: "back-btn" %>
+
+  <h1 class="admin-orders-title">Керування замовленнями</h1>
+
+  <div class="orders-table-wrapper">
+    <table class="orders-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Користувач</th>
+          <th>Сума</th>
+          <th>Статус</th>
+          <th>Створено</th>
+
+          <!-- ⭐ ДОДАНО: вирівнювання праворуч -->
+          <th class="actions-header">Дії</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.id %></td>
+
+            <td>
+              <%= order.user&.name || "Гість" %><br>
+              <span class="sub-email"><%= order.user&.email %></span>
+            </td>
+
+            <td><%= number_to_currency(order.total, unit: "₴") %></td>
+
+            <td>
+              <span class="status-badge status-<%= order.status %>">
+                <%= order.status.humanize %>
+              </span>
+            </td>
+
+            <td><%= order.created_at.strftime("%d.%m.%Y %H:%M") %></td>
+
+            <td>
+              <div class="orders-actions">
+
+                <%= link_to "Переглянути",
+                      admin_order_path(order),
+                      class: "order-btn btn-view" %>
+
+                <%= link_to "Змінити статус",
+                      edit_admin_order_path(order),
+                      class: "order-btn btn-edit" %>
+
+                <%= link_to "Видалити",
+                      admin_order_path(order),
+                      data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Точно видалити замовлення?"
+                      },
+                      class: "order-btn btn-delete" %>
+
+              </div>
+            </td>
+
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>

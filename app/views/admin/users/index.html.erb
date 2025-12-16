@@ -1,0 +1,46 @@
+<%= stylesheet_link_tag "admin/admin_users", media: "all" %>
+
+<div class="admin-users-page">
+
+  <%= link_to "← Повернутись назад", admin_dashboard_path, class: "admin-back-link" %>
+
+  <h1 class="admin-title">👥 Користувачі</h1>
+
+  <div class="admin-table-wrapper">
+
+    <table class="admin-table users-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Ім’я</th>
+          <th>Email</th>
+          <th>Роль</th>
+          <th>Створено</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+
+            <td><%= user.name.presence || "—" %></td>
+
+            <td><%= user.email %></td>
+
+            <td>
+              <span class="role-badge <%= (user.role || "guest") %>">
+                <%= (user.role || "guest").capitalize %>
+              </span>
+            </td>
+
+            <td><%= user.created_at.strftime("%d.%m.%Y") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

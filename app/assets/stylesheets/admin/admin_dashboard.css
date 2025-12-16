@@ -1,0 +1,98 @@
+/* ================================
+   ГОЛОВНА СТОРІНКА АДМІН-ПАНЕЛІ
+================================ */
+
+/* Контейнер */
+.admin-dashboard {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 40px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Заголовок */
+.admin-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    color: #144434;
+    margin-bottom: 6px;
+}
+
+/* Підзаголовок */
+.admin-welcome {
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+/* Рівний ряд карток */
+.admin-cards {
+    display: flex;
+    justify-content: center;         /* по центру */
+    align-items: stretch;            /* однакова висота */
+    gap: 24px;                       /* відступи між картками */
+    flex-wrap: nowrap;               /* в один ряд */
+    padding: 0 20px;
+}
+
+/* Окрема картка */
+.admin-card {
+    width: 300px;                     /* однакові ширини */
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 28px 22px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: 0.25s ease;
+}
+
+/* Ховер */
+.admin-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 26px rgba(0,0,0,0.12);
+}
+
+/* Іконка */
+.admin-card-icon {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+/* Назва */
+.admin-card-title {
+    font-size: 20px;
+    color: #144434;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Текст */
+.admin-card-text {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.45;
+    height: 50px;                      /* однакова висота тексту для вирівнювання */
+    margin-bottom: 18px;
+}
+
+/* Кнопка */
+.admin-btn {
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 50px;
+    background: #083d2e;
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.admin-btn:hover {
+    background: #052d22;
+}

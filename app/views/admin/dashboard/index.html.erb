@@ -1,0 +1,49 @@
+<%= stylesheet_link_tag "admin/admin_dashboard", media: "all" %>
+
+<div class="admin-dashboard">
+
+  <!-- Верхній заголовок -->
+  <h1 class="admin-title">Адмін-панель</h1>
+  <p class="admin-welcome">
+    Вітаємо, <strong><%= current_user.name %></strong> 👋
+  </p>
+
+  <!-- Картки розділів -->
+  <div class="admin-cards">
+
+    <!-- Користувачі -->
+    <div class="admin-card">
+      <div class="admin-card-icon">👥</div>
+      <h3 class="admin-card-title">Користувачі</h3>
+      <p class="admin-card-text">Перегляд та управління всіма користувачами.</p>
+      <%= link_to "Перейти", admin_users_path, class: "admin-btn" %>
+    </div>
+
+    <!-- Товари -->
+    <div class="admin-card">
+      <div class="admin-card-icon">👜</div>
+      <h3 class="admin-card-title">Товари</h3>
+      <p class="admin-card-text">Додавання, редагування та видалення товарів.</p>
+      <%= link_to "Перейти", admin_products_path, class: "admin-btn" %>
+    </div>
+
+    <!-- Замовлення -->
+    <div class="admin-card">
+      <div class="admin-card-icon">📦</div>
+      <h3 class="admin-card-title">Замовлення</h3>
+      <p class="admin-card-text">Перегляд, зміна статусів та управління замовленнями.</p>
+      <%= link_to "Перейти", admin_orders_path, class: "admin-btn" %>
+    </div>
+
+    <!-- Повідомлення -->
+    <div class="admin-card">
+      <div class="admin-card-icon">💬</div>
+      <h3 class="admin-card-title">Повідомлення</h3>
+      <p class="admin-card-text">Перегляд повідомлень, які надіслали користувачі.</p>
+      <%= link_to "Перейти", admin_feedbacks_path, class: "admin-btn" %>
+    </div>
+
+
+  </div>
+
+</div>

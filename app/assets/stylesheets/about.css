@@ -1,0 +1,191 @@
+/* ---------------------- ГОЛОВНИЙ КОНТЕЙНЕР ---------------------- */
+.about-page {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 40px 20px 70px;
+    font-family: "Inter", sans-serif;
+}
+
+/* ---------------------- HERO SECTION ---------------------- */
+.about-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 70px;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: #144434;
+    margin-bottom: 20px;
+}
+
+.about-description {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 18px;
+}
+
+.about-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.about-image {
+    width: 100%;
+    max-width: 520px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+
+/* ---------------------- HISTORY SECTION ---------------------- */
+.history-section {
+    background: white;
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    margin-bottom: 70px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 800;
+    color: #144434;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.history-text {
+    font-size: 18px;
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+
+
+/* ---------------------- VALUES SECTION ---------------------- */
+.values-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 800;
+    color: #144434;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.values-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-bottom: 70px;
+}
+
+.value-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    transition: transform .2s;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+}
+
+.value-icon {
+    font-size: 35px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.value-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #144434;
+    margin-bottom: 10px;
+}
+
+.value-card p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+
+/* ---------------------- WHY US SECTION ---------------------- */
+.why-us-section {
+    margin-top: 50px;
+}
+
+.why-grid {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.why-item {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    transition: transform .2s;
+}
+
+.why-item:hover {
+    transform: translateY(-5px);
+}
+
+.why-icon {
+    font-size: 35px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.why-item h4 {
+    font-size: 19px;
+    font-weight: 700;
+    color: #144434;
+    margin-bottom: 10px;
+}
+
+.why-item p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+/* ---------------------- АДАПТИВНІСТЬ ---------------------- */
+@media (max-width: 992px) {
+    .about-hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .values-cards,
+    .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .values-cards,
+    .why-grid {
+        grid-template-columns: 1fr;
+    }
+}

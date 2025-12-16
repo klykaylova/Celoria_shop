@@ -1,0 +1,322 @@
+/* -------------------------------------------------
+   PROFILE PAGE
+---------------------------------------------------*/
+
+.profile-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
+    background: #f4f8f7;
+}
+
+.profile-card {
+    width: 430px;
+    background: #ffffff;
+    padding: 40px 35px;
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+/* ----------- HEADER ----------- */
+
+.profile-avatar {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    margin-bottom: 12px;
+}
+
+.profile-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #144434;
+    margin-bottom: 4px;
+}
+
+.profile-subtitle {
+    font-size: 15px;
+    color: #777;
+    margin-bottom: 25px;
+}
+
+/* ----------- INFO ----------- */
+
+.profile-info {
+    text-align: left;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.profile-info span {
+    font-weight: 600;
+    color: #144434;
+}
+
+.profile-created {
+    margin-top: 6px;
+    color: #555;
+    font-size: 14px;
+}
+
+/* ----------- DIVIDER ----------- */
+
+.divider {
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background: #e6e6e6;
+    margin: 25px 0;
+}
+
+/* ----------- PROFILE LINKS ----------- */
+
+.profile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.profile-link-btn {
+    display: block;
+    padding: 12px 0;
+    background: #e4f2ef;
+    border-radius: 10px;
+    color: #144434;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.profile-link-btn:hover {
+    background: #d4ebe6;
+}
+
+/* ----------- ACTION BUTTONS ----------- */
+
+.profile-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.profile-btn {
+    width: 48%;
+    padding: 12px 0;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    transition: 0.2s;
+}
+
+/* Edit */
+.profile-btn.edit {
+    background: #144434;
+    color: white;
+}
+
+.profile-btn.edit:hover {
+    background: #0f362b;
+}
+
+/* Logout */
+.profile-btn.logout {
+    background: #e8a5a5;
+    color: white;
+}
+
+.profile-btn.logout:hover {
+    background: #cf8c8c;
+}
+
+/* ----------- FEEDBACK SECTION ----------- */
+
+.feedback-list {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.feedback-item {
+    background: #ffffff;
+    padding: 18px 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+    text-align: left;
+}
+
+.feedback-message,
+.feedback-reply {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.feedback-message strong,
+.feedback-reply strong {
+    color: #144434;
+}
+
+.feedback-no-reply {
+    color: #777;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.feedback-date {
+    text-align: right;
+    font-size: 13px;
+    color: #888;
+}
+
+/* -----------------------------------------
+   PROFILE EDIT PAGE (users/edit)
+------------------------------------------*/
+
+/* Контейнер */
+.profile-edit-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 60px 0;
+    background: #f4f8f7;
+}
+
+/* Біла карточка */
+.profile-edit-card {
+    width: 480px;
+    background: #ffffff;
+    padding: 40px 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    text-align: left;
+}
+
+/* Заголовок */
+.profile-edit-card h1 {
+    text-align: center;
+    color: #144434;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+/* Лейбли */
+.profile-edit-card label {
+    font-weight: 600;
+    color: #144434;
+    margin-bottom: 6px;
+    display: block;
+    font-size: 15px;
+}
+
+/* Поля */
+.profile-edit-card .form-control {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #dcdcdc;
+    margin-bottom: 18px;
+    background: #fafafa;
+    font-size: 15px;
+}
+
+/* Секція Змінити пароль */
+.profile-edit-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #144434;
+    margin-top: 30px; /* Відступ зверху */
+    margin-bottom: 8px;
+}
+
+/* Пояснення під заголовком */
+.password-note {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 18px; /* Відступ після фрази */
+}
+
+/* Блок кнопок */
+.profile-edit-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Кнопки */
+.profile-edit-btn {
+    width: 48%;
+    padding: 12px 0;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    font-size: 15px;
+    text-align: center;
+    transition: 0.2s;
+    display: inline-block;
+}
+
+/* Зберегти зміни */
+.profile-edit-btn.save {
+    background: #144434;
+    color: white;
+}
+
+.profile-edit-btn.save:hover {
+    background: #0f362b;
+}
+
+/* Скасувати */
+.profile-edit-btn.cancel {
+    background: #e8a5a5;
+    color: white;
+}
+
+.profile-edit-btn.cancel:hover {
+    background: #cf8c8c;
+}
+
+.logout-form {
+    width: 48%;
+}
+
+.logout-form button {
+    width: 100%;
+    border: none;
+    padding: 12px 0;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.2s;
+    background: #e8a5a5;
+    color: white;
+}
+
+.logout-form button:hover {
+    background: #cf8c8c;
+}
+
+.form-errors {
+  background: #fdecea;
+  border: 1px solid #f5b5b0;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.form-errors ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.form-errors li {
+  color: #b30000;
+  font-size: 15px;
+  margin-bottom: 4px;
+  font-weight: 500;
+}

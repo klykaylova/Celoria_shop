@@ -1,0 +1,78 @@
+<%= stylesheet_link_tag "profile", media: "all" %>
+
+<div class="profile-wrapper">
+  <div class="profile-card">
+
+    <div class="profile-header">
+      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" class="profile-avatar">
+      <h1 class="profile-title">Мій профіль</h1>
+      <p class="profile-subtitle">Ваш акаунт Celoria</p>
+    </div>
+
+    <div class="profile-info">
+      <p><span>Ім’я:</span> <%= current_user.name %></p>
+      <p><span>Email:</span> <%= current_user.email %></p>
+      <p class="profile-created">Акаунт створено: <%= current_user.created_at.strftime("%d.%m.%Y") %></p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="profile-links">
+      <%= link_to "🛒 Кошик", cart_path, class: "profile-link-btn" %>
+      <%= link_to "📦 Мої замовлення", orders_path, class: "profile-link-btn" %>
+    </div>
+
+    <hr class="divider">
+
+    <div class="profile-actions">
+
+      <!-- Редагувати -->
+      <%= link_to "Редагувати",
+          edit_user_path(current_user),
+          class: "profile-btn edit" %>
+
+      <!-- ВИЙТИ (правильна форма, кнопка як у link_to) -->
+      <%= form_with url: logout_path, method: :delete, class: "logout-form" do %>
+        <button class="profile-btn logout">Вийти</button>
+      <% end %>
+
+    </div>
+
+    <h2 class="profile-title" style="margin-top: 40px;">Ваші повідомлення:</h2>
+
+    <% if @feedbacks.any? %>
+      <div class="feedback-list">
+        <% @feedbacks.each do |fb| %>
+          <div class="feedback-item">
+
+            <p class="feedback-message">
+              <strong>Ваше повідомлення:</strong><br>
+              <span><%= fb.message %></span>
+            </p>
+
+            <% if fb.reply.present? %>
+              <p class="feedback-reply">
+                <strong>Відповідь адміністрації:</strong><br>
+                <span><%= fb.reply %></span>
+              </p>
+            <% else %>
+              <p class="feedback-no-reply">
+                Відповідь ще не надійшла 🕐
+              </p>
+            <% end %>
+
+            <p class="feedback-date">
+              <%= fb.created_at.strftime("%d.%m.%Y %H:%M") %>
+            </p>
+
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p style="text-align:center; margin-top:20px; color:#888;">
+        У вас ще немає повідомлень.
+      </p>
+    <% end %>
+
+  </div>
+</div>

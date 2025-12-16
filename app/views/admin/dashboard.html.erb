@@ -1,0 +1,12 @@
+<div style="max-width: 800px; margin: 30px auto;">
+  <h1>Адмін-панель</h1>
+  <p>Вітаю, <%= current_user.name %>! Ви маєте права адміністратора.</p>
+
+  <hr>
+
+  <ul>
+    <li><%= link_to "Керування товарами", products_path %></li>
+    <li><%= link_to "Керування замовленнями", orders_path %></li>
+    <li><%= link_to "Користувачі", "#" %></li>
+  </ul>
+</div>

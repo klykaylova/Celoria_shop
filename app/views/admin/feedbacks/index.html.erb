@@ -1,0 +1,65 @@
+<%= stylesheet_link_tag "admin/admin_feedbacks", media: "all" %>
+
+<div class="admin-feedbacks-page">
+
+<%= link_to "← Повернутись назад", admin_dashboard_path, class: "admin-back-link" %>
+
+  <h1 class="admin-title">Повідомлення користувачів</h1>
+
+  <div class="admin-table-wrapper">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Користувач</th>
+          <th>Повідомлення</th>
+          <th>Статус</th>
+          <th class="actions-header">Дії</th> <!-- правильний клас -->
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @feedbacks.each do |fb| %>
+          <tr>
+            <td><%= fb.id %></td>
+
+            <td>
+              <%= fb.user&.name || "Анонім" %><br>
+              <span class="sub-email"><%= fb.user&.email %></span>
+            </td>
+
+            <td><%= truncate(fb.message, length: 40) %></td>
+
+            <td>
+              <% if fb.reply.present? %>
+                <span class="badge green">Відповідь надіслано</span>
+              <% else %>
+                <span class="badge red">Без відповіді</span>
+              <% end %>
+            </td>
+
+            <td>
+              <div class="actions-col">
+
+                <%= link_to "Переглянути",
+                      admin_feedback_path(fb),
+                      class: "table-btn view-btn" %>
+
+                <%= link_to "Видалити",
+                      admin_feedback_path(fb),
+                      data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Точно видалити повідомлення?"
+                      },
+                      class: "table-btn delete-btn" %>
+
+              </div>
+            </td>
+
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>

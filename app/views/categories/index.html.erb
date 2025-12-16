@@ -1,0 +1,17 @@
+<h1>🗂 Категорії товарів</h1>
+
+<% if @categories.any? %>
+  <ul style="list-style:none; padding:0;">
+    <% @categories.each do |category| %>
+      <li style="margin-bottom:15px; border:1px solid #ddd; padding:10px; border-radius:8px;">
+        <h3><%= category.name %></h3>
+        <p><%= category.description %></p>
+        <%= link_to "Переглянути товари",
+                    category_path(category),
+                    style: "background-color:#007bff;color:white;padding:6px 12px;border:none;border-radius:5px;text-decoration:none;" %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Категорій поки що немає 😢</p>
+<% end %>

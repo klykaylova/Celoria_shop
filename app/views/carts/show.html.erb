@@ -1,0 +1,109 @@
+<%= stylesheet_link_tag "cart", media: "all" %>
+
+<div class="cart-page">
+
+  <h1 class="cart-title">
+    <span class="cart-icon">🛒</span>
+    Ваш кошик
+  </h1>
+
+  <% if @cart.empty? %>
+
+    <p class="empty-cart">Кошик порожній 😔</p>
+
+  <% else %>
+
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Фото</th>
+          <th>Товар</th>
+          <th>Ціна</th>
+          <th>Кількість</th>
+          <th>Сумарно</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @cart.each do |product_id, quantity| %>
+          <% product = Product.find_by(id: product_id) %>
+          <% next unless product %>
+
+          <tr>
+
+            <!-- Фото -->
+            <td>
+              <% if product.images.attached? %>
+                <%= image_tag product.images.first, class: "cart-thumb" %>
+              <% else %>
+                <img src="/placeholder.png" class="cart-thumb">
+              <% end %>
+            </td>
+
+            <!-- Назва -->
+            <td class="cart-name">
+              <%= link_to product.name, product_path(product), class: "cart-product-link" %>
+            </td>
+
+            <!-- Ціна -->
+            <td class="cart-price">
+              <%= number_to_currency(product.price, unit: "₴") %>
+            </td>
+
+            <!-- Кількість + Оновити -->
+            <td>
+              <%= form_with url: update_cart_path, method: :post, class: "quantity-form" do |f| %>
+                <%= f.hidden_field :product_id, value: product.id %>
+                <%= f.number_field :quantity,
+                      value: quantity,
+                      min: 1,
+                      class: "quantity-input" %>
+
+                <%= f.submit "Оновити", class: "btn-update-row" %>
+              <% end %>
+            </td>
+
+            <!-- Сумарно -->
+            <td class="cart-line-total">
+              <%= number_to_currency(product.price * quantity, unit: "₴") %>
+            </td>
+
+            <!-- Видалити -->
+            <td class="cart-remove">
+              <%= button_to "✖️",
+                    remove_from_cart_path(product_id: product.id),
+                    method: :post,
+                    class: "remove-btn" %>
+            </td>
+
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <!-- Нижній блок -->
+    <div class="cart-summary">
+
+      <p class="total-line">
+        <strong>Загальна сума:</strong>
+        <span class="total-amount"><%= number_to_currency(@total, unit: "₴") %></span>
+      </p>
+
+      <div class="cart-actions">
+        <%= button_to "Очистити кошик",
+              clear_cart_path,
+              method: :delete,
+              class: "cart-action-btn-red" %>
+
+        <%= button_to "Оформити замовлення",
+              new_order_path,
+              method: :get,
+              class: "cart-action-btn-green" %>
+      </div>
+
+    </div>
+
+  <% end %>
+
+</div>

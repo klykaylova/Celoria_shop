@@ -1,0 +1,19 @@
+<h1>📦 Всі доставки</h1>
+
+<table border="1" cellspacing="0" cellpadding="8">
+  <tr>
+    <th>Замовлення №</th>
+    <th>Адреса</th>
+    <th>Статус</th>
+    <th>Дії</th>
+  </tr>
+
+  <% @deliveries.each do |delivery| %>
+    <tr>
+      <td><%= delivery.order_id %></td>
+      <td><%= delivery.address %></td>
+      <td><%= delivery.status %></td>
+      <td><%= link_to "Переглянути", delivery_path(delivery) %></td>
+    </tr>
+  <% end %>
+</table>

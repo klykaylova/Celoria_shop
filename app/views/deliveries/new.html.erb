@@ -1,0 +1,27 @@
+<h1>🚚 Оформлення доставки</h1>
+
+<%= form_with model: [@order, @delivery], local: true do |form| %>
+  <div>
+    <%= form.label :address, "Адреса доставки" %><br>
+    <%= form.text_field :address, required: true, style: "width:300px;" %>
+  </div>
+
+  <div style="margin-top:10px;">
+    <%= form.label :delivery_date, "Дата доставки" %><br>
+    <%= form.date_field :delivery_date, required: true %>
+  </div>
+
+  <div style="margin-top:10px;">
+    <%= form.label :status, "Статус доставки" %><br>
+    <%= form.select :status, ["очікує", "в дорозі", "доставлено"], prompt: "Оберіть статус" %>
+  </div>
+
+  <div style="margin-top:15px;">
+    <%= form.submit "Підтвердити доставку",
+          class: "btn btn-success",
+          style: "background-color:#28a745; color:white; border:none; padding:10px 15px; border-radius:5px;" %>
+  </div>
+<% end %>
+
+<%= link_to "⬅️ Назад до замовлення", order_path(@order),
+      style: "display:inline-block; margin-top:15px; color:#007bff; text-decoration:none;" %>

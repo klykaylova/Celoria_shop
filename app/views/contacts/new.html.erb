@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag "contacts", media: "all" %>
+
+<div class="contact-page">
+
+  <h1 class="contact-title">Контакти</h1>
+  <p class="contact-subtitle">
+    Ми будемо раді почути ваші відгуки, запитання або пропозиції.
+  </p>
+
+  <div class="contact-card">
+
+    <%= form_with model: @feedback,
+                  url: contacts_path,
+                  local: true,
+                  class: "contact-form" do |f| %>
+
+      <div class="form-group">
+        <label class="contact-label">Ваше повідомлення:</label>
+        <%= f.text_area :message,
+              rows: 6,
+              class: "contact-textarea",
+              placeholder: "Введіть ваше повідомлення..." %>
+      </div>
+
+      <%= f.submit "Надіслати", class: "contact-submit-btn" %>
+
+    <% end %>
+
+  </div>
+</div>

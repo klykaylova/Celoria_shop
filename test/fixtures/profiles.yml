@@ -1,0 +1,11 @@
+one:
+  id: 1
+  user: one
+  address: "Івано-Франківськ"
+  phone: "380501234567"
+
+two:
+  id: 2
+  user: two
+  address: "Київ"
+  phone: "380671234567"

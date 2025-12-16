@@ -1,0 +1,11 @@
+one:
+  id: 1
+  user: one
+  message: "Чудовий сервіс!"
+  reply: "Дякуємо за відгук!"
+
+two:
+  id: 2
+  user: two
+  message: "Є зауваження..."
+  reply: ""

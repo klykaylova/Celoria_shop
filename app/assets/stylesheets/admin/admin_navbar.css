@@ -1,0 +1,66 @@
+/* === Admin Navbar === */
+
+.admin-navbar {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 12px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Ліва частина */
+.admin-nav-left .admin-logo-link {
+  font-size: 15px;
+  text-decoration: none;
+  color: #144434;
+  font-weight: 600;
+}
+
+/* Права частина */
+.admin-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: 45px;
+}
+
+.admin-user-label {
+  font-size: 15px;
+  color: #144434;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.admin-btn-outline.admin-logout-btn {
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: 1px solid #144434;
+  background: transparent;
+  color: #144434;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.admin-btn-outline.admin-logout-btn:hover {
+  background: #144434;
+  color: #ffffff;
+}
+
+/* 🔧 ВАЖЛИВЕ ВИПРАВЛЕННЯ */
+.new-admin-container {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}

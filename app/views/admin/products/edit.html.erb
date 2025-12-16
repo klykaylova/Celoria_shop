@@ -1,0 +1,84 @@
+<%= stylesheet_link_tag "admin/admin_products", media: "all" %>
+
+<div class="admin-product-edit-wrapper">
+
+  <%= link_to "← Повернутись назад", admin_products_path, class: "back-btn" %>
+
+  <h1 class="admin-product-title">Редагування товару</h1>
+
+  <%= form_with model: [:admin, @product], local: true, html: { multipart: true } do |f| %>
+
+    <!-- ОСНОВНА ІНФОРМАЦІЯ -->
+    <div class="form-section">
+      <h2 class="section-title">Основна інформація</h2>
+
+      <div class="form-group">
+        <label>Назва товару</label>
+        <%= f.text_field :name, class: "input-field" %>
+      </div>
+
+      <div class="form-group">
+        <label>Опис</label>
+        <%= f.text_area :description, rows: 5, class: "input-field textarea" %>
+      </div>
+
+      <div class="form-group">
+        <label>Ціна (грн)</label>
+        <%= f.number_field :price, step: 0.01, class: "input-field" %>
+      </div>
+
+      <div class="form-group">
+        <label>Категорія</label>
+        <%= f.collection_select :category_id, Category.all, :id, :name, {}, class: "input-field" %>
+      </div>
+    </div>
+
+    <!-- ФОТО -->
+    <div class="form-section">
+      <h2 class="section-title">Фотографії</h2>
+
+      <div class="images-preview">
+        <% @product.images.each do |img| %>
+          <div class="image-box">
+            <%= image_tag img, class: "preview-img" %>
+          </div>
+        <% end %>
+      </div>
+
+      <label class="file-label">
+        Додати нові фото
+        <%= f.file_field :images, multiple: true, class: "file-input" %>
+      </label>
+    </div>
+
+    <!-- ХАРАКТЕРИСТИКИ -->
+    <div class="form-section">
+      <h2 class="section-title">Характеристики товару</h2>
+
+      <div id="characteristics-container">
+
+        <% @product.characteristics&.each do |key, value| %>
+          <div class="characteristic-row">
+            <input type="text" name="product[characteristics_keys][]" value="<%= key %>" class="input-field small">
+            <input type="text" name="product[characteristics_values][]" value="<%= value %>" class="input-field small">
+            <button type="button" class="remove-char">–</button>
+          </div>
+        <% end %>
+
+      </div>
+
+      <button type="button" id="add-char-btn" class="add-char-btn">
+        ➕ Додати характеристику
+      </button>
+    </div>
+
+    <!-- Кнопка -->
+    <div class="form-actions">
+      <%= f.submit "Зберегти зміни", class: "btn-primary" %>
+    </div>
+
+  <% end %>
+
+</div>
+
+<%= javascript_include_tag "admin_characteristics" %>

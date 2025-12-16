@@ -1,0 +1,425 @@
+/* Основний контейнер */
+.admin-products-page {
+  max-width: 1050px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Заголовок */
+.admin-products-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  color: #0d3b2e;
+  margin-bottom: 35px;   /* 🔥 збільшили відступ */
+}
+
+/* Назад */
+.back-btn {
+  display: inline-block;
+  margin-bottom: 25px;
+  color: #0d3b2e;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Додати товар */
+.top-actions {
+  text-align: center;
+  margin-bottom: 30px;    /* 🔥 збільшили відступ */
+}
+
+.add-product-btn {
+  background: #0d4f39;
+  color: white;
+  padding: 10px 22px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.add-product-btn:hover {
+  background: #083e2c;
+}
+
+/* Табличний контейнер */
+.admin-products-table-wrapper {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Таблиця */
+.admin-products-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 15px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.admin-products-table th {
+  background: #e8f2ed;
+  padding: 14px;
+  color: #0d3b2e;
+  font-weight: 700;
+  text-align: left;
+  border-bottom: 2px solid #d9e7e0;
+}
+
+/* 🔥 Вирівнюємо слово "Дії" по правому краю */
+.actions-header {
+  text-align: right !important;
+  padding-right: 22px;  /* співпадає з кнопками */
+}
+
+.admin-products-table td {
+  padding: 14px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.product-name-cell {
+  font-weight: 600;
+  color: #0d3b2e;
+}
+
+/* Колонка дій */
+.actions-col {
+  display: flex;
+  justify-content: flex-end;  /* 🔥 Вирівняно по правому краю */
+  gap: 8px;
+}
+
+/* Кнопки */
+.table-btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.edit-btn {
+  background: #d9f3e7;
+  color: #0c4a35;
+}
+
+.edit-btn:hover {
+  background: #c3e8d6;
+}
+
+.delete-btn {
+  background: #f7d3d3;
+  color: #7d1111;
+}
+
+.delete-btn:hover {
+  background: #f3b8b8;
+}
+
+/* ====== EDIT PRODUCT PAGE — ЦЕНТР + ГАРНІ ПОЛЯ ====== */
+
+.admin-product-edit-wrapper {
+  max-width: 850px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Заголовок */
+.admin-product-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0d3b2e;
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+/* Секції */
+.form-section {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #0d3b2e;
+  margin-bottom: 18px;
+}
+
+/* Рівні поля */
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  font-size: 15px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+  color: #0d3b2e;
+}
+
+.input-field {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #cde6dc;
+  border-radius: 10px;
+  font-size: 16px;
+  background: #f9fdfb;
+  box-sizing: border-box;
+}
+
+.input-field:focus {
+  border-color: #0d4f39;
+  background: #ffffff;
+}
+
+/* textarea рівна */
+.textarea {
+  min-height: 130px;
+  max-height: 250px;
+  resize: vertical;
+}
+
+/* Фото */
+.images-preview {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.image-box {
+  width: 150px;
+  height: 150px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #e4eee8;
+}
+
+.preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* FILE INPUT — тепер гарна зелена кнопка */
+.file-input {
+  display: none !important;
+}
+
+.file-label {
+  display: inline-block;
+  background: #0d4f39;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: 0.25s;
+}
+
+.file-label:hover {
+  background: #083e2c;
+}
+
+/* Характеристики */
+.characteristic-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.input-field.small {
+  flex: 1;
+}
+
+.remove-char {
+  background: #ff6e6e;
+  border: none;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Add char button */
+.add-char-btn {
+  background: #0d4f39;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Save button */
+.form-actions {
+  text-align: right;
+}
+
+.btn-primary {
+  background: #0d4f39;
+  color: white;
+  padding: 14px 26px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #083e2c;
+}
+
+/* ====== WRAPPER ====== */
+.admin-product-edit-wrapper {
+  max-width: 850px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  font-family: 'Inter', sans-serif;
+}
+
+/* ====== TITLES ====== */
+.admin-product-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0d3b2e;
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #0d3b2e;
+  margin-bottom: 18px;
+}
+
+/* ====== FORM SECTIONS ====== */
+.form-section {
+  margin-bottom: 40px;
+}
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  font-size: 15px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+  color: #0d3b2e;
+}
+
+/* ====== INPUT FIELDS ====== */
+.input-field {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #cde6dc;
+  border-radius: 10px;
+  font-size: 16px;
+  background: #f9fdfb;
+  box-sizing: border-box;
+}
+
+.input-field:focus {
+  border-color: #0d4f39;
+  background: #ffffff;
+}
+
+.textarea {
+  min-height: 130px;
+  max-height: 250px;
+  resize: vertical;
+}
+
+/* ====== FILE BUTTON ====== */
+.file-input {
+  display: none !important;
+}
+
+.file-label {
+  display: inline-block;
+  background: #0d4f39;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: 0.25s;
+}
+
+.file-label:hover {
+  background: #083e2c;
+}
+
+/* ====== CHARACTERISTICS ====== */
+.characteristic-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.input-field.small {
+  flex: 1;
+}
+
+.remove-char {
+  background: #ff6e6e;
+  border: none;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* ADD BUTTON */
+.add-char-btn {
+  background: #0d4f39;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* SUBMIT BUTTON */
+.form-actions {
+  text-align: right;
+}
+
+.btn-primary {
+  background: #0d4f39;
+  color: white;
+  padding: 14px 26px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #083e2c;
+}

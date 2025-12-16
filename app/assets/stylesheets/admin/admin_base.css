@@ -1,0 +1,64 @@
+/* Головний файл стилів адмінки */
+
+/*
+ *= require admin/admin_navbar
+ *= require admin/admin_dashboard
+ *= require admin/admin_products
+ *= require admin/admin_orders
+ *= require admin/admin_users
+ *= require admin/admin_feedbacks
+ *= require admin/admin_forms
+*/
+
+/* Навбар */
+@import "admin/admin_navbar.css";
+
+/* Дешборд */
+@import "admin/admin_dashboard.css";
+
+/* Товари */
+@import "admin/admin_products.css";
+
+/* Замовлення */
+@import "admin/admin_orders.css";
+
+/* Користувачі */
+@import "admin/admin_user.css";
+
+/* Повідомлення */
+@import "admin/admin_feedbacks.css";
+
+/* Форми */
+@import "admin/admin_forms.css";
+
+/* Забираємо горизонтальний скрол */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Фікс неправильних відступів по краях */
+.new-admin-container,
+.admin-dashboard,
+.admin-cards {
+  max-width: 100%;
+  overflow-x: hidden !important;
+  padding: 0;
+  margin: 0 auto;
+}
+
+/* Заборона широких елементів */
+.admin-dashboard *,
+.admin-cards *,
+.admin-card {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Центруємо картки без виходу за межі */
+.admin-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: nowrap;
+  padding: 0 20px;
+}

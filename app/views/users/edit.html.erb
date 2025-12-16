@@ -1,0 +1,42 @@
+<%= stylesheet_link_tag "profile", media: "all" %>
+
+<div class="profile-edit-wrapper">
+  <div class="profile-edit-card">
+
+    <h1>Редагування профілю</h1>
+
+    <%= form_with model: @user, local: true do |f| %>
+    <% if @user.errors.any? %>
+     <div class="form-errors">
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+      <label>Ім'я</label>
+      <%= f.text_field :name, class: "form-control" %>
+
+      <label>Email</label>
+      <%= f.email_field :email, class: "form-control" %>
+
+      <h3>Змінити пароль</h3>
+      <p class="password-note">Заповнювати не обов’язково</p>
+
+      <label>Новий пароль</label>
+      <%= f.password_field :password, class: "form-control" %>
+
+      <label>Підтвердження пароля</label>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+
+      <div class="profile-edit-actions">
+        <%= f.submit "Зберегти зміни", class: "profile-edit-btn save" %>
+        <%= link_to "Скасувати", profile_path, class: "profile-edit-btn cancel" %>
+      </div>
+
+    <% end %>
+
+  </div>
+</div>
