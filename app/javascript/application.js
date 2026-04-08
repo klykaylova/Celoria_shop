@@ -31,8 +31,7 @@ document.addEventListener("DOMContentLoaded", initFlashFade);
 
 
 // -------------------------------
-// ТВОЙ КОД ДЛЯ ДОСТАВКИ (не чіпаю)
-// -------------------------------
+
 document.addEventListener("DOMContentLoaded", () => {
   const deliverySelect = document.getElementById("order_delivery_method");
   const addressField = document.getElementById("delivery-address");

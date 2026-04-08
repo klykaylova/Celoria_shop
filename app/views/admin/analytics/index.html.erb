@@ -1,0 +1,225 @@
+<%= stylesheet_link_tag "admin/admin_analytics", media: "all" %>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="analytics-container">
+
+  <!-- HEADER -->
+  <div class="admin-header-row">
+    <%= link_to "← Назад", admin_dashboard_path, class: "admin-back-link purple" %>
+    <h1 class="admin-title center">Аналітика</h1>
+  </div>
+
+  <!-- FILTER -->
+  <form method="get" class="analytics-filter">
+    <input type="date" name="start_date" value="<%= params[:start_date] || Date.today %>">
+    <input type="date" name="end_date" value="<%= params[:end_date] || Date.today %>">
+    <button type="submit">Фільтрувати</button>
+  </form>
+
+  <!-- KPI -->
+  <div class="analytics-cards">
+
+    <div class="analytics-card">
+      <p class="analytics-label">Дохід</p>
+      <p class="analytics-value">
+        <%= @has_filter ? number_with_delimiter(@total_revenue) : "—" %> ₴
+      </p>
+
+      <% if @has_filter && @revenue_growth %>
+        <span class="analytics-growth <%= @revenue_growth >= 0 ? 'positive' : 'negative' %>">
+          <%= @revenue_growth >= 0 ? '+' : '' %><%= @revenue_growth %>%
+        </span>
+      <% end %>
+    </div>
+
+    <div class="analytics-card">
+      <p class="analytics-label">Замовлення</p>
+      <p class="analytics-value">
+        <%= @has_filter ? @orders_count : "—" %>
+      </p>
+
+      <% if @has_filter && @orders_growth %>
+        <span class="analytics-growth <%= @orders_growth >= 0 ? 'positive' : 'negative' %>">
+          <%= @orders_growth >= 0 ? '+' : '' %><%= @orders_growth %>%
+        </span>
+      <% end %>
+    </div>
+
+    <div class="analytics-card">
+      <p class="analytics-label">Середній чек</p>
+      <p class="analytics-value">
+        <%= @has_filter ? number_with_delimiter(@average_order.to_i) : "—" %> ₴
+      </p>
+    </div>
+
+    <div class="analytics-card">
+      <p class="analytics-label">Нові користувачі</p>
+      <p class="analytics-value">
+        <%= @has_filter ? @new_users : "—" %>
+      </p>
+    </div>
+
+  </div>
+
+  <!-- EMPTY STATE -->
+  <% if @orders_count == 0 %>
+    <div class="empty-state">
+      <p>Немає даних за вибраний період</p>
+    </div>
+  <% else %>
+
+  <!-- CHARTS -->
+  <div class="analytics-graphs">
+
+    <div class="analytics-section">
+      <h2 class="analytics-section-title">Динаміка доходу</h2>
+      <div class="analytics-chart-card">
+        <canvas id="revenueChart"></canvas>
+      </div>
+    </div>
+
+    <div class="analytics-section">
+      <h2 class="analytics-section-title">Кількість замовлень</h2>
+      <div class="analytics-chart-card">
+        <canvas id="ordersChart"></canvas>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- STATUS -->
+  <div class="analytics-section">
+    <h2 class="analytics-section-title">Статуси замовлень</h2>
+
+    <div class="status-wrapper">
+
+      <div class="analytics-chart-card pie-chart">
+        <canvas id="statusChart"></canvas>
+      </div>
+
+      <div class="status-grid">
+        <% @orders_by_status.each do |status| %>
+          <div class="status-item">
+            <span><%= status[:label] %></span>
+            <strong><%= status[:count] %></strong>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOP USERS -->
+  <% if @top_users.present? %>
+  <div class="analytics-section">
+    <h2 class="analytics-section-title">Топ клієнти</h2>
+
+    <div class="analytics-products">
+      <% @top_users.each do |user| %>
+        <div class="analytics-product-card">
+          <p class="analytics-product-name"><%= user[:name] %></p>
+          <p class="analytics-product-value">
+            <%= user[:total] %> ₴
+          </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+
+  <!-- TOP PRODUCTS -->
+  <div class="analytics-section">
+    <h2 class="analytics-section-title">Найпопулярніші товари</h2>
+
+    <div class="analytics-products">
+      <% @top_products_with_names.each do |product| %>
+        <div class="analytics-product-card">
+          <p class="analytics-product-name"><%= product[:name] %></p>
+          <p class="analytics-product-value">
+            Продано: <%= product[:quantity] %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <% end %>
+
+</div>
+
+<!-- JS -->
+<script>
+function initCharts() {
+
+  const revenueCanvas = document.getElementById("revenueChart");
+  const ordersCanvas = document.getElementById("ordersChart");
+  const statusCanvas = document.getElementById("statusChart");
+
+  // якщо сторінка ще не готова
+  if (!revenueCanvas || !ordersCanvas || !statusCanvas) return;
+
+  const labels = <%= raw @orders_by_day.keys.map { |d| d.strftime("%d.%m") } %>;
+  const revenueData = <%= raw @orders_by_day.values %>;
+  const ordersData = <%= raw @orders_count_by_day.values %>;
+
+  if (labels.length === 0) {
+    labels.push("Немає даних");
+    revenueData.push(0);
+    ordersData.push(0);
+  }
+
+  // 🔥 УБИВАЄМО СТАРІ ГРАФІКИ (ВАЖЛИВО)
+  Chart.getChart(revenueCanvas)?.destroy();
+  Chart.getChart(ordersCanvas)?.destroy();
+  Chart.getChart(statusCanvas)?.destroy();
+
+  new Chart(revenueCanvas, {
+    type: "line",
+    data: {
+      labels: labels,
+      datasets: [{
+        label: "Дохід",
+        data: revenueData
+      }]
+    }
+  });
+
+  new Chart(ordersCanvas, {
+    type: "bar",
+    data: {
+      labels: labels,
+      datasets: [{
+        label: "Замовлення",
+        data: ordersData
+      }]
+    }
+  });
+
+  const statusLabels = <%= raw @orders_by_status.map { |s| s[:label] } %>;
+  const statusData = <%= raw @orders_by_status.map { |s| s[:count] } %>;
+
+  new Chart(statusCanvas, {
+    type: "doughnut",
+    data: {
+      labels: statusLabels,
+      datasets: [{
+        data: statusData,
+        backgroundColor: [
+          "#7C3AED",
+          "#A78BFA",
+          "#C4B5FD",
+          "#DDD6FE",
+          "#EDE9FE",
+          "#F3E8FF",
+          "#FAF5FF"
+        ],
+        borderWidth: 0
+      }]
+    }
+  });
+}
+
+// 🔥 ВАЖЛИВО: 2 тригери
+document.addEventListener("turbo:load", initCharts);
+document.addEventListener("DOMContentLoaded", initCharts);
+</script>

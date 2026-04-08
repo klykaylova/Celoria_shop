@@ -5,6 +5,19 @@ class Admin::ProductsController < ApplicationController
 
   def index
     @products = Product.all
+
+    # 🔍 ПОШУК
+    if params[:query].present?
+      @products = @products.where("name ILIKE ?", "%#{params[:query]}%")
+    end
+
+    # 📂 ФІЛЬТР ПО КАТЕГОРІЇ
+    if params[:category_id].present?
+      @products = @products.where(category_id: params[:category_id])
+    end
+
+    # 📊 СОРТУВАННЯ
+    @products = @products.order(created_at: :desc)
   end
 
   def new
@@ -48,7 +61,6 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  # Перетворюємо характеристики у Hash
   def build_characteristics
     keys = params[:product].delete(:characteristics_keys) || []
     values = params[:product].delete(:characteristics_values) || []
@@ -62,7 +74,7 @@ class Admin::ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(
-      :name,          # ← ВАЖЛИВО!
+      :name,
       :description,
       :price,
       :category_id,

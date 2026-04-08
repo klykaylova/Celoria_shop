@@ -70,17 +70,17 @@ a {
 }
 
 /* ============================================================
-   📱 1. ПРИХОВУЄМО НЕПОТРІБНІ МЕНЮ
+   📱 1. ПРИХОВУВАННЯ МЕНЮ
    ============================================================ */
 
-/* На десктопі приховуємо мобільне меню */
+/* На десктопі  */
 @media (min-width: 769px) {
   .mobile-navbar {
     display: none !important;
   }
 }
 
-/* На мобілці приховуємо десктопне меню */
+/* На мобілці */
 @media (max-width: 768px) {
   .main-navbar {
     display: none !important;
@@ -361,3 +361,20 @@ a {
     text-align: center;
   }
 }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1;
+}
+
+/*
+*= require home
+*/

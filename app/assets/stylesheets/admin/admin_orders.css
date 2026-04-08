@@ -1,386 +1,391 @@
-/* ====== WRAPPER ====== */
-.admin-orders-page {
-  max-width: 1050px;
+/* =========================
+   GLOBAL
+========================= */
+.admin-container {
+  max-width: 1200px;
   margin: 40px auto;
-  padding: 0 20px;
-  font-family: 'Inter', sans-serif;
+  padding: 0 40px;
+  font-family: 'Montserrat', sans-serif;
 }
 
-/* Назад */
-.back-btn {
-  display: inline-block;
-  color: #0d3b2e;
-  font-weight: 600;
-  margin-bottom: 20px;
-  text-decoration: none;
-}
-
-/* Заголовок */
-.admin-orders-title {
-  text-align: center;
-  font-size: 36px;
-  font-weight: 700;
-  color: #0d3b2e;
+/* =========================
+   HEADER
+========================= */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 25px;
 }
 
-/* ====== TABLE ====== */
-
-.orders-table-wrapper {
-  width: 100%;
-  overflow-x: hidden;
+.admin-header h1 {
+  font-family: 'Merriweather', serif;
+  font-size: 26px;
+  color: #1e1b2e;
 }
 
-.orders-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  border-radius: 14px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  background: white;
+.back-link {
+  color: #7c3aed;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   TOOLBAR
+========================= */
+.admin-toolbar {
+  margin-bottom: 20px;
+}
+
+.toolbar-form {
+  display: flex;
+  gap: 10px;
+}
+
+.input-select {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  background: #fff;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.input-select:focus {
+  border-color: #7c3aed;
+  outline: none;
+}
+
+/* =========================
+   CARD (TABLE WRAPPER)
+========================= */
+.admin-card {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
   overflow: hidden;
 }
 
-.orders-table th {
-  background: #e8f2ed;
-  padding: 14px;
-  color: #0d3b2e;
-  font-weight: 700;
-  text-align: left;
-  border-bottom: 2px solid #d9e7e0;
+/* =========================
+   TABLE
+========================= */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.orders-table td {
-  padding: 14px;
-  border-bottom: 1px solid #f0f0f0;
+.admin-table thead {
+  background: #f3f0ff;
+}
+
+.admin-table th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  color: #1e1b2e;
+}
+
+.admin-table td {
+  padding: 16px;
+  border-top: 1px solid #eee;
   vertical-align: middle;
 }
 
-.sub-email {
+/* hover row */
+.admin-table tbody tr:hover {
+  background: #faf9ff;
+}
+
+/* =========================
+   TEXT
+========================= */
+.sub-text {
+  display: block;
   font-size: 13px;
-  color: #777;
+  color: #9ca3af;
+  margin-top: 3px;
 }
 
-/* ⭐ Вирівнюємо "Дії" праворуч */
-.actions-header {
-  text-align: right !important;
+.muted {
+  color: #9ca3af;
 }
 
-/* ====== STATUS BADGES ====== */
+.price {
+  font-weight: 600;
+  color: #111827;
+}
 
+/* =========================
+   STATUS BADGES
+========================= */
 .status-badge {
   display: inline-block;
-  padding: 6px 12px;
-  border-radius: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
   font-size: 13px;
   font-weight: 600;
-  text-transform: capitalize;
 }
 
-/* Червоний */
+/* статуси */
+.status-new {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.status-paid {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-confirmed {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+
+.status-shipped {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-delivered {
+  background: #bbf7d0;
+  color: #166534;
+}
+
 .status-cancelled {
-  background: #f7d3d3;
-  color: #7d1111;
+  background: #fee2e2;
+  color: #991b1b;
 }
 
-/* Зелений */
-.status-success {
-  background: #d9f3e7;
-  color: #0c4a35;
-}
-
-/* Синій */
 .status-refunded {
-  background: #d5e4ff;
-  color: #133a91;
+  background: #e0e7ff;
+  color: #3730a3;
 }
 
-/* ====== ACTION BUTTONS ====== */
-
-.orders-actions {
+/* =========================
+   ACTIONS
+========================= */
+.actions {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
 }
 
-/* Базовий стиль кнопки */
-.order-btn {
-  padding: 8px 16px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: .2s;
-  display: inline-block;
+/* =========================
+   ICON BUTTONS
+========================= */
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: #f3f0ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 16px;
 }
 
-/* Переглянути — зелений */
-.btn-view {
-  background: #d9f3e7;
-  color: #0c4a35;
-}
-.btn-view:hover {
-  background: #c3e8d6;
+.icon-btn:hover {
+  background: #e9e5ff;
 }
 
-/* Змінити статус — синій */
-.btn-edit {
-  background: #d5e4ff;
-  color: #133a91;
-}
-.btn-edit:hover {
-  background: #c3d7ff;
+/* delete */
+.icon-btn.delete:hover {
+  background: #fee2e2;
 }
 
-/* Видалити — червоний */
-.btn-delete {
-  background: #f7d3d3;
-  color: #7d1111;
-}
-.btn-delete:hover {
-  background: #f3b8b8;
-}
-
-/* ====== BASE PAGE ====== */
-.admin-page {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
-  font-family: 'Inter', sans-serif;
+/* =========================
+   EMPTY STATE
+========================= */
+.empty {
+  text-align: center;
+  padding: 30px;
+  color: #9ca3af;
 }
 
-/* ====== BACK BUTTON (як на товарах) ====== */
-.back-btn {
-  display: inline-block;
+/* =========================
+   MODAL
+========================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}
+
+.modal {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 18px;
+  width: 320px;
+  text-align: center;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal h3 {
+  font-family: 'Merriweather', serif;
+  margin-bottom: 10px;
+}
+
+.modal p {
   margin-bottom: 20px;
-  color: #0d3b2e;
+  color: #6b7280;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn-secondary {
+  background: #f3f4f6;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: #e5e7eb;
+}
+
+.btn-danger {
+  background: #dc2626;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-danger:hover {
+  background: #b91c1c;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .icon-btn {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+/* =========================
+   STATUS UPDATE (SHOW PAGE)
+========================= */
+
+.status-update-block {
+  margin-top: 30px;
+}
+
+.status-title {
+  font-size: 18px;
+  margin-bottom: 12px;
   font-weight: 600;
-  text-decoration: none;
+}
+
+.status-form {
+  display: flex;
+}
+
+.status-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* select */
+.status-select {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  background: #fff;
+  font-size: 14px;
+  transition: 0.2s;
+  min-width: 180px;
+}
+
+.status-select:focus {
+  border-color: #7c3aed;
+  outline: none;
+}
+
+/* кнопка як у адмінці */
+.btn-primary {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 500;
+  cursor: pointer;
   transition: 0.2s;
 }
 
-.back-btn:hover {
-  color: #083e2c;
-  text-decoration: underline;
-}
-
-/* ====== TITLE ====== */
-.admin-title {
-  text-align: center;
-  font-size: 32px;
-  font-weight: 700;
-  color: #0d3b2e;
-  margin-bottom: 30px;
-}
-
-/* ====== ORDER BLOCK ====== */
-.order-container {
-  background: #ffffff;
-  padding: 35px;
-  border-radius: 14px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-}
-
-.order-info-block p {
-  font-size: 16px;
-  margin-bottom: 10px;
-  color: #0d3b2e;
-}
-
-.order-subtitle {
-  margin-top: 25px;
-  margin-bottom: 12px;
-  font-size: 20px;
-  font-weight: 600;
-  color: #0d3b2e;
-}
-
-/* ====== TABLE ====== */
-.admin-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin-bottom: 25px;
-  border-radius: 12px;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.admin-table th {
-  background: #e8f2ed;
-  padding: 14px;
-  color: #0d3b2e;
-  text-align: left;
-  font-weight: 700;
-}
-
-.admin-table td {
-  padding: 14px;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-/* ====== STATUS BADGES ====== */
-.status-badge {
-  padding: 6px 14px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-/* ВСІ статуси повністю */
-.status-new       { background: #dbeafe; color: #1e3a8a; }
-.status-confirmed { background: #e0f2fe; color: #0369a1; }
-.status-paid      { background: #dcfce7; color: #166534; }
-.status-shipped   { background: #fef9c3; color: #854d0e; }
-.status-delivered { background: #e2f0d9; color: #2e7d32; }
-.status-cancelled { background: #fcdada; color: #7d1111; }
-.status-refunded  { background: #e9d5ff; color: #6b21a8; }
-
-/* ====== STATUS SELECT ====== */
-.select-control {
-  padding: 12px 16px;
-  border: 2px solid #cde6dc;
-  border-radius: 10px;
-  font-size: 15px;
-  background: #f9fdfb;
-  margin-right: 12px;
-}
-
-.select-control:focus {
-  border-color: #0d4f39;
-  background: #ffffff;
-}
-
-/* ====== BUTTON PRIMARY ====== */
-.btn-primary {
-  background: #0d4f39;
-  color: white;
-  padding: 12px 22px;
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-}
-
 .btn-primary:hover {
-  background: #083e2c;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(124, 58, 237, 0.3);
 }
 
-/* ===== PAGE Оновлення статусу ===== */
-.admin-page {
-  max-width: 950px;
-  margin: 40px auto;
-  padding: 0 20px;
-  font-family: 'Inter', sans-serif;
-}
-
-/* Back link */
-.admin-back-link {
+/* INLINE STATUS */
+.status-inline-form {
   display: inline-block;
-  color: #0d3b2e;
-  font-weight: 600;
-  text-decoration: none;
-  margin-bottom: 20px;
 }
 
-.admin-back-link:hover {
-  color: #083e2c;
-}
-
-/* Page Title */
-.admin-title {
-  text-align: center;
-  font-size: 32px;
-  font-weight: 700;
-  color: #0d3b2e;
-  margin-bottom: 30px;
-}
-
-/* ===== EDIT CARD ===== */
-.order-edit-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.order-edit-block {
-  width: 100%;
-  max-width: 600px;
-  background: #ffffff;
-  padding: 35px;
-  border-radius: 14px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-}
-
-/* Current status */
-.current-status {
-  font-size: 16px;
-  margin-bottom: 20px;
-}
-
-/* Status badges */
-.status-badge {
-  padding: 6px 14px;
-  border-radius: 8px;
-  color: white;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-/* Colors for all statuses */
-.status-new        { background: #004085; }
-.status-confirmed  { background: #1e7e34; }
-.status-paid       { background: #0c5460; }
-.status-shipped    { background: #6f42c1; }
-.status-delivered  { background: #28a745; }
-.status-cancelled  { background: #dc3545; }
-.status-refunded   { background: #856404; }
-
-/* ===== FORM ===== */
-.edit-status-form {
-  margin-top: 20px;
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-group label {
-  font-weight: 600;
-  color: #0d3b2e;
-  margin-bottom: 6px;
-  display: block;
-}
-
-/* Select */
-.form-select {
-  width: 100%;
-  padding: 14px;
-  border: 2px solid #cde6dc;
+.status-select {
+  padding: 8px 12px;
   border-radius: 10px;
-  background: #f9fdfb;
-  font-size: 16px;
+  border: 1px solid #ddd;
+  background: #fff;
+  font-size: 13px;
+  transition: 0.2s;
 }
 
-.form-select:focus {
-  border-color: #0d4f39;
-  background: #ffffff;
+.status-select:focus {
+  border-color: #7c3aed;
+  outline: none;
 }
 
-/* Submit button */
-.btn-primary {
-  background: #0d4f39;
-  color: white;
-  padding: 12px 28px;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.btn-primary:hover {
-  background: #083e2c;
-}

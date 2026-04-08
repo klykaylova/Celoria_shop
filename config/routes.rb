@@ -46,21 +46,23 @@ Rails.application.routes.draw do
   get "profile", to: "users#show", as: :profile
 
   # 👑 Адмін-панель
-  namespace :admin do
-    get "dashboard", to: "dashboard#index"
+namespace :admin do
+  get "dashboard", to: "dashboard#index"
+  get "analytics", to: "analytics#index"
 
-    resources :users, only: [:index]
-    resources :products
+  resources :users
+  resources :products
 
-    resources :orders do
-      member do
-        patch :update_status
-      end
+  resources :orders do
+    member do
+      patch :update_status
     end
-
-    resources :feedbacks, only: [:index, :show, :update, :destroy]
   end
+
+  resources :feedbacks, only: [:index, :show, :update, :destroy]
+end
 
   # Перенаправлення на адмінку
   get "admin", to: redirect("/admin/dashboard")
 end
+

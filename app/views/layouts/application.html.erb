@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Celoria</title>
 
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= stylesheet_link_tag "navbar", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "footer", "data-turbo-track": "reload" %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <%= javascript_importmap_tags %>
@@ -16,38 +17,47 @@
 <body>
 
 <!-- ================================
-     💻 ДЕСКТОПНЕ МЕНЮ (твій код)
+     💻 ДЕСКТОПНЕ МЕНЮ
 ================================ -->
 <% unless controller.class.name.start_with?("Admin::") %>
 <nav class="main-navbar">
 
-  <!-- ЛІВА ЧАСТИНА — ЛОГОТИП -->
+  <!-- ЛОГО -->
   <div class="nav-left">
     <%= link_to root_path, class: "logo-link" do %>
       <%= image_tag "logo.png", alt: "Celoria", class: "logo-image" %>
-      <span class="logo-text">Celoria</span>
     <% end %>
   </div>
 
-  <!-- ЦЕНТР МЕНЮ -->
+  <!-- ЦЕНТР -->
   <div class="nav-center">
-    <%= link_to "Головна", root_path, class: "nav-item" %>
-    <%= link_to "Каталог", products_path, class: "nav-item" %>
-    <%= link_to "Кошик", cart_path, class: "nav-item" %>
+    <%= link_to "Головна", root_path,
+      class: "nav-item #{'active' if current_page?(root_path)}" %>
+
+    <%= link_to "Каталог", products_path,
+      class: "nav-item #{'active' if current_page?(products_path)}" %>
+
+    <%= link_to "Кошик", cart_path,
+      class: "nav-item #{'active' if current_page?(cart_path)}" %>
 
     <% if current_user %>
-      <%= link_to "Замовлення", orders_path, class: "nav-item" %>
+      <%= link_to "Замовлення", orders_path,
+        class: "nav-item #{'active' if current_page?(orders_path)}" %>
     <% end %>
 
-    <%= link_to "Контакти", contacts_path, class: "nav-item" %>
-    <%= link_to "Про нас", about_path, class: "nav-item" %>
+    <%= link_to "Контакти", contacts_path,
+      class: "nav-item #{'active' if current_page?(contacts_path)}" %>
+
+    <%= link_to "Про нас", about_path,
+      class: "nav-item #{'active' if current_page?(about_path)}" %>
   </div>
 
-  <!-- ПРАВА ЧАСТИНА -->
+  <!-- ПРАВО -->
   <div class="nav-right">
     <% if current_user.present? %>
 
-      <%= link_to "Профіль", profile_path, class: "nav-item" %>
+      <%= link_to "Профіль", profile_path,
+        class: "nav-item #{'active' if current_page?(profile_path)}" %>
 
       <% if current_user.admin? %>
         <%= link_to "Адмін-панель", admin_dashboard_path, class: "nav-btn-outline" %>
@@ -60,19 +70,21 @@
         class: "nav-btn-outline logout-link" %>
 
     <% else %>
-      <%= link_to "Увійти", login_path, class: "nav-item" %>
-      <%= link_to "Реєстрація", new_user_path, class: "nav-item" %>
+      <%= link_to "Увійти", login_path,
+        class: "nav-item #{'active' if current_page?(login_path)}" %>
+
+      <%= link_to "Реєстрація", new_user_path,
+        class: "nav-item #{'active' if current_page?(new_user_path)}" %>
     <% end %>
   </div>
 
 </nav>
 <% end %>
 
-
 <!-- ================================
-     📱 МОБІЛЬНЕ МЕНЮ (нове)
+     📱 МОБІЛЬНЕ МЕНЮ
 ================================ -->
-<nav class="mobile-navbar">
+<nav class="mobile-navbar" style="display:none;">
 
   <div class="mobile-nav-top">
     <div class="mobile-logo">
@@ -110,15 +122,9 @@
 
 </nav>
 
-
-
-
-<!-- ================================
-     🔔 FLASH-ПОВІДОМЛЕННЯ
-================================ -->
+<!-- FLASH -->
 <div class="flash-wrapper">
   <% flash.each do |type, msg| %>
-
     <% flash_class =
          case type.to_sym
          when :notice then "flash-notice"
@@ -129,18 +135,17 @@
     <div class="flash-message <%= flash_class %>">
       <%= msg %>
     </div>
-
   <% end %>
 </div>
 
-
-<!-- ВМІСТ -->
+<!-- CONTENT -->
 <div class="container">
   <%= yield %>
 </div>
 
+<%= render "shared/footer" %>
 
-<!-- JS для мобільного бургера -->
+<!-- BURGER JS -->
 <script>
 document.addEventListener("turbo:load", () => {
   const burger = document.querySelector(".burger");
@@ -148,10 +153,7 @@ document.addEventListener("turbo:load", () => {
 
   if (!burger || !menu) return;
 
-  // Знімаємо попередній слухач, щоб не дублювався
   burger.replaceWith(burger.cloneNode(true));
-
-  // Беремо новий елемент
   const newBurger = document.querySelector(".burger");
 
   newBurger.addEventListener("click", () => {

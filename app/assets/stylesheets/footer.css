@@ -1,0 +1,82 @@
+.footer {
+  background: #f5f1ff;
+  padding: 60px 80px 30px;
+  margin-top: 30px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.footer-brand h2 {
+  font-family: 'Merriweather', serif;
+  margin-bottom: 10px;
+}
+
+.footer-brand p {
+  color: #7c7a8a;
+  margin-bottom: 20px;
+}
+
+/* соцмережі (іконки) */
+.footer-socials {
+  display: flex;
+  gap: 14px;
+}
+
+.footer-socials a {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #7C3AED;
+  font-size: 16px;
+
+  transition: 0.25s ease;
+  text-decoration: none;
+}
+
+.footer-socials a:hover {
+  background: #7C3AED;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* колонки */
+.footer-links h4 {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  display: block;
+  text-decoration: none;
+  color: #7c7a8a;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: #7C3AED;
+}
+
+.footer-links p {
+  color: #7c7a8a;
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+/* нижній текст */
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  color: #9a97a8;
+}

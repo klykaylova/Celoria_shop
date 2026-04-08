@@ -5,7 +5,16 @@ class Admin::FeedbacksController < ApplicationController
 
   # ===== INDEX =====
   def index
+    @status = params[:status]
+
     @feedbacks = Feedback.order(created_at: :desc)
+
+    case @status
+    when "pending"
+      @feedbacks = @feedbacks.where(reply: [nil, ""])
+    when "answered"
+      @feedbacks = @feedbacks.where.not(reply: [nil, ""])
+    end
   end
 
   # ===== SHOW =====
@@ -25,7 +34,7 @@ class Admin::FeedbacksController < ApplicationController
   # ===== DESTROY =====
   def destroy
     @feedback.destroy
-    redirect_to admin_feedbacks_path, notice: "Повідомлення видалено"
+    redirect_to admin_feedbacks_path, flash: { notice: "Повідомлення видалено" }
   end
 
   # ===== PRIVATE =====

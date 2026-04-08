@@ -2,10 +2,19 @@
 
 <div class="contact-page">
 
-  <h1 class="contact-title">Контакти</h1>
+  <h1 class="contact-title">📩 Контакти</h1>
+
   <p class="contact-subtitle">
     Ми будемо раді почути ваші відгуки, запитання або пропозиції.
   </p>
+
+  <% if flash[:notice] %>
+    <div class="contact-alert success"><%= flash[:notice] %></div>
+  <% end %>
+
+  <% if flash[:alert] %>
+    <div class="contact-alert error"><%= flash[:alert] %></div>
+  <% end %>
 
   <div class="contact-card">
 
@@ -15,9 +24,23 @@
                   class: "contact-form" do |f| %>
 
       <div class="form-group">
-        <label class="contact-label">Ваше повідомлення:</label>
+        <label class="contact-label">Ваше ім'я</label>
+        <%= f.text_field :name,
+              class: "contact-input",
+              placeholder: "Введіть ваше ім'я" %>
+      </div>
+
+      <div class="form-group">
+        <label class="contact-label">Email</label>
+        <%= f.email_field :email,
+              class: "contact-input",
+              placeholder: "example@gmail.com" %>
+      </div>
+
+      <div class="form-group">
+        <label class="contact-label">Повідомлення</label>
         <%= f.text_area :message,
-              rows: 6,
+              rows: 5,
               class: "contact-textarea",
               placeholder: "Введіть ваше повідомлення..." %>
       </div>

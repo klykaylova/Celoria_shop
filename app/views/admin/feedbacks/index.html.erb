@@ -2,10 +2,37 @@
 
 <div class="admin-feedbacks-page">
 
-<%= link_to "← Повернутись назад", admin_dashboard_path, class: "admin-back-link" %>
+  <!-- HEADER -->
+  <div class="admin-header-row">
 
-  <h1 class="admin-title">Повідомлення користувачів</h1>
+    <%= link_to "← Повернутись назад",
+          admin_dashboard_path,
+          class: "admin-back-link" %>
 
+    <h1 class="admin-title right">
+      Повідомлення користувачів
+    </h1>
+
+  </div>
+
+  <!-- FILTER -->
+  <div class="admin-filter-row">
+
+    <%= link_to "Всі",
+          admin_feedbacks_path,
+          class: "filter-btn #{'active' if @status.blank?}" %>
+
+    <%= link_to "Очікують відповіді",
+          admin_feedbacks_path(status: "pending"),
+          class: "filter-btn #{'active' if @status == 'pending'}" %>
+
+    <%= link_to "Відповідь надіслано",
+          admin_feedbacks_path(status: "answered"),
+          class: "filter-btn #{'active' if @status == 'answered'}" %>
+
+  </div>
+
+  <!-- TABLE -->
   <div class="admin-table-wrapper">
     <table class="admin-table">
       <thead>
@@ -14,7 +41,7 @@
           <th>Користувач</th>
           <th>Повідомлення</th>
           <th>Статус</th>
-          <th class="actions-header">Дії</th> <!-- правильний клас -->
+          <th class="actions-header">Дії</th>
         </tr>
       </thead>
 
@@ -24,17 +51,21 @@
             <td><%= fb.id %></td>
 
             <td>
-              <%= fb.user&.name || "Анонім" %><br>
-              <span class="sub-email"><%= fb.user&.email %></span>
+              <span class="user-name">
+                <%= fb.user&.name || "Анонім" %>
+              </span><br>
+              <span class="sub-email">
+                <%= fb.user&.email %>
+              </span>
             </td>
 
-            <td><%= truncate(fb.message, length: 40) %></td>
+            <td><%= truncate(fb.message, length: 50) %></td>
 
             <td>
               <% if fb.reply.present? %>
-                <span class="badge green">Відповідь надіслано</span>
+                <span class="badge success">Відповідь надіслано</span>
               <% else %>
-                <span class="badge red">Без відповіді</span>
+                <span class="badge warning">Очікує відповіді</span>
               <% end %>
             </td>
 
@@ -45,13 +76,10 @@
                       admin_feedback_path(fb),
                       class: "table-btn view-btn" %>
 
-                <%= link_to "Видалити",
-                      admin_feedback_path(fb),
-                      data: {
-                        turbo_method: :delete,
-                        turbo_confirm: "Точно видалити повідомлення?"
-                      },
-                      class: "table-btn delete-btn" %>
+                <button class="table-btn delete-btn open-delete-modal"
+                        data-url="<%= admin_feedback_path(fb) %>">
+                  Видалити
+                </button>
 
               </div>
             </td>
@@ -63,3 +91,99 @@
   </div>
 
 </div>
+
+<!-- ================================
+     DELETE MODAL
+================================ -->
+<div id="deleteModal" class="modal-overlay">
+  <div class="modal">
+
+    <h3>Підтвердження</h3>
+    <p>Видалити повідомлення?</p>
+
+    <div class="modal-actions">
+
+      <button id="cancelDelete" class="btn-secondary">
+        Скасувати
+      </button>
+
+      <form id="deleteForm" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+        <button type="submit" class="btn-danger">
+          Видалити
+        </button>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<!-- ================================
+     TOAST (ВАЖЛИВО!)
+================================ -->
+<div id="toast"
+     class="toast"
+     data-notice="<%= flash[:notice] %>"
+     data-alert="<%= flash[:alert] %>">
+</div>
+
+<!-- ================================
+     JS
+================================ -->
+<script>
+document.addEventListener("turbo:load", () => {
+
+  const modal = document.getElementById("deleteModal");
+  const form = document.getElementById("deleteForm");
+
+  // MODAL OPEN
+  document.querySelectorAll(".open-delete-modal").forEach(btn => {
+    btn.addEventListener("click", () => {
+      form.action = btn.dataset.url;
+      modal.style.display = "flex";
+    });
+  });
+
+  // MODAL CLOSE
+  document.getElementById("cancelDelete").onclick = () => {
+    modal.style.display = "none";
+  };
+
+  // =========================
+  // TOAST FINAL (TURBO SAFE)
+  // =========================
+
+  const toast = document.getElementById("toast");
+
+  const notice = toast.dataset.notice;
+  const alertMsg = toast.dataset.alert;
+
+  if (notice) {
+    toast.innerText = notice;
+    toast.classList.add("show", "success");
+  } else if (alertMsg) {
+    toast.innerText = alertMsg;
+    toast.classList.add("show", "error");
+  }
+
+  if (notice || alertMsg) {
+    setTimeout(() => {
+      toast.classList.remove("show");
+
+      setTimeout(() => {
+        toast.innerText = "";
+        toast.classList.remove("success", "error");
+
+        // 🔥 КЛЮЧ: очищення dataset
+        toast.dataset.notice = "";
+        toast.dataset.alert = "";
+
+      }, 300);
+
+    }, 3000);
+  }
+
+});
+</script>

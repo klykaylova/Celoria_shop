@@ -2,86 +2,105 @@
 
 <div class="checkout-page">
 
-  <!-- ЛІВА КОЛОНКА — ФОРМА -->
   <div class="checkout-form">
 
     <h1 class="checkout-title">Оформлення замовлення</h1>
 
-    <%= form_with model: @order, url: orders_path, local: true, id: "orderForm" do |f| %>
+    <%= form_with model: @order, url: orders_path, local: true, id: "orderForm", html: { novalidate: true } do |f| %>
 
-      <!-- Контактні дані -->
       <div class="form-group">
-        <%= f.label :name, "Ваше ім'я" %>
-        <%= f.text_field :name, class: "form-control", required: true %>
+        <%= f.label :first_name, "Ім'я" %>
+        <%= f.text_field :first_name, class: "form-control", required: true %>
+        <div class="error-text"></div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :last_name, "Прізвище" %>
+        <%= f.text_field :last_name, class: "form-control", required: true %>
+        <div class="error-text"></div>
       </div>
 
       <div class="form-group">
         <%= f.label :phone, "Телефон" %>
-        <%= f.telephone_field :phone, class: "form-control", required: true %>
+        <%= f.telephone_field :phone, class: "form-control", id: "phoneInput", placeholder: "+380XXXXXXXXX", required: true %>
+        <small class="hint">Формат: +380XXXXXXXXX</small>
+        <div class="error-text"></div>
       </div>
 
-      <!-- Спосіб доставки -->
       <div class="form-group">
         <%= f.label :delivery_method, "Доставка" %>
         <%= f.select :delivery_method,
-              [["Нова Пошта", "nova_poshta"],
-               ["Укрпошта", "ukrposhta"],
-               ["Кур’єр", "courier"]],
-              {}, class: "form-control", id: "deliverySelect" %>
+          [["Нова Пошта", "nova_poshta"], ["Укрпошта", "ukrposhta"], ["Кур’єр", "courier"]],
+          {}, class: "form-control", id: "deliverySelect" %>
       </div>
 
-      <!-- Адреса -->
-      <div class="form-group" id="addressField">
+      <div class="form-group">
         <%= f.label :address, "Адреса доставки" %>
-        <%= f.text_field :address, class: "form-control",
-              placeholder: "Місто, вулиця, будинок" %>
+        <%= f.text_field :address, class: "form-control", required: true %>
+        <div class="error-text"></div>
       </div>
 
-      <!-- Поштовий індекс -->
       <div class="form-group" id="postcodeField" style="display:none;">
         <%= f.label :postcode, "Поштовий індекс" %>
-        <%= f.number_field :postcode, class: "form-control" %>
+        <%= f.number_field :postcode, class: "form-control", id: "postcodeInput" %>
+        <div class="error-text"></div>
       </div>
 
-      <!-- Спосіб оплати -->
       <div class="form-group">
         <%= f.label :payment_method, "Оплата" %>
         <%= f.select :payment_method,
-              [["Оплата карткою", "card"],
-               ["Післяплата", "cash_on_delivery"]],
-              {}, class: "form-control" %>
+          [["Оплата карткою", "card"], ["Післяплата", "cash_on_delivery"]],
+          {}, class: "form-control", id: "paymentSelect" %>
       </div>
 
-      <%= f.submit "Підтвердити замовлення", class: "checkout-submit" %>
+      <div id="cardFields" class="card-box" style="display:none;">
+
+        <div class="form-group">
+          <label>Номер картки</label>
+          <input type="text" id="cardNumber" class="form-control">
+          <div class="error-text"></div>
+        </div>
+
+        <div class="card-row">
+
+          <div class="form-group">
+            <label>MM/YY</label>
+            <input type="text" id="cardDate" class="form-control">
+            <div class="error-text"></div>
+          </div>
+
+          <div class="form-group">
+            <label>CVV</label>
+
+            <div class="input-with-icon">
+              <input type="password" id="cardCvv" class="form-control">
+              <span class="toggle-eye" data-target="cardCvv">👁</span>
+            </div>
+
+            <div class="error-text"></div>
+          </div>
+
+        </div>
+      </div>
+
+      <%= f.submit "Підтвердити замовлення", class: "checkout-submit", id: "submitBtn" %>
 
     <% end %>
   </div>
 
-  <!-- ПРАВА КОЛОНКА — ПІДСУМОК -->
   <div class="checkout-summary">
-
     <h2>Ваше замовлення</h2>
 
     <% @cart_items.each do |item| %>
       <div class="summary-item">
-
         <div class="summary-img-box">
-          <% if item[:product].images.attached? %>
-            <%= image_tag item[:product].images.first,
-                  class: "summary-img" %>
-          <% else %>
-            <img src="/placeholder.png" class="summary-img">
-          <% end %>
+          <%= image_tag url_for(item[:product].images.first), class: "summary-img" %>
         </div>
-
         <div class="summary-info">
           <p class="summary-name"><%= item[:product].name %></p>
-          <p class="summary-qty">Кількість: <%= item[:quantity] %></p>
-          <p class="summary-price">
-            ₴<%= number_with_precision(item[:product].price * item[:quantity], precision: 0) %>
-          </p>
+          <p>Кількість: <%= item[:quantity] %></p>
+          <p>₴<%= item[:product].price * item[:quantity] %></p>
         </div>
-
       </div>
     <% end %>
 
@@ -89,8 +108,8 @@
 
     <div class="summary-total">
       Разом:
-      <span>₴<%= number_with_precision(@cart_items.sum { |i| i[:product].price * i[:quantity] }, precision: 0) %></span>
+      <span>₴<%= @cart_items.sum { |i| i[:product].price * i[:quantity] } %></span>
     </div>
-
   </div>
+
 </div>

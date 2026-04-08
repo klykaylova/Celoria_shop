@@ -1,233 +1,180 @@
-/* ===============================
-   ГОЛОВНА: HERO
-================================ */
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #faf9ff;
+  color: #1f1b2e;
+  margin: 0;
+}
 
+h1, h2, h3 {
+  font-family: 'Merriweather', serif;
+}
+
+/* HERO */
 .hero {
-  width: 100%;
   height: 600px;
-  background-size: cover;
-  background-position: center right;
   display: flex;
   align-items: center;
-  padding-left: 90px;
+  padding-left: 30px;
+  background-size: cover;
+  position: relative;
+  background-position: right center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(250,249,255,0.75) 30%,
+    rgba(250,249,255,0.1) 60%,
+    transparent
+  );
 }
 
 .hero-content {
-  max-width: 550px;
+  position: relative;
+  z-index: 2;
+  max-width: 520px;
 }
 
 .hero-content h1 {
-  font-size: 52px;
-  font-weight: 700;
-  color: #0b3b31;
-  margin-bottom: 25px;
-  line-height: 1.2;
+  font-size: 48px;
+  margin-bottom: 20px;
 }
 
 .hero-content p {
-  font-size: 18px;
-  color: #4a4a4a;
-  margin-bottom: 35px;
-  line-height: 1.6;
-  max-width: 420px;
+  color: #7c7a8a;
+  margin-bottom: 25px;
 }
 
 .hero-btn {
-  display: inline-block;
-  background: #0b3b31;
+  background: #7C3AED;
   color: white;
-  padding: 13px 34px;
-  border-radius: 32px;
-  font-size: 16px;
-  transition: 0.3s ease;
-  font-weight: 500;
+  padding: 14px 36px;
+  border-radius: 30px;
+  text-decoration: none;
 }
 
-.hero-btn:hover {
-  background: #0d4d40;
-}
-
-
-/* ============================================
-   HOTTEST PICKS — ТОЧНИЙ ВІГЛЯД
-============================================ */
-
+/* SECTION */
 .hot-picks-section {
-  text-align: center;
-  padding: 80px 0 30px;
-  font-family: "Inter", sans-serif;
+  padding: 80px 0 60px;
 }
 
 .section-title {
-  font-size: 36px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  color: #0b3b31;
-  text-transform: uppercase;
+  font-size: 34px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #7c7a8a;
+  margin-bottom: 35px;
 }
 
 .underline {
   width: 60px;
   height: 3px;
-  background: #0b3b31;
-  margin: 12px auto 45px;
+  background: #7C3AED;
+  margin: 0 auto 50px;
 }
 
+/* PRODUCTS */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-  padding: 0 60px;
-  justify-items: center;
+  gap: 30px;
+  padding: 0 100px;
 }
 
 .product-card {
   background: white;
-  width: 100%;
-  max-width: 260px;
   border-radius: 18px;
   padding: 20px;
   text-align: center;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-  transition: 0.25s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  transition: 0.3s;
 }
 
 .product-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
 }
 
+/* 🔥 ВИПРАВЛЕНІ КАРТИНКИ */
 .product-img-box {
+  height: 260px; 
   width: 100%;
-  height: 250px;
-  border-radius: 14px;
   overflow: hidden;
-  margin-bottom: 18px;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .product-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; 
+  transition: transform 0.4s ease;
+}
+
+/* hover ефект  */
+.product-card:hover .product-image {
+  transform: scale(1.05);
 }
 
 .product-title {
-  font-size: 15px;
-  font-weight: 600;
-  color: #0b3b31;
-  margin: 14px 0 8px;
-  min-height: 45px;
+  margin: 15px 0 10px;
+  min-height: 48px;
 }
 
 .price {
-  font-weight: 700;
-  font-size: 18px;
-  color: #0b3b31;
-  margin-bottom: 18px;
+  color: #7C3AED;
+  font-weight: 600;
 }
 
 .view-more {
-  border-top: 1px solid #e5e5e5;
-  padding-top: 12px;
+  margin-top: 8px;
   font-size: 14px;
-  color: #0b3b31;
+  color: #7c7a8a;
 }
 
-
-/* ============================================
-   ОХОПЛЕННЯ СТИЛЮ — ТОЧНИЙ БЛОК
-============================================ */
-
+/* STYLE */
 .style-section {
-  padding: 80px 120px;
   display: flex;
+  justify-content: center;
   align-items: center;
+  padding: 80px 90px;
+  background: #f5f1ff;
+  border-radius: 20px;
+  margin: 0 80px 80px;
   gap: 80px;
-  font-family: "Inter", sans-serif;
 }
 
 .style-text {
-  flex: 1;
-  padding-left: 20px;
-}
-
-.style-text h2 {
-  font-size: 40px;
-  font-weight: 700;
-  color: #0b3b31;
-  margin-bottom: 25px;
-  line-height: 1.25;
+  max-width: 480px;
 }
 
 .style-text p {
-  font-size: 17px;
-  color: #444;
+  margin: 20px 0 30px;
+  color: #7c7a8a;
   line-height: 1.6;
-  margin-bottom: 18px;
-  max-width: 460px;
 }
 
 .single-btn {
-  background: #0b3b31;
+  background: #7C3AED;
   color: white;
-  padding: 13px 28px;
+  padding: 12px 28px;
   border-radius: 30px;
-  font-size: 16px;
-  transition: 0.3s;
-  font-weight: 500;
-  display: inline-block;
-  margin-top: 20px;
-}
-
-.single-btn:hover {
-  background: #0d4d40;
-}
-
-.style-image {
-  flex: 1;
+  text-decoration: none;
 }
 
 .style-img {
-  width: 100%;
-  border-radius: 20px;
+  width: 360px;
+  height: 480px;
   object-fit: cover;
-  height: 520px;
+  border-radius: 20px;
 }
 
-
-/* ============================================
-   АДАПТИВ
-============================================ */
-
-@media (max-width: 1200px) {
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 900px) {
-  .style-section {
-    flex-direction: column;
-    text-align: center;
-    padding: 40px 20px;
-  }
-
-  .style-img {
-    height: auto;
-  }
-}
-
-@media (max-width: 700px) {
-  .hero {
-    height: 420px;
-    padding-left: 40px;
-  }
-
-  .hero-content h1 {
-    font-size: 32px;
-  }
-
-  .products-grid {
-    grid-template-columns: 1fr;
-  }
-}

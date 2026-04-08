@@ -1,289 +1,468 @@
-/* ===== Основний контейнер ===== */
+/* ================================
+   ADMIN FEEDBACKS — CELORIA UI
+================================ */
+
+/* BASE */
+
 .admin-feedbacks-page {
-  max-width: 1050px;
-  margin: 40px auto;
-  padding: 0 20px;
-  font-family: 'Inter', sans-serif;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 40px;
+    font-family: 'Montserrat', sans-serif;
 }
 
-/* ===== Кнопка Назад ===== */
+/* ================================
+   HEADER
+================================ */
+
+.admin-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* TITLE */
+
+.admin-title {
+    font-family: 'Merriweather', serif;
+    font-size: 26px;
+    color: #1F1B2E;
+}
+
+.admin-title.right {
+    text-align: right;
+}
+
+.admin-title.center {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* BACK */
+
 .admin-back-link {
-  display: inline-block;
-  margin-bottom: 25px;
-  color: #0d3b2e;
-  font-weight: 600;
-  text-decoration: none;
+    color: #7C3AED;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .admin-back-link:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
-/* ===== Заголовок ===== */
-.admin-title {
-  text-align: center;
-  font-size: 36px;
-  font-weight: 700;
-  color: #0d3b2e;
-  margin-bottom: 30px;
-}
+/* ================================
+   TABLE
+================================ */
 
-/* ===== Обгортка таблиці ===== */
 .admin-table-wrapper {
-  width: 100%;
-  overflow-x: hidden;
+    width: 100%;
 }
 
-/* ===== Таблиця ===== */
 .admin-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  font-size: 15px;
-  border-radius: 14px;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #FFFFFF;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
 }
 
-/* ===== Заголовки ===== */
+/* HEADER */
+
 .admin-table th {
-  background: #e8f2ed;
-  padding: 14px;
-  color: #0d3b2e;
-  font-weight: 700;
-  text-align: left;
-  border-bottom: 2px solid #d9e7e0;
+    background: #F3E8FF;
+    padding: 14px;
+    color: #1F1B2E;
+    font-weight: 600;
+    text-align: left;
 }
 
-/* 🔥 Вирівняний заголовок "Дії" */
 .admin-table th.actions-header {
-  text-align: right !important;
-  padding-right: 20px;
+    text-align: right;
 }
 
-/* ===== Комірки ===== */
+/* ROWS */
+
 .admin-table td {
-  padding: 14px;
-  border-bottom: 1px solid #f0f0f0;
+    padding: 14px;
+    border-bottom: 1px solid #F3E8FF;
+    font-size: 14px;
 }
 
-/* ===== Допоміжний текст email ===== */
+.admin-table tbody tr:hover {
+    background: #FAF9FF;
+}
+
+/* TEXT */
+
+.user-name {
+    font-weight: 600;
+}
+
 .sub-email {
-  font-size: 13px;
-  color: #777;
+    font-size: 13px;
+    color: #7C7A8A;
 }
 
-/* ===== Статусні бейджі ===== */
+.muted {
+    color: #7C7A8A;
+}
+
+/* ================================
+   BADGES
+================================ */
+
 .badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 150px;
-  padding: 6px 0;
-  border-radius: 8px;
-  font-weight: 600;
-  text-align: center;
+    padding: 6px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
 }
 
-.badge.green {
-  background: #d9f3e7;
-  color: #0c4a35;
+/* SUCCESS */
+
+.badge.success {
+    background: #EDE9FE;
+    color: #6D28D9;
 }
 
-.badge.red {
-  background: #f7d3d3;
-  color: #7d1111;
+/* WARNING */
+
+.badge.warning {
+    background: #FEF3C7;
+    color: #92400E;
 }
 
-/* ===== Колонка ДІЙ ===== */
+/* ================================
+   ACTIONS
+================================ */
+
 .actions-col {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
 }
 
-/* ===== Кнопки ===== */
 .table-btn {
-  padding: 6px 14px;
-  border-radius: 8px;
-  font-size: 14px;
-  text-decoration: none;
-  font-weight: 600;
-  display: inline-block;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
 }
 
-/* Переглянути */
+/* VIEW */
+
 .view-btn {
-  background: #d9f3e7;
-  color: #0c4a35;
+    background: #EDE9FE;
+    color: #6D28D9;
 }
+
 .view-btn:hover {
-  background: #c3e8d6;
+    background: #7C3AED;
+    color: #FFFFFF;
 }
 
-/* Видалити */
+/* DELETE */
+
 .delete-btn {
-  background: #f7d3d3;
-  color: #7d1111;
+    background: #F3F4F6;
+    color: #7C7A8A;
 }
+
 .delete-btn:hover {
-  background: #f3b8b8;
+    background: #FEE2E2;
+    color: #DC2626;
 }
 
-/* ====== WRAPPER ====== */
+/* ================================
+   SHOW PAGE
+================================ */
+
 .admin-feedback-show-page {
-  max-width: 850px;
-  margin: 40px auto;
-  background: #ffffff;
-  padding: 40px;
-  border-radius: 14px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  font-family: 'Inter', sans-serif;
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Montserrat', sans-serif;
 }
 
-/* ====== BACK BUTTON ====== */
-.admin-back-link {
-  display: inline-block;
-  margin-bottom: 20px;
-  color: #0d3b2e;
-  font-weight: 600;
-  text-decoration: none;
-}
+/* CARDS */
 
-.admin-back-link:hover {
-  color: #083e2c;
-}
-
-/* ====== TITLE ====== */
-.admin-title {
-  text-align: center;
-  font-size: 32px;
-  font-weight: 700;
-  color: #0d3b2e;
-  margin-bottom: 35px;
-}
-
-/* ====== FEEDBACK CARD ====== */
 .feedback-card,
 .reply-card {
-  background: #ffffff;
-  border: 2px solid #e6f3ed;
-  border-radius: 14px;
-  padding: 25px 30px;
-  margin-bottom: 30px;
+    background: #FFFFFF;
+    border-radius: 18px;
+    padding: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
 }
+
+/* TEXT */
 
 .feedback-card p {
-  font-size: 16px;
-  margin-bottom: 12px;
-  color: #0d3b2e;
+    font-size: 14px;
+    color: #1F1B2E;
+    margin-bottom: 10px;
+    line-height: 1.5;
 }
+
+.feedback-card strong {
+    font-weight: 600;
+}
+
+/* MESSAGE */
 
 .message-box {
-  background: #f9fdfb;
-  border: 2px solid #cde6dc;
-  padding: 14px 16px;
-  border-radius: 10px;
-  font-size: 15px;
-  margin: 10px 0 18px 0;
+    background: #FAF9FF;
+    border: 1px solid #EDE9FE;
+    padding: 14px;
+    border-radius: 12px;
+    margin: 10px 0 20px;
 }
 
-/* ====== REPLY SECTION ====== */
+/* ================================
+   REPLY
+================================ */
+
 .reply-card h2 {
-  font-size: 22px;
-  color: #0d3b2e;
-  margin-bottom: 20px;
+    font-family: 'Merriweather', serif;
+    font-size: 20px;
+    margin-bottom: 15px;
 }
+
+/* FORM */
 
 .form-group {
-  margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
 }
 
 .form-group label {
-  font-size: 15px;
-  font-weight: 600;
-  display: block;
-  color: #0d3b2e;
-  margin-bottom: 6px;
+    font-size: 14px;
+    color: #7C7A8A;
+    margin-bottom: 5px;
 }
 
-/* ——— Вирівняне поле, ідентичне message-box ——— */
+/* INPUT */
+
 .reply-input {
-  width: 100%;
-  padding: 14px 16px;
-  min-height: 160px;
-  border: 2px solid #cde6dc;
-  border-radius: 10px;
-  font-size: 16px;
-  background: #f9fdfb;
-  resize: vertical;
-  box-sizing: border-box;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid #EDE9FE;
+    font-size: 14px;
+    background: #FAF9FF;
+    resize: vertical;
 }
 
 .reply-input:focus {
-  background: white;
-  border-color: #0d4f39;
-  outline: none;
+    border-color: #7C3AED;
+    box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+    outline: none;
 }
 
-/* ====== PRIMARY BUTTON ====== */
+/* BUTTON */
+
 .btn-primary {
-  background: #0d4f39;
-  color: white;
-  padding: 14px 26px;
-  border-radius: 12px;
-  font-size: 17px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: 0.25s;
+    background: #7C3AED;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 .btn-primary:hover {
-  background: #083e2c;
+    background: #6D28D9;
+    transform: translateY(-1px);
 }
 
-/* ====== STATUS COLORS ====== */
-.status-new {
-  background: #e4f3ff;
-  color: #005a9c;
+/* ================================
+   FILTER
+================================ */
+
+.admin-filter-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-.status-confirmed {
-  background: #e6f6e8;
-  color: #0d6930;
+.filter-btn {
+    padding: 8px 16px;
+    border-radius: 12px;
+    background: #F3F4F6;
+    color: #7C7A8A;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.2s;
 }
 
-.status-paid {
-  background: #e9fff3;
-  color: #0f6e54;
+.filter-btn:hover {
+    background: #EDE9FE;
+    color: #6D28D9;
 }
 
-.status-shipped {
-  background: #fff4d6;
-  color: #8a6500;
+/* ACTIVE */
+
+.filter-btn.active {
+    background: #7C3AED;
+    color: white;
 }
 
-.status-delivered {
-  background: #e4ffe9;
-  color: #0a6d1a;
+/* =========================
+   MODAL (CELORIA STYLE)
+========================= */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
 }
 
-.status-cancelled {
-  background: #ffe5e5;
-  color: #a12222;
+/* MODAL BOX */
+
+.modal {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 18px;
+  width: 320px;
+  text-align: center;
+
+  animation: fadeIn 0.2s ease;
 }
 
-.status-refunded {
-  background: #e9e5ff;
-  color: #3b29a3;
+/* ANIMATION */
+
+@keyframes fadeIn {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-.status-badge {
-  padding: 6px 12px;
-  border-radius: 8px;
+/* TITLE */
+
+.modal h3 {
+  font-family: 'Merriweather', serif;
+  font-size: 18px;
+  color: #1F1B2E;
+  margin-bottom: 10px;
+}
+
+/* TEXT */
+
+.modal p {
   font-size: 14px;
-  font-weight: 600;
-  display: inline-block;
+  color: #6B7280;
+  margin-bottom: 20px;
+}
+
+/* ACTIONS */
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+/* CANCEL */
+
+.btn-secondary {
+  background: #F3F4F6;
+  color: #1F1B2E;
+
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-secondary:hover {
+  background: #E5E7EB;
+}
+
+/* DELETE */
+
+.btn-danger {
+  background: #DC2626;
+  color: #ffffff;
+
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-danger:hover {
+  background: #B91C1C;
+}
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+
+    padding: 14px 20px;
+    border-radius: 12px;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #fff;
+    background: #7C3AED;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    transition: all 0.3s ease;
+
+    z-index: 1000;
+}
+
+/* SHOW */
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ERROR */
+.toast.error {
+    background: #DC2626;
 }

@@ -7,6 +7,8 @@
   gap: 35px;
   margin: 40px auto;
   max-width: 1100px;
+
+  font-family: 'Montserrat', sans-serif; /* 🔥 БАЗА */
 }
 
 /* ================================
@@ -31,8 +33,7 @@
 .product-thumbnails .thumb.active,
 .product-thumbnails .thumb:hover {
   opacity: 1;
-  box-shadow: 0 0 0 3px #0b2f26;
-  border-radius: 14px;
+  box-shadow: 0 0 0 3px #7C3AED;
 }
 
 /* ================================
@@ -41,7 +42,7 @@
 .product-main-image img {
   width: 100%;
   border-radius: 18px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.09);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
 
 /* ================================
@@ -52,41 +53,52 @@
 }
 
 .product-title {
+  font-family: 'Merriweather', serif; /* 🔥 */
   font-size: 34px;
   font-weight: 700;
   margin-bottom: 20px;
-  color: #0b2f26;
+  color: #1f1b2e;
 }
 
 .price {
-  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
   font-weight: 700;
   margin-bottom: 18px;
-  color: #0b2f26;
+  color: #7C3AED;
 }
 
 .description,
 .category {
-  margin-top: 14px;
   font-size: 16px;
-  color: #333;
-  line-height: 1.45;
+  color: #4b4860;
+  line-height: 1.5;
+  margin-top: 14px;
+
+  font-family: 'Montserrat', sans-serif;
 }
 
-/* Кнопка додавання до кошика */
+/* ================================
+        КНОПКА "ДОДАТИ"
+================================= */
 .btn-add-cart {
   margin-top: 22px;
-  background: #0b2f26;
+  background: #7C3AED;
   color: white;
-  padding: 12px 22px;
-  border-radius: 12px;
-  font-size: 16px;
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-size: 15px;
   font-weight: 600;
-  transition: 0.2s;
+
+  font-family: 'Montserrat', sans-serif;
+
+  border: none;
+  transition: 0.25s ease;
 }
 
 .btn-add-cart:hover {
-  background: #093a2e;
+  background: #6d28d9;
+  transform: translateY(-2px);
 }
 
 /* ================================
@@ -98,25 +110,28 @@
 }
 
 .section-title {
+  font-family: 'Merriweather', serif; /* 🔥 */
   text-align: center;
   font-size: 22px;
   font-weight: 700;
-  letter-spacing: 1px;
-  color: #0b2f26;
+  letter-spacing: 0.5px;
+  color: #1f1b2e;
   margin-bottom: 20px;
 }
 
 .characteristics-card {
-  background: #fff;
+  background: #ffffff;
   padding: 25px;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
 }
 
 .characteristics-list li {
+  font-size: 15px;
+  color: #4b4860;
   margin-bottom: 8px;
-  font-size: 16px;
-  color: #222;
+
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* ================================
@@ -130,53 +145,63 @@
 .review-item {
   background: #ffffff;
   padding: 18px 22px;
-  border-radius: 14px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
   margin-bottom: 18px;
 }
 
 .review-rating {
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 6px;
 }
 
 .review-text {
-  font-size: 16px;
-  color: #222;
+  font-size: 15px;
+  color: #1f1b2e;
   margin-bottom: 6px;
+
+  font-family: 'Montserrat', sans-serif;
 }
 
 .review-date {
   font-size: 13px;
-  color: #777;
+  color: #9a97a8;
+
+  font-family: 'Montserrat', sans-serif;
 }
 
-/* "Залишити відгук" */
+/* ================================
+        ЗАЛИШИТИ ВІДГУК
+================================= */
 .leave-review-title {
+  font-family: 'Merriweather', serif; /* 🔥 */
   font-size: 20px;
   font-weight: 700;
-  color: #0b2f26;
+  color: #1f1b2e;
   margin: 35px 0 15px;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-/* Картка форми */
+/* Форма */
 .review-form-wrapper {
-  background: #fff;
+  background: #ffffff;
   padding: 22px;
-  border-radius: 14px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
 }
 
 .review-form-wrapper input,
 .review-form-wrapper textarea {
   width: 100%;
-  border: 1px solid #ddd;
+  border: 1px solid #e5e3f0;
   padding: 10px;
   border-radius: 10px;
-  font-size: 15px;
+  font-size: 14px;
+
+  font-family: 'Montserrat', sans-serif;
+
   margin-top: 5px;
 }
 
@@ -187,19 +212,23 @@
 
 .review-form-wrapper input[type="submit"],
 .review-form-wrapper button {
-  background: #0b2f26;
+  background: #7C3AED;
   color: #fff;
   padding: 10px 22px;
-  border-radius: 10px;
-  font-size: 15px;
+  border-radius: 25px;
+  font-size: 14px;
   font-weight: 600;
+
+  font-family: 'Montserrat', sans-serif;
+
   margin-top: 12px;
-  transition: 0.2s;
+  transition: 0.25s;
+  border: none;
 }
 
 .review-form-wrapper input[type="submit"]:hover,
 .review-form-wrapper button:hover {
-  background: #093a2e;
+  background: #6d28d9;
 }
 
 /* ================================
@@ -212,11 +241,13 @@
 
 .back-link {
   text-decoration: none;
-  color: #0b2f26;
-  font-size: 16px;
-  font-weight: 600;
+  color: #4b4860;
+  font-size: 15px;
+  font-weight: 500;
+
+  font-family: 'Montserrat', sans-serif;
 }
 
 .back-link:hover {
-  text-decoration: underline;
+  color: #7C3AED;
 }

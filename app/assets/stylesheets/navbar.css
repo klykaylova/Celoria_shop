@@ -2,29 +2,28 @@
    ГОЛОВНЕ МЕНЮ (NAVBAR)
    ======================= */
 
-/* Щоб у навбарі завжди був Inter */
+/* шрифт */
 .main-navbar,
 .main-navbar * {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
-/* Контейнер навбару */
+/* Контейнер */
 .main-navbar {
   position: sticky;
   top: 0;
   z-index: 50;
   width: 100%;
-  padding: 10px 30px;
-  background-color: #ffffffec;
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  padding: 12px 30px;
+  background-color: #faf9ff;
+  border-bottom: 1px solid rgba(124, 58, 237, 0.08);
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* Ліва частина — логотип */
+/* Лого */
 .nav-left {
   display: flex;
   align-items: center;
@@ -39,8 +38,9 @@
 }
 
 .logo-image {
-  height: 34px;
-  width: auto;
+  height: 52px;
+  transform: scale(2.5);
+  transform-origin: left center;
 }
 
 .logo-text {
@@ -48,10 +48,10 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #111;
+  color: #1f1b2e;
 }
 
-/* Центр — основні розділи */
+/* Центр */
 .nav-center {
   display: flex;
   gap: 18px;
@@ -61,7 +61,7 @@
 .nav-item {
   font-size: 14px;
   font-weight: 500;
-  color: #333;
+  color: #4b4860; /* мʼякий темно-фіолетовий */
   padding-bottom: 2px;
   position: relative;
   text-transform: uppercase;
@@ -69,7 +69,7 @@
   text-decoration: none;
 }
 
-/* Підкреслення при hover */
+/* Hover */
 .nav-item::after {
   content: "";
   position: absolute;
@@ -77,28 +77,31 @@
   bottom: -4px;
   width: 0;
   height: 2px;
-  background-color: var(--celoria-dark);
-  transition: width var(--celoria-transition);
+  background-color: #7C3AED;
+  transition: width 0.25s ease;
+}
+
+.nav-item:hover {
+  color: #7C3AED;
 }
 
 .nav-item:hover::after {
   width: 100%;
 }
 
-/* Права частина — профіль / адмін / вихід */
+/* Право */
 .nav-right {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-/* Форму, яку генерує button_to, робимо як звичайний елемент без відступів */
 .nav-right .button_to {
   margin: 0;
   padding: 0;
 }
 
-/* Пігулка-кнопка (і для "Адмін-панель", і для "Вийти") */
+/* Кнопки */
 .nav-btn-outline,
 button.nav-btn-outline {
   display: inline-flex;
@@ -107,7 +110,7 @@ button.nav-btn-outline {
 
   padding: 6px 18px;
   border-radius: 999px;
-  border: 1px solid #0d3b2e;
+  border: 1px solid #7C3AED;
 
   font-size: 13px;
   font-weight: 600;
@@ -116,40 +119,34 @@ button.nav-btn-outline {
   text-decoration: none;
 
   background: #ffffff;
-  color: #0d3b2e;
+  color: #7C3AED;
   cursor: pointer;
 
-  transition: background 0.2s ease, color 0.2s ease,
-              border-color 0.2s ease, transform 0.2s ease;
+  transition: all 0.2s ease;
 }
 
-/* Ховер для всіх outline-кнопок */
+/* Hover кнопок */
 .nav-btn-outline:hover,
 button.nav-btn-outline:hover {
-  background: #0d3b2e;
+  background: #7C3AED;
   color: #ffffff;
-  border-color: #0d3b2e;
   transform: translateY(-1px);
 }
 
-/* Окрема стилізація саме для кнопки "Вийти" (logout_link) */
+/* Logout  */
 .logout-link {
-  /* Скинути дефолтний стиль кнопки */
-  -webkit-appearance: none;
-  appearance: none;
-  border-radius: 999px;
-
-  border-color: #e0b3b3;
-  color: #7d1111;
+  border-color: #c4b5fd;
+  color: #6d28d9;
 }
 
 .logout-link:hover {
-  background: #fef2f2;
-  border-color: #d77;
-  color: #7d1111;
+  background: #f5f3ff;
+  border-color: #a78bfa;
+  color: #6d28d9;
 }
 
-/* Щоб останній nav-item не мав зайвого відступу */
+/* Останній пункт */
 .nav-item:last-child {
   padding-right: 0;
 }
+

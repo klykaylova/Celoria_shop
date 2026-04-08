@@ -1,76 +1,79 @@
 <%= stylesheet_link_tag "products_index", media: "all" %>
 
-<h1 class="catalog-title">Каталог товарів</h1>
+<div class="catalog-page">
 
-<div class="catalog-top-bar">
+  <h1 class="catalog-title">Каталог</h1>
+  <p class="catalog-subtitle">Обери свою ідеальну сумку</p>
+  <div class="underline"></div>
 
-  <!-- Ліва частина — категорії -->
-  <div class="catalog-categories">
-    <span class="label">Категорії:</span>
+  <div class="catalog-top-bar">
 
-    <% @categories.each do |category| %>
-      <%= link_to category.name,
-          products_path(category_id: category.id),
-          class: "category-btn #{'active' if params[:category_id].to_i == category.id}" %>
-    <% end %>
+    <!-- Ліва частина — категорії -->
+    <div class="catalog-categories">
+      <span class="label">Категорії:</span>
 
-    <%= link_to "Усі товари", products_path, class: "category-btn" %>
-  </div>
-
-  <!-- Права частина — сортування -->
-  <div class="catalog-sort">
-    <label>Сортувати:</label>
-
-    <%= form_with url: products_path, method: :get, local: true, class: "sort-form" do %>
-
-      <%= hidden_field_tag :category_id, params[:category_id] %>
-
-      <%= select_tag :sort,
-          options_for_select([
-            ["Спочатку дешевші", "cheap_first"],
-            ["Спочатку дорожчі", "expensive_first"],
-            ["Спочатку нові", "newest"]
-          ], params[:sort]),
-          class: "sort-select",
-          onchange: "this.form.submit()" %>
-
-    <% end %>
-  </div>
-</div>
-
-
-<!-- ТОВАРИ – 4 в ряд, 2 рядки -->
-<div class="products-grid">
-
-  <% @products.each do |product| %>
-
-    <div class="product-card">
-
-      <%= link_to product_path(product), class: "product-click-area" do %>
-
-        <div class="product-image-box">
-          <% if product.images.attached? %>
-            <%= image_tag product.images.first, class: "product-image" %>
-          <% else %>
-            <img src="/placeholder.png" class="product-image">
-          <% end %>
-        </div>
-
-        <div class="product-info">
-          <h3 class="product-name"><%= product.name %></h3>
-          <p class="product-price">₴<%= number_with_precision(product.price, precision: 0) %></p>
-        </div>
-
+      <% @categories.each do |category| %>
+        <%= link_to category.name,
+            products_path(category_id: category.id),
+            class: "category-btn #{'active' if params[:category_id].to_i == category.id}" %>
       <% end %>
 
-      <%= link_to "Переглянути", product_path(product), class: "product-view-btn" %>
-
+      <%= link_to "Усі товари", products_path, class: "category-btn" %>
     </div>
 
-  <% end %>
-</div>
+    <!-- Права частина — сортування -->
+    <div class="catalog-sort">
+      <label>Сортувати:</label>
 
-<!-- ПАГІНАЦІЯ -->
-<div class="pagination-wrapper">
-  <%= paginate @products %>
+      <%= form_with url: products_path, method: :get, local: true, class: "sort-form" do %>
+
+        <%= hidden_field_tag :category_id, params[:category_id] %>
+
+        <%= select_tag :sort,
+            options_for_select([
+              ["Спочатку дешевші", "cheap_first"],
+              ["Спочатку дорожчі", "expensive_first"],
+              ["Спочатку нові", "newest"]
+            ], params[:sort]),
+            class: "sort-select",
+            onchange: "this.form.submit()" %>
+
+      <% end %>
+    </div>
+  </div>
+
+  <div class="products-grid">
+
+    <% @products.each do |product| %>
+
+      <div class="product-card">
+
+        <%= link_to product_path(product), class: "product-click-area" do %>
+
+          <div class="product-image-box">
+            <% if product.images.attached? %>
+              <%= image_tag product.images.first, class: "product-image" %>
+            <% else %>
+              <img src="/placeholder.png" class="product-image">
+            <% end %>
+          </div>
+
+          <div class="product-info">
+            <h3 class="product-name"><%= product.name %></h3>
+            <p class="product-price">₴<%= number_with_precision(product.price, precision: 0) %></p>
+          </div>
+
+        <% end %>
+
+        <%= link_to "Переглянути", product_path(product), class: "product-view-btn" %>
+
+      </div>
+
+    <% end %>
+  </div>
+
+  <div class="pagination-wrapper">
+    <%= paginate @products %>
+  </div>
+
 </div>

@@ -31,7 +31,6 @@
 /* Форми */
 @import "admin/admin_forms.css";
 
-/* Забираємо горизонтальний скрол */
 html, body {
   overflow-x: hidden;
 }
@@ -54,7 +53,7 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Центруємо картки без виходу за межі */
+/* Центрування карток */
 .admin-cards {
   display: flex;
   justify-content: center;

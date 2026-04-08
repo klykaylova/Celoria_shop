@@ -2,7 +2,7 @@ class PaymentsController < ApplicationController
   before_action :set_order
 
   def new
-    # ініціалізуємо payment, якщо його ще немає
+    # ініціалізація при відсутності
     @payment = @order.payment || @order.build_payment
   end
 

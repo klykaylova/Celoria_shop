@@ -6,7 +6,6 @@ document.addEventListener("turbo:load", () => {
 
   thumbs.forEach((thumb) => {
     thumb.addEventListener("click", () => {
-      // змінюємо велике фото
       mainImage.src = thumb.src;
 
       // підсвічування активного превʼю

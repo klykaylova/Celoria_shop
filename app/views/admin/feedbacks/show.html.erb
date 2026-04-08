@@ -2,10 +2,17 @@
 
 <div class="admin-feedback-show-page">
 
-  <%= link_to "← Повернутись назад", admin_feedbacks_path, class: "admin-back-link" %>
+  <!-- BACK -->
+  <%= link_to "← Повернутись назад",
+        admin_feedbacks_path,
+        class: "admin-back-link" %>
 
-  <h1 class="admin-title">Повідомлення від користувача</h1>
+  <!-- TITLE CENTER -->
+  <h1 class="admin-title center">
+    Повідомлення від користувача
+  </h1>
 
+  <!-- INFO -->
   <div class="feedback-card">
     <p><strong>Користувач:</strong>
       <%= @feedback.user&.name || "Гість" %>
@@ -18,11 +25,12 @@
     <p><strong>Повідомлення:</strong></p>
     <div class="message-box"><%= @feedback.message %></div>
 
-    <p><strong>Створено:</strong>
-      <%= @feedback.created_at.strftime("%d.%m.%Y %H:%M") %>
+    <p class="muted">
+      Створено: <%= @feedback.created_at.strftime("%d.%m.%Y %H:%M") %>
     </p>
   </div>
 
+  <!-- REPLY -->
   <div class="reply-card">
     <h2>Відповідь адміна</h2>
 

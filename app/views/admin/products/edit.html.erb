@@ -37,13 +37,17 @@
     <div class="form-section">
       <h2 class="section-title">Фотографії</h2>
 
-      <div class="images-preview">
-        <% @product.images.each do |img| %>
-          <div class="image-box">
-            <%= image_tag img, class: "preview-img" %>
-          </div>
-        <% end %>
-      </div>
+      <% if @product.images.attached? %>
+        <div class="product-images">
+          <% @product.images.each do |img| %>
+            <div class="product-image-item">
+              <%= image_tag img %>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="muted">Фото ще не додані</p>
+      <% end %>
 
       <label class="file-label">
         Додати нові фото
@@ -57,12 +61,22 @@
 
       <div id="characteristics-container">
 
-        <% @product.characteristics&.each do |key, value| %>
-          <div class="characteristic-row">
-            <input type="text" name="product[characteristics_keys][]" value="<%= key %>" class="input-field small">
-            <input type="text" name="product[characteristics_values][]" value="<%= value %>" class="input-field small">
-            <button type="button" class="remove-char">–</button>
-          </div>
+        <% if @product.characteristics.present? %>
+          <% @product.characteristics.each do |key, value| %>
+            <div class="characteristic-row">
+              <input type="text"
+                     name="product[characteristics_keys][]"
+                     value="<%= key %>"
+                     class="input-field small">
+
+              <input type="text"
+                     name="product[characteristics_values][]"
+                     value="<%= value %>"
+                     class="input-field small">
+
+              <button type="button" class="remove-char">–</button>
+            </div>
+          <% end %>
         <% end %>
 
       </div>
@@ -72,7 +86,7 @@
       </button>
     </div>
 
-    <!-- Кнопка -->
+    <!-- КНОПКА -->
     <div class="form-actions">
       <%= f.submit "Зберегти зміни", class: "btn-primary" %>
     </div>

@@ -1,72 +1,159 @@
 <%= stylesheet_link_tag "admin/admin_orders", media: "all" %>
 
-<div class="admin-orders-page">
+<div class="admin-container">
 
-<%= link_to "← Повернутись назад", admin_dashboard_path, class: "back-btn" %>
+  <!-- HEADER -->
+  <div class="admin-header">
+    <%= link_to "← Назад", admin_dashboard_path, class: "back-link" %>
+    <h1>Замовлення</h1>
+  </div>
 
-  <h1 class="admin-orders-title">Керування замовленнями</h1>
+  <!-- FILTER -->
+  <div class="admin-toolbar">
 
-  <div class="orders-table-wrapper">
-    <table class="orders-table">
+    <%= form_with url: admin_orders_path, method: :get, local: true, class: "toolbar-form" do %>
+
+      <select name="status" class="input-select" onchange="this.form.submit()">
+        <option value="">Всі статуси</option>
+
+        <% Order.statuses.keys.each do |s| %>
+          <option value="<%= s %>" <%= "selected" if params[:status] == s %>>
+            <%= s.humanize %>
+          </option>
+        <% end %>
+      </select>
+
+    <% end %>
+
+  </div>
+
+  <!-- TABLE -->
+  <div class="admin-card">
+
+    <table class="admin-table">
+
       <thead>
         <tr>
           <th>ID</th>
           <th>Користувач</th>
           <th>Сума</th>
           <th>Статус</th>
-          <th>Створено</th>
-
-          <!-- ⭐ ДОДАНО: вирівнювання праворуч -->
-          <th class="actions-header">Дії</th>
+          <th>Дата</th>
+          <th></th>
         </tr>
       </thead>
 
       <tbody>
         <% @orders.each do |order| %>
           <tr>
-            <td><%= order.id %></td>
+
+            <td class="muted"><%= order.id %></td>
 
             <td>
-              <%= order.user&.name || "Гість" %><br>
-              <span class="sub-email"><%= order.user&.email %></span>
+              <strong><%= order.user&.name || "Гість" %></strong>
+              <span class="sub-text"><%= order.user&.email %></span>
             </td>
 
-            <td><%= number_to_currency(order.total, unit: "₴") %></td>
-
-            <td>
-              <span class="status-badge status-<%= order.status %>">
-                <%= order.status.humanize %>
-              </span>
+            <td class="price">
+              <%= number_to_currency(order.total, unit: "₴") %>
             </td>
 
-            <td><%= order.created_at.strftime("%d.%m.%Y %H:%M") %></td>
-
+            <!-- 🔥 КРАСИВИЙ INLINE STATUS -->
             <td>
-              <div class="orders-actions">
+              <%= form_with url: update_status_admin_order_path(order),
+                            method: :patch,
+                            local: true,
+                            class: "status-inline-form" do %>
 
-                <%= link_to "Переглянути",
-                      admin_order_path(order),
-                      class: "order-btn btn-view" %>
+                <select name="order[status]"
+                        class="status-select"
+                        onchange="this.form.submit()">
 
-                <%= link_to "Змінити статус",
-                      edit_admin_order_path(order),
-                      class: "order-btn btn-edit" %>
+                  <% Order.statuses.keys.each do |s| %>
+                    <option value="<%= s %>" <%= "selected" if order.status == s %>>
+                      <%= s.humanize %>
+                    </option>
+                  <% end %>
 
-                <%= link_to "Видалити",
-                      admin_order_path(order),
-                      data: {
-                        turbo_method: :delete,
-                        turbo_confirm: "Точно видалити замовлення?"
-                      },
-                      class: "order-btn btn-delete" %>
+                </select>
 
-              </div>
+              <% end %>
+            </td>
+
+            <td class="muted">
+              <%= order.created_at.strftime("%d.%m.%Y") %>
+            </td>
+
+            <!-- ACTIONS -->
+            <td class="actions">
+
+              <%= link_to admin_order_path(order), class: "icon-btn" do %>
+                👁
+              <% end %>
+
+              <button class="icon-btn delete open-delete-modal"
+                      data-url="<%= admin_order_path(order) %>">
+                🗑
+              </button>
+
             </td>
 
           </tr>
         <% end %>
+
+        <% if @orders.empty? %>
+          <tr>
+            <td colspan="6" class="empty">
+              Замовлення не знайдено
+            </td>
+          </tr>
+        <% end %>
+
       </tbody>
+
     </table>
+
   </div>
 
 </div>
+
+<!-- DELETE MODAL -->
+<div id="deleteModal" class="modal-overlay">
+  <div class="modal">
+    <h3>Підтвердження</h3>
+    <p>Видалити замовлення?</p>
+
+    <div class="modal-actions">
+      <button id="cancelDelete" class="btn-secondary">Скасувати</button>
+
+      <form id="deleteForm" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+        <button type="submit" class="btn-danger">
+          Видалити
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("turbo:load", () => {
+
+  const modal = document.getElementById("deleteModal");
+  const form = document.getElementById("deleteForm");
+
+  document.querySelectorAll(".open-delete-modal").forEach(btn => {
+    btn.addEventListener("click", () => {
+      form.action = btn.dataset.url;
+      modal.style.display = "flex";
+    });
+  });
+
+  document.getElementById("cancelDelete").onclick = () => {
+    modal.style.display = "none";
+  };
+
+});
+</script>

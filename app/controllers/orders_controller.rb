@@ -1,19 +1,11 @@
 class OrdersController < ApplicationController
-  # замовлення доступні тільки залогіненим
   before_action :require_login, only: [:index, :new, :create, :show, :pay, :cancel_order]
-  before_action :load_cart,     only: [:new, :create]
+  before_action :load_cart, only: [:new, :create]
 
-  # -------------------------
-  # Список замовлень КОРИСТУВАЧА
-  # -------------------------
   def index
-    # тут ТІЛЬКИ замовлення поточного юзера (навіть якщо він адмін)
     @orders = Order.where(user_id: current_user.id).order(created_at: :desc)
   end
 
-  # -------------------------
-  # Нова форма оформлення
-  # -------------------------
   def new
     @order = Order.new
     @cart_items = []
@@ -25,16 +17,10 @@ class OrdersController < ApplicationController
       @cart_items << { product: product, quantity: quantity }
     end
 
-    if @cart_items.empty?
-      redirect_to cart_path, alert: "Ваш кошик порожній."
-    end
+    redirect_to cart_path, alert: "Ваш кошик порожній." if @cart_items.empty?
   end
 
-  # -------------------------
-  # Створення замовлення
-  # -------------------------
   def create
-    # якщо раптом кошик порожній
     if @cart.blank?
       redirect_to cart_path, alert: "Ваш кошик порожній."
       return
@@ -42,8 +28,8 @@ class OrdersController < ApplicationController
 
     @order = Order.new(order_params)
     @order.status = :new
-    @order.total  = calculate_total
-    @order.user   = current_user  
+    @order.total = calculate_total
+    @order.user = current_user
 
     if @order.save
       @cart.each do |product_id, quantity|
@@ -51,88 +37,78 @@ class OrdersController < ApplicationController
         next unless product
 
         @order.order_items.create(
-          product:  product,
+          product: product,
           quantity: quantity,
-          price:    product.price
+          price: product.price
         )
       end
 
-      # 🔥 очищаємо кошик тільки для поточного юзера
       key = current_user.id.to_s
       session[:cart][key] = {}
 
-      redirect_to @order, notice: "✅ Замовлення успішно створене!"
+      redirect_to @order, notice: "✅ Замовлення створене!"
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  # -------------------------
-  # Показ одного замовлення
-  # -------------------------
   def show
     @order = Order.find(params[:id])
 
-    # переглядати можна тільки свої замовлення
     if @order.user_id != current_user.id && !admin?
-      redirect_to root_path, alert: "❌ Ви не можете переглядати це замовлення."
+      redirect_to root_path, alert: "❌ Немає доступу"
       return
     end
 
     @order_items = @order.order_items
   end
 
-  # -------------------------
-  # Оплата
-  # -------------------------
   def pay
     @order = Order.find(params[:id])
 
     if @order.user_id != current_user.id && !admin?
-      redirect_to root_path, alert: "❌ Ви не можете змінювати це замовлення."
+      redirect_to root_path, alert: "❌ Немає доступу"
       return
     end
 
     if @order.status_new? || @order.status_confirmed?
       @order.update(status: :paid)
-      redirect_to @order, notice: "💳 Оплату виконано успішно!"
+      redirect_to @order, notice: "💳 Оплачено"
     else
-      redirect_to @order, alert: "❌ Це замовлення зараз не можна оплатити."
+      redirect_to @order, alert: "❌ Не можна оплатити"
     end
   end
 
-  # -------------------------
-  # Скасування
-  # -------------------------
   def cancel_order
     @order = Order.find(params[:id])
 
     if @order.user_id != current_user.id && !admin?
-      redirect_to root_path, alert: "❌ Ви не можете змінювати це замовлення."
+      redirect_to root_path, alert: "❌ Немає доступу"
       return
     end
 
-    if @order.status_paid? || @order.status_shipped? || @order.status_delivered?
-      new_status = :refunded
+    if @order.user_can_cancel?
+      @order.cancel_by_user!
+      redirect_to @order, notice: "🟢 Замовлення оновлено"
     else
-      new_status = :cancelled
+      redirect_to @order, alert: "❌ Не можна скасувати"
     end
-
-    @order.update(status: new_status)
-    redirect_to @order, notice: "🟢 Статус замовлення оновлено."
   end
 
   private
 
-  # -------------------------
-  # Кошик (НЕ стираємо session[:cart]!)
-  # -------------------------
+  # 🔥 ОСНОВНЕ 
+  def require_login
+    unless current_user
+      session[:return_to] = request.fullpath
+      redirect_to login_path, alert: "Увійдіть для продовження"
+    end
+  end
+
   def load_cart
     session[:cart] ||= {}
-
     key = current_user ? current_user.id.to_s : "guest"
     session[:cart][key] ||= {}
-
     @cart = session[:cart][key]
   end
 

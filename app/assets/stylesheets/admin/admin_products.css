@@ -1,425 +1,503 @@
-/* Основний контейнер */
+/* ================================
+   GLOBAL FIX (ВАЖЛИВО!)
+================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* ================================
+   ADMIN PRODUCTS — CELORIA FINAL
+================================ */
+
 .admin-products-page {
-  max-width: 1050px;
-  margin: 40px auto;
-  padding: 0 20px;
-  font-family: 'Inter', sans-serif;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 40px;
+    font-family: 'Montserrat', sans-serif;
 }
 
-/* Заголовок */
-.admin-products-title {
-  text-align: center;
-  font-size: 36px;
-  font-weight: 700;
-  color: #0d3b2e;
-  margin-bottom: 35px;   /* 🔥 збільшили відступ */
+/* ================================
+   HEADER
+================================ */
+
+.admin-users-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
-/* Назад */
-.back-btn {
-  display: inline-block;
-  margin-bottom: 25px;
-  color: #0d3b2e;
-  font-weight: 600;
-  text-decoration: none;
+.admin-title {
+    font-family: 'Merriweather', serif;
+    font-size: 26px;
+    color: #1F1B2E;
 }
 
-/* Додати товар */
+.admin-back-link {
+    color: #7C3AED;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.admin-back-link:hover {
+    text-decoration: underline;
+}
+
+/* ================================
+   CONTROLS
+================================ */
+
+.admin-users-controls {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.admin-search {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid #EDE9FE;
+    font-size: 14px;
+    background: #FAF9FF;
+}
+
+.admin-search:focus {
+    border-color: #7C3AED;
+    background: #fff;
+    outline: none;
+}
+
+/* select */
+
+.admin-filter {
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid #EDE9FE;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+select.input-field {
+    width: 100%;
+}
+
+/* button */
+
+.admin-search-btn {
+    background: #7C3AED;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.admin-search-btn:hover {
+    background: #6D28D9;
+}
+
+/* ================================
+   ADD BUTTON
+================================ */
+
 .top-actions {
-  text-align: center;
-  margin-bottom: 30px;    /* 🔥 збільшили відступ */
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
 }
 
 .add-product-btn {
-  background: #0d4f39;
-  color: white;
-  padding: 10px 22px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.2s;
+    background: #7C3AED;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s;
 }
 
 .add-product-btn:hover {
-  background: #083e2c;
+    background: #6D28D9;
 }
 
-/* Табличний контейнер */
-.admin-products-table-wrapper {
-  width: 100%;
-  overflow-x: hidden;
-}
+/* ================================
+   TABLE
+================================ */
 
-/* Таблиця */
 .admin-products-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  font-size: 15px;
-  border-radius: 14px;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #ffffff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
 }
 
 .admin-products-table th {
-  background: #e8f2ed;
-  padding: 14px;
-  color: #0d3b2e;
-  font-weight: 700;
-  text-align: left;
-  border-bottom: 2px solid #d9e7e0;
-}
-
-/* 🔥 Вирівнюємо слово "Дії" по правому краю */
-.actions-header {
-  text-align: right !important;
-  padding-right: 22px;  /* співпадає з кнопками */
+    background: #F3E8FF;
+    padding: 14px;
+    color: #1F1B2E;
+    font-weight: 600;
+    text-align: left;
 }
 
 .admin-products-table td {
-  padding: 14px;
-  border-bottom: 1px solid #f0f0f0;
+    padding: 14px;
+    border-bottom: 1px solid #F3E8FF;
+    font-size: 14px;
+}
+
+.admin-products-table tbody tr:hover {
+    background: #FAF9FF;
 }
 
 .product-name-cell {
-  font-weight: 600;
-  color: #0d3b2e;
+    font-weight: 600;
 }
 
-/* Колонка дій */
+.muted {
+    color: #7C7A8A;
+}
+
+/* ================================
+   ACTION BUTTONS
+================================ */
+
 .actions-col {
-  display: flex;
-  justify-content: flex-end;  /* 🔥 Вирівняно по правому краю */
-  gap: 8px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
 }
 
-/* Кнопки */
 .table-btn {
-  padding: 6px 14px;
-  border-radius: 8px;
-  font-size: 14px;
-  text-decoration: none;
-  font-weight: 600;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.2s ease;
 }
 
 .edit-btn {
-  background: #d9f3e7;
-  color: #0c4a35;
+    background: #EDE9FE;
+    color: #6D28D9;
 }
 
 .edit-btn:hover {
-  background: #c3e8d6;
+    background: #7C3AED;
+    color: white;
 }
 
 .delete-btn {
-  background: #f7d3d3;
-  color: #7d1111;
+    background: #F3F4F6;
+    color: #7C7A8A;
 }
 
 .delete-btn:hover {
-  background: #f3b8b8;
+    background: #FEE2E2;
+    color: #DC2626;
+    transform: scale(1.1);
 }
 
-/* ====== EDIT PRODUCT PAGE — ЦЕНТР + ГАРНІ ПОЛЯ ====== */
+/* ================================
+   FORM
+================================ */
 
 .admin-product-edit-wrapper {
-  max-width: 850px;
-  margin: 40px auto;
-  background: #ffffff;
-  padding: 40px;
-  border-radius: 14px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  font-family: 'Inter', sans-serif;
+    max-width: 640px;
+    margin: 40px auto;
+    padding: 32px 28px; /* 🔥 рівні боки */
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
 }
 
-/* Заголовок */
 .admin-product-title {
-  font-size: 32px;
-  font-weight: 700;
-  color: #0d3b2e;
-  text-align: center;
-  margin-bottom: 35px;
+    font-family: 'Merriweather', serif;
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 25px;
 }
 
-/* Секції */
+/* sections */
+
 .form-section {
-  margin-bottom: 40px;
+    margin-bottom: 28px;
 }
+
+/* titles */
 
 .section-title {
-  font-size: 22px;
-  font-weight: 600;
-  color: #0d3b2e;
-  margin-bottom: 18px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
-/* Рівні поля */
+/* fields */
+
 .form-group {
-  margin-bottom: 22px;
+    margin-bottom: 20px;
 }
 
 .form-group label {
-  font-size: 15px;
-  font-weight: 600;
-  display: block;
-  margin-bottom: 6px;
-  color: #0d3b2e;
+    display: block;
+    font-size: 14px;
+    color: #7C7A8A;
+    margin-bottom: 6px;
+    font-weight: 500;
 }
 
+/* inputs */
+
 .input-field {
-  width: 100%;
-  padding: 14px 16px;
-  border: 2px solid #cde6dc;
-  border-radius: 10px;
-  font-size: 16px;
-  background: #f9fdfb;
-  box-sizing: border-box;
+    width: 100%;
+    display: block;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid #EDE9FE;
+    font-size: 14px;
+    background: #FAF9FF;
+    transition: 0.2s;
 }
 
 .input-field:focus {
-  border-color: #0d4f39;
-  background: #ffffff;
+    border-color: #7C3AED;
+    background: #ffffff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.08);
 }
 
-/* textarea рівна */
+/* textarea */
+
 .textarea {
-  min-height: 130px;
-  max-height: 250px;
-  resize: vertical;
+    min-height: 140px;
+    resize: vertical;
 }
 
-/* Фото */
-.images-preview {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.image-box {
-  width: 150px;
-  height: 150px;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 2px solid #e4eee8;
-}
-
-.preview-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* FILE INPUT — тепер гарна зелена кнопка */
-.file-input {
-  display: none !important;
-}
+/* ================================
+   FILE INPUT
+================================ */
 
 .file-label {
-  display: inline-block;
-  background: #0d4f39;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 12px;
-  transition: 0.25s;
+    background: #7C3AED;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 12px;
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 12px;
 }
 
 .file-label:hover {
-  background: #083e2c;
+    background: #6D28D9;
 }
 
-/* Характеристики */
+/* ================================
+   IMAGES
+================================ */
+
+.product-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    margin-top: 10px;
+    margin-bottom: 16px;
+}
+
+.product-image-item {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    height: 140px;
+    background: #F3E8FF;
+}
+
+.product-image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-image-item:hover img {
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+/* ================================
+   CHARACTERISTICS
+================================ */
+
 .characteristic-row {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 14px;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
 }
 
 .input-field.small {
-  flex: 1;
+    flex: 1;
 }
 
 .remove-char {
-  background: #ff6e6e;
-  border: none;
-  color: white;
-  padding: 6px 14px;
-  border-radius: 8px;
-  font-size: 20px;
-  cursor: pointer;
+    background: #FEE2E2;
+    border: none;
+    color: #DC2626;
+    border-radius: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
 }
 
-/* Add char button */
 .add-char-btn {
-  background: #0d4f39;
-  color: white;
-  padding: 12px 18px;
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
+    background: #EDE9FE;
+    color: #6D28D9;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
 }
 
-/* Save button */
+/* ================================
+   SUBMIT
+================================ */
+
 .form-actions {
-  text-align: right;
+    margin-top: 20px;
+    text-align: right;
 }
 
 .btn-primary {
-  background: #0d4f39;
-  color: white;
-  padding: 14px 26px;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
+    background: #7C3AED;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
 }
 
 .btn-primary:hover {
-  background: #083e2c;
+    background: #6D28D9;
 }
 
-/* ====== WRAPPER ====== */
-.admin-product-edit-wrapper {
-  max-width: 850px;
-  margin: 40px auto;
+/* ================================
+   EMPTY STATE
+================================ */
+
+.empty-state {
+    text-align: center;
+    padding: 60px 0;
+    color: #7C7A8A;
+    font-size: 16px;
+}
+
+/* =========================
+   MODAL 
+========================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 999;
+
+  /* FIX CLICK BUG */
+  pointer-events: none;
+}
+
+.modal-overlay[style*="flex"] {
+  pointer-events: all;
+}
+
+.modal {
   background: #ffffff;
-  padding: 40px;
-  border-radius: 14px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  font-family: 'Inter', sans-serif;
-}
-
-/* ====== TITLES ====== */
-.admin-product-title {
-  font-size: 32px;
-  font-weight: 700;
-  color: #0d3b2e;
+  padding: 30px;
+  border-radius: 18px;
+  width: 320px;
   text-align: center;
-  margin-bottom: 35px;
+
+  animation: fadeIn 0.2s ease;
 }
 
-.section-title {
-  font-size: 22px;
-  font-weight: 600;
-  color: #0d3b2e;
-  margin-bottom: 18px;
+@keyframes fadeIn {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-/* ====== FORM SECTIONS ====== */
-.form-section {
-  margin-bottom: 40px;
+.modal h3 {
+  font-family: 'Merriweather', serif;
+  font-size: 18px;
+  color: #1F1B2E;
+  margin-bottom: 10px;
 }
 
-.form-group {
-  margin-bottom: 22px;
+.modal p {
+  font-size: 14px;
+  color: #6B7280;
+  margin-bottom: 20px;
 }
 
-.form-group label {
-  font-size: 15px;
-  font-weight: 600;
-  display: block;
-  margin-bottom: 6px;
-  color: #0d3b2e;
-}
-
-/* ====== INPUT FIELDS ====== */
-.input-field {
-  width: 100%;
-  padding: 14px 16px;
-  border: 2px solid #cde6dc;
-  border-radius: 10px;
-  font-size: 16px;
-  background: #f9fdfb;
-  box-sizing: border-box;
-}
-
-.input-field:focus {
-  border-color: #0d4f39;
-  background: #ffffff;
-}
-
-.textarea {
-  min-height: 130px;
-  max-height: 250px;
-  resize: vertical;
-}
-
-/* ====== FILE BUTTON ====== */
-.file-input {
-  display: none !important;
-}
-
-.file-label {
-  display: inline-block;
-  background: #0d4f39;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 12px;
-  transition: 0.25s;
-}
-
-.file-label:hover {
-  background: #083e2c;
-}
-
-/* ====== CHARACTERISTICS ====== */
-.characteristic-row {
+.modal-actions {
   display: flex;
-  gap: 12px;
-  margin-bottom: 14px;
+  justify-content: center;
+  gap: 10px;
 }
 
-.input-field.small {
-  flex: 1;
-}
+/* BUTTONS */
 
-.remove-char {
-  background: #ff6e6e;
-  border: none;
-  color: white;
-  padding: 6px 14px;
-  border-radius: 8px;
-  font-size: 20px;
-  cursor: pointer;
-}
+.btn-secondary {
+  background: #F3F4F6;
+  color: #1F1B2E;
 
-/* ADD BUTTON */
-.add-char-btn {
-  background: #0d4f39;
-  color: white;
-  padding: 12px 18px;
+  padding: 10px 16px;
   border-radius: 10px;
-  font-weight: 600;
-  font-size: 16px;
   border: none;
+
+  font-size: 14px;
+  font-weight: 500;
+
   cursor: pointer;
+  transition: 0.2s;
 }
 
-/* SUBMIT BUTTON */
-.form-actions {
-  text-align: right;
+.btn-secondary:hover {
+  background: #E5E7EB;
 }
 
-.btn-primary {
-  background: #0d4f39;
-  color: white;
-  padding: 14px 26px;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 17px;
+.btn-danger {
+  background: #DC2626;
+  color: #ffffff;
+
+  padding: 10px 16px;
+  border-radius: 10px;
   border: none;
+
+  font-size: 14px;
+  font-weight: 500;
+
   cursor: pointer;
+  transition: 0.2s;
 }
 
-.btn-primary:hover {
-  background: #083e2c;
+.btn-danger:hover {
+  background: #B91C1C;
 }

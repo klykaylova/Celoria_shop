@@ -2,47 +2,58 @@
 
 <div class="admin-dashboard">
 
-  <!-- Верхній заголовок -->
-  <h1 class="admin-title">Адмін-панель</h1>
-  <p class="admin-welcome">
-    Вітаємо, <strong><%= current_user.name %></strong> 👋
-  </p>
-
-  <!-- Картки розділів -->
+  <!-- Cards -->
   <div class="admin-cards">
 
-    <!-- Користувачі -->
+    <!-- Users -->
     <div class="admin-card">
       <div class="admin-card-icon">👥</div>
       <h3 class="admin-card-title">Користувачі</h3>
-      <p class="admin-card-text">Перегляд та управління всіма користувачами.</p>
-      <%= link_to "Перейти", admin_users_path, class: "admin-btn" %>
+      <p class="admin-card-text">
+        Управління користувачами, ролями та доступами.
+      </p>
+      <%= link_to "Перейти", admin_users_path, class: "admin-btn primary" %>
     </div>
 
-    <!-- Товари -->
+    <!-- Products -->
     <div class="admin-card">
       <div class="admin-card-icon">👜</div>
       <h3 class="admin-card-title">Товари</h3>
-      <p class="admin-card-text">Додавання, редагування та видалення товарів.</p>
-      <%= link_to "Перейти", admin_products_path, class: "admin-btn" %>
+      <p class="admin-card-text">
+        Додавання, редагування та керування товарами.
+      </p>
+      <%= link_to "Перейти", admin_products_path, class: "admin-btn primary" %>
     </div>
 
-    <!-- Замовлення -->
+    <!-- Orders -->
     <div class="admin-card">
       <div class="admin-card-icon">📦</div>
       <h3 class="admin-card-title">Замовлення</h3>
-      <p class="admin-card-text">Перегляд, зміна статусів та управління замовленнями.</p>
-      <%= link_to "Перейти", admin_orders_path, class: "admin-btn" %>
+      <p class="admin-card-text">
+        Контроль замовлень та зміна їх статусів.
+      </p>
+      <%= link_to "Перейти", admin_orders_path, class: "admin-btn primary" %>
     </div>
 
-    <!-- Повідомлення -->
+    <!-- Feedback -->
     <div class="admin-card">
       <div class="admin-card-icon">💬</div>
       <h3 class="admin-card-title">Повідомлення</h3>
-      <p class="admin-card-text">Перегляд повідомлень, які надіслали користувачі.</p>
-      <%= link_to "Перейти", admin_feedbacks_path, class: "admin-btn" %>
+      <p class="admin-card-text">
+        Повідомлення від користувачів та запити.
+      </p>
+      <%= link_to "Перейти", admin_feedbacks_path, class: "admin-btn primary" %>
     </div>
 
+    <!-- Analytics -->
+    <div class="admin-card highlight">
+      <div class="admin-card-icon">📊</div>
+      <h3 class="admin-card-title">Аналітика</h3>
+      <p class="admin-card-text">
+        Продажі, дохід та популярні товари.
+      </p>
+      <%= link_to "Відкрити", admin_analytics_path, class: "admin-btn" %>
+    </div>
 
   </div>
 
