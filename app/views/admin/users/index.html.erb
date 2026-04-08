@@ -1,0 +1,151 @@
+<%= stylesheet_link_tag "admin/admin_users", media: "all" %>
+
+<div class="admin-users-page">
+
+  <!-- HEADER -->
+  <div class="admin-users-header">
+    <%= link_to "← Назад", admin_dashboard_path, class: "admin-back-link" %>
+    <h1 class="admin-title">Користувачі</h1>
+  </div>
+
+  <!-- FILTERS -->
+  <%= form_with url: admin_users_path, method: :get, local: true, class: "admin-users-controls" do %>
+
+    <input type="text"
+           name="query"
+           value="<%= params[:query] %>"
+           placeholder="Пошук користувача..."
+           class="admin-search">
+
+    <select name="role"
+            class="admin-filter"
+            onchange="this.form.submit()">
+
+      <option value="">Всі ролі</option>
+      <option value="admin" <%= "selected" if params[:role] == "admin" %>>Admin</option>
+      <option value="user" <%= "selected" if params[:role] == "user" %>>User</option>
+      <option value="guest" <%= "selected" if params[:role] == "guest" %>>Guest</option>
+
+    </select>
+
+    <button type="submit" class="admin-search-btn">Пошук</button>
+
+  <% end %>
+
+  <!-- TABLE -->
+  <div class="admin-table-wrapper">
+
+    <table class="admin-table users-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Ім’я</th>
+          <th>Email</th>
+          <th>Роль</th>
+          <th>Дата</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td class="muted"><%= user.id %></td>
+
+            <td class="user-name">
+              <%= user.name.presence || "—" %>
+            </td>
+
+            <td><%= user.email %></td>
+
+            <td>
+              <span class="role-badge <%= (user.role || "guest") %>">
+                <%= (user.role || "guest").capitalize %>
+              </span>
+            </td>
+
+            <td class="muted">
+              <%= user.created_at.strftime("%d.%m.%Y") %>
+            </td>
+
+            <td class="actions">
+
+              <%= link_to "✏️",
+                  edit_admin_user_path(user),
+                  class: "action-btn edit" %>
+
+              <button class="action-btn delete open-delete-modal"
+                      data-url="<%= admin_user_path(user) %>">
+                🗑
+              </button>
+
+            </td>
+
+          </tr>
+        <% end %>
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+
+
+<!-- ================================
+     DELETE MODAL
+================================ -->
+<div id="deleteModal" class="modal-overlay">
+  <div class="modal">
+
+    <h3>Підтвердження</h3>
+    <p>Ви впевнені, що хочете видалити користувача?</p>
+
+    <div class="modal-actions">
+
+      <button id="cancelDelete" class="btn-secondary">
+        Скасувати
+      </button>
+
+      <form id="deleteForm" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+        <button type="submit" class="btn-danger">
+          Видалити
+        </button>
+      </form>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ================================
+     JS (TURBO SAFE)
+================================ -->
+<script>
+document.addEventListener("turbo:load", () => {
+
+  const modal = document.getElementById("deleteModal");
+  const form = document.getElementById("deleteForm");
+
+  document.querySelectorAll(".open-delete-modal").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      form.action = btn.dataset.url;
+      modal.style.display = "flex";
+    });
+  });
+
+  const cancelBtn = document.getElementById("cancelDelete");
+  if (cancelBtn) {
+    cancelBtn.onclick = () => {
+      modal.style.display = "none";
+    };
+  }
+
+});
+</script>

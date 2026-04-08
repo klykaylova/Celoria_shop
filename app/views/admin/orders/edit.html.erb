@@ -1,0 +1,41 @@
+<%= stylesheet_link_tag "admin/admin_orders", media: "all" %>
+
+<div class="admin-page">
+
+  <%= link_to "← Повернутись назад", admin_orders_path, class: "admin-back-link" %>
+
+  <h1 class="admin-title">Змінити статус замовлення №<%= @order.id %></h1>
+
+  <div class="order-edit-wrapper">
+
+    <div class="order-edit-block">
+
+      <p class="current-status">
+        <strong>Поточний статус:</strong>
+        <span class="status-badge status-<%= @order.status %>">
+          <%= @order.status.humanize %>
+        </span>
+      </p>
+
+      <%= form_with model: @order,
+                    url: update_status_admin_order_path(@order),
+                    method: :patch,
+                    local: true,
+                    class: "edit-status-form" do |f| %>
+
+        <div class="form-group">
+          <%= f.label :status, "Новий статус" %>
+          <%= f.select :status,
+              Order.statuses.keys.map { |s| [s.humanize, s] },
+              {},
+              class: "form-select" %>
+        </div>
+
+        <%= f.submit "Оновити статус", class: "btn-primary" %>
+
+      <% end %>
+
+    </div>
+
+  </div>
+</div>

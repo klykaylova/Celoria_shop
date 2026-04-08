@@ -1,0 +1,72 @@
+<%= stylesheet_link_tag "admin/admin_orders", media: "all" %>
+
+<div class="admin-page">
+
+  <%= link_to "← Повернутись назад", admin_orders_path, class: "back-btn" %>
+
+  <h1 class="admin-title">Замовлення №<%= @order.id %></h1>
+
+  <div class="order-container">
+
+    <div class="order-info-block">
+
+      <p><strong>Ім’я клієнта:</strong> <%= @order.name %></p>
+      <p><strong>Телефон:</strong> <%= @order.phone %></p>
+      <p><strong>Адреса:</strong> <%= @order.address %></p>
+
+      <p><strong>Сума замовлення:</strong>
+        <%= number_to_currency(@order.total, unit: "₴") %>
+      </p>
+
+      <p><strong>Поточний статус:</strong>
+        <span class="status-badge status-<%= @order.status %>">
+          <%= @order.status.humanize %>
+        </span>
+      </p>
+
+      <hr>
+
+      <h2 class="order-subtitle">👜 Товари у замовленні:</h2>
+
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Назва</th>
+            <th>Кількість</th>
+            <th>Ціна</th>
+            <th>Сума</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @order.order_items.each do |item| %>
+            <tr>
+              <td><%= item.product.name %></td>
+              <td><%= item.quantity %> шт.</td>
+              <td><%= number_to_currency(item.price, unit: "₴") %></td>
+              <td><%= number_to_currency(item.price * item.quantity, unit: "₴") %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <h3 class="order-subtitle">Змінити статус</h3>
+
+      <%= form_with model: [:admin, @order],
+                    url: update_status_admin_order_path(@order),
+                    method: :patch,
+                    local: true,
+                    class: "status-form" do |f| %>
+
+        <%= f.select :status,
+          Order.statuses.keys.map { |s| [s.humanize, s] },
+          {},
+          class: "form-control select-control" %>
+
+        <%= f.submit "Оновити", class: "btn-primary" %>
+      <% end %>
+
+    </div>
+  </div>
+
+</div>

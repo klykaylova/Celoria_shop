@@ -1,0 +1,78 @@
+<%= stylesheet_link_tag "orders", media: "all" %>
+
+<div class="orders-page">
+
+  <div class="orders-container">
+
+    <h1 class="orders-title">📦 Мої замовлення</h1>
+
+    <% if @orders.any? %>
+
+      <table class="orders-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Ім'я замовника</th>
+            <th>Телефон</th>
+            <th>Адреса</th>
+            <th>Сума</th>
+            <th>Статус</th>
+            <th>Дата створення</th>
+            <th>Дії</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td><%= order.id %></td>
+              <td><%= order.name %></td>
+              <td><%= order.phone %></td>
+              <td><%= order.address %></td>
+
+              <td>
+                ₴<%= number_with_precision(order.total, precision: 2) %>
+              </td>
+
+              <!-- 🔥 СТАТУС -->
+              <td>
+                <span class="status-badge <%= order.status %>">
+                  <%= order_status_label(order) %>
+                </span>
+              </td>
+
+              <td>
+                <%= order.created_at.strftime("%d.%m.%Y %H:%M") %>
+              </td>
+
+              <td class="orders-actions">
+
+                <%= link_to "🔍 Переглянути",
+                      order_path(order),
+                      class: "orders-view" %>
+
+                <!-- 🔥 КНОПКА СКАСУВАННЯ -->
+                <% if order.user_can_cancel? %>
+                  <%= button_to "❌ Скасувати",
+                        cancel_order_order_path(order),
+                        method: :patch,
+                        data: { confirm: "Скасувати замовлення?" },
+                        class: "orders-cancel-btn" %>
+                <% end %>
+
+              </td>
+
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    <% else %>
+
+      <p class="no-orders">Ви ще не робили замовлень.</p>
+
+    <% end %>
+
+  </div>
+
+</div>

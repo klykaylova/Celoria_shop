@@ -1,0 +1,11 @@
+one:
+  id: 1
+  order: one
+  address: "Ivano-Frankivsk, Nezalezhnosti 12"
+  status: "очікує"
+
+two:
+  id: 2
+  order: two
+  address: "Kyiv, Khreshchatyk 5"
+  status: "доставлено"

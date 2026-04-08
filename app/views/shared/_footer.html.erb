@@ -1,0 +1,45 @@
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- Бренд -->
+    <div class="footer-brand">
+      <h2>Celoria</h2>
+      <p>Стиль у кожному кроці</p>
+
+      <div class="footer-socials">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-telegram-plane"></i></a>
+      </div>
+    </div>
+
+    <!-- Навігація -->
+    <div class="footer-links">
+  <h4>Інформація</h4>
+
+  <%= link_to "Головна", root_path %>
+  <%= link_to "Про нас", about_path %>
+  <%= link_to "Контакти", contacts_path %>
+</div>
+
+<div class="footer-links">
+  <h4>Каталог</h4>
+
+  <%= link_to "Сумки", products_path(category_id: 1) %>
+  <%= link_to "Клатчі", products_path(category_id: 3) %>
+  <%= link_to "Рюкзаки", products_path(category_id: 2) %>
+</div>
+
+    <!-- Контакти -->
+    <div class="footer-links">
+      <h4>Контакти</h4>
+      <p>+380 XX XXX XX XX</p>
+      <p>Івано-Франківськ</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Celoria. Всі права захищені.
+  </div>
+</footer>

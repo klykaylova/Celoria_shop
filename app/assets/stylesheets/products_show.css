@@ -1,0 +1,253 @@
+/* ================================
+        ОСНОВНИЙ ЛЕЙАУТ
+================================= */
+.product-show {
+  display: grid;
+  grid-template-columns: 120px 1fr 1fr;
+  gap: 35px;
+  margin: 40px auto;
+  max-width: 1100px;
+
+  font-family: 'Montserrat', sans-serif; /* 🔥 БАЗА */
+}
+
+/* ================================
+          МІНІАТЮРИ
+================================= */
+.product-thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-thumbnails .thumb {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 14px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.2s;
+}
+
+.product-thumbnails .thumb.active,
+.product-thumbnails .thumb:hover {
+  opacity: 1;
+  box-shadow: 0 0 0 3px #7C3AED;
+}
+
+/* ================================
+       ГОЛОВНЕ ЗОБРАЖЕННЯ
+================================= */
+.product-main-image img {
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+/* ================================
+            ІНФО-БЛОК
+================================= */
+.product-info {
+  padding: 10px;
+}
+
+.product-title {
+  font-family: 'Merriweather', serif; /* 🔥 */
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1f1b2e;
+}
+
+.price {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #7C3AED;
+}
+
+.description,
+.category {
+  font-size: 16px;
+  color: #4b4860;
+  line-height: 1.5;
+  margin-top: 14px;
+
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ================================
+        КНОПКА "ДОДАТИ"
+================================= */
+.btn-add-cart {
+  margin-top: 22px;
+  background: #7C3AED;
+  color: white;
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+
+  font-family: 'Montserrat', sans-serif;
+
+  border: none;
+  transition: 0.25s ease;
+}
+
+.btn-add-cart:hover {
+  background: #6d28d9;
+  transform: translateY(-2px);
+}
+
+/* ================================
+           ХАРАКТЕРИСТИКИ
+================================= */
+.characteristics-wrapper {
+  max-width: 1100px;
+  margin: 60px auto 30px;
+}
+
+.section-title {
+  font-family: 'Merriweather', serif; /* 🔥 */
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #1f1b2e;
+  margin-bottom: 20px;
+}
+
+.characteristics-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+}
+
+.characteristics-list li {
+  font-size: 15px;
+  color: #4b4860;
+  margin-bottom: 8px;
+
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ================================
+              ВІДГУКИ
+================================= */
+.reviews-wrapper {
+  max-width: 1100px;
+  margin: 60px auto 40px;
+}
+
+.review-item {
+  background: #ffffff;
+  padding: 18px 22px;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+  margin-bottom: 18px;
+}
+
+.review-rating {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.review-text {
+  font-size: 15px;
+  color: #1f1b2e;
+  margin-bottom: 6px;
+
+  font-family: 'Montserrat', sans-serif;
+}
+
+.review-date {
+  font-size: 13px;
+  color: #9a97a8;
+
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ================================
+        ЗАЛИШИТИ ВІДГУК
+================================= */
+.leave-review-title {
+  font-family: 'Merriweather', serif; /* 🔥 */
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f1b2e;
+  margin: 35px 0 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Форма */
+.review-form-wrapper {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.review-form-wrapper input,
+.review-form-wrapper textarea {
+  width: 100%;
+  border: 1px solid #e5e3f0;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+
+  font-family: 'Montserrat', sans-serif;
+
+  margin-top: 5px;
+}
+
+.review-form-wrapper textarea {
+  height: 120px;
+  resize: none;
+}
+
+.review-form-wrapper input[type="submit"],
+.review-form-wrapper button {
+  background: #7C3AED;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+
+  font-family: 'Montserrat', sans-serif;
+
+  margin-top: 12px;
+  transition: 0.25s;
+  border: none;
+}
+
+.review-form-wrapper input[type="submit"]:hover,
+.review-form-wrapper button:hover {
+  background: #6d28d9;
+}
+
+/* ================================
+         НАЗАД ДО КАТАЛОГУ
+================================= */
+.back-link-wrapper {
+  max-width: 1100px;
+  margin: 50px auto;
+}
+
+.back-link {
+  text-decoration: none;
+  color: #4b4860;
+  font-size: 15px;
+  font-weight: 500;
+
+  font-family: 'Montserrat', sans-serif;
+}
+
+.back-link:hover {
+  color: #7C3AED;
+}

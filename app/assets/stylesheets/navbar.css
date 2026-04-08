@@ -1,0 +1,152 @@
+/* =======================
+   ГОЛОВНЕ МЕНЮ (NAVBAR)
+   ======================= */
+
+/* шрифт */
+.main-navbar,
+.main-navbar * {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Контейнер */
+.main-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  padding: 12px 30px;
+  background-color: #faf9ff;
+  border-bottom: 1px solid rgba(124, 58, 237, 0.08);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Лого */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.logo-image {
+  height: 52px;
+  transform: scale(2.5);
+  transform-origin: left center;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1f1b2e;
+}
+
+/* Центр */
+.nav-center {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.nav-item {
+  font-size: 14px;
+  font-weight: 500;
+  color: #4b4860; /* мʼякий темно-фіолетовий */
+  padding-bottom: 2px;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+/* Hover */
+.nav-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: #7C3AED;
+  transition: width 0.25s ease;
+}
+
+.nav-item:hover {
+  color: #7C3AED;
+}
+
+.nav-item:hover::after {
+  width: 100%;
+}
+
+/* Право */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-right .button_to {
+  margin: 0;
+  padding: 0;
+}
+
+/* Кнопки */
+.nav-btn-outline,
+button.nav-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 18px;
+  border-radius: 999px;
+  border: 1px solid #7C3AED;
+
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+
+  background: #ffffff;
+  color: #7C3AED;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+/* Hover кнопок */
+.nav-btn-outline:hover,
+button.nav-btn-outline:hover {
+  background: #7C3AED;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Logout  */
+.logout-link {
+  border-color: #c4b5fd;
+  color: #6d28d9;
+}
+
+.logout-link:hover {
+  background: #f5f3ff;
+  border-color: #a78bfa;
+  color: #6d28d9;
+}
+
+/* Останній пункт */
+.nav-item:last-child {
+  padding-right: 0;
+}
+

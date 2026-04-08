@@ -1,0 +1,40 @@
+<%= stylesheet_link_tag "auth", media: "all" %>
+
+<div class="auth-page">
+
+  <div class="auth-card">
+    
+    <h1 class="auth-title">Вхід</h1>
+    <p class="auth-subtitle">Введіть ваш email та пароль, щоб увійти до акаунта.</p>
+
+    <% if flash[:alert] %>
+      <div class="auth-alert"><%= flash[:alert] %></div>
+    <% end %>
+
+    <%= form_with url: login_path,
+                  method: :post,
+                  local: true,
+                  data: { turbo: false } do |f| %>
+
+      <div class="form-group">
+        <label>Email</label>
+        <%= f.email_field :email, class: "auth-input", required: true %>
+      </div>
+
+      <div class="form-group">
+        <label>Пароль</label>
+        <%= f.password_field :password, class: "auth-input", required: true %>
+      </div>
+
+      <%= f.submit "Увійти", class: "auth-btn" %>
+
+    <% end %>
+
+    <p class="auth-footer">
+      Немає акаунта?
+      <%= link_to "Зареєструватися", new_user_path, class: "auth-link" %>
+    </p>
+
+  </div>
+
+</div>

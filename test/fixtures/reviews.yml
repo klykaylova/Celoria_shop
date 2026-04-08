@@ -1,0 +1,11 @@
+one:
+  user: one
+  product: one
+  rating: 5
+  comment: "Дуже хороший товар"
+
+two:
+  user: one
+  product: one
+  rating: 4
+  comment: "Все сподобалось"

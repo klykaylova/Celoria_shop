@@ -1,0 +1,503 @@
+/* ================================
+   GLOBAL FIX (ВАЖЛИВО!)
+================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* ================================
+   ADMIN PRODUCTS — CELORIA FINAL
+================================ */
+
+.admin-products-page {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 40px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.admin-users-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.admin-title {
+    font-family: 'Merriweather', serif;
+    font-size: 26px;
+    color: #1F1B2E;
+}
+
+.admin-back-link {
+    color: #7C3AED;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.admin-back-link:hover {
+    text-decoration: underline;
+}
+
+/* ================================
+   CONTROLS
+================================ */
+
+.admin-users-controls {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.admin-search {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid #EDE9FE;
+    font-size: 14px;
+    background: #FAF9FF;
+}
+
+.admin-search:focus {
+    border-color: #7C3AED;
+    background: #fff;
+    outline: none;
+}
+
+/* select */
+
+.admin-filter {
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid #EDE9FE;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+select.input-field {
+    width: 100%;
+}
+
+/* button */
+
+.admin-search-btn {
+    background: #7C3AED;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.admin-search-btn:hover {
+    background: #6D28D9;
+}
+
+/* ================================
+   ADD BUTTON
+================================ */
+
+.top-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.add-product-btn {
+    background: #7C3AED;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.add-product-btn:hover {
+    background: #6D28D9;
+}
+
+/* ================================
+   TABLE
+================================ */
+
+.admin-products-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #ffffff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.admin-products-table th {
+    background: #F3E8FF;
+    padding: 14px;
+    color: #1F1B2E;
+    font-weight: 600;
+    text-align: left;
+}
+
+.admin-products-table td {
+    padding: 14px;
+    border-bottom: 1px solid #F3E8FF;
+    font-size: 14px;
+}
+
+.admin-products-table tbody tr:hover {
+    background: #FAF9FF;
+}
+
+.product-name-cell {
+    font-weight: 600;
+}
+
+.muted {
+    color: #7C7A8A;
+}
+
+/* ================================
+   ACTION BUTTONS
+================================ */
+
+.actions-col {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.table-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.edit-btn {
+    background: #EDE9FE;
+    color: #6D28D9;
+}
+
+.edit-btn:hover {
+    background: #7C3AED;
+    color: white;
+}
+
+.delete-btn {
+    background: #F3F4F6;
+    color: #7C7A8A;
+}
+
+.delete-btn:hover {
+    background: #FEE2E2;
+    color: #DC2626;
+    transform: scale(1.1);
+}
+
+/* ================================
+   FORM
+================================ */
+
+.admin-product-edit-wrapper {
+    max-width: 640px;
+    margin: 40px auto;
+    padding: 32px 28px; /* 🔥 рівні боки */
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.admin-product-title {
+    font-family: 'Merriweather', serif;
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* sections */
+
+.form-section {
+    margin-bottom: 28px;
+}
+
+/* titles */
+
+.section-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* fields */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: #7C7A8A;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+/* inputs */
+
+.input-field {
+    width: 100%;
+    display: block;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid #EDE9FE;
+    font-size: 14px;
+    background: #FAF9FF;
+    transition: 0.2s;
+}
+
+.input-field:focus {
+    border-color: #7C3AED;
+    background: #ffffff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.08);
+}
+
+/* textarea */
+
+.textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+/* ================================
+   FILE INPUT
+================================ */
+
+.file-label {
+    background: #7C3AED;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 12px;
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+.file-label:hover {
+    background: #6D28D9;
+}
+
+/* ================================
+   IMAGES
+================================ */
+
+.product-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    margin-top: 10px;
+    margin-bottom: 16px;
+}
+
+.product-image-item {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    height: 140px;
+    background: #F3E8FF;
+}
+
+.product-image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-image-item:hover img {
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+/* ================================
+   CHARACTERISTICS
+================================ */
+
+.characteristic-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.input-field.small {
+    flex: 1;
+}
+
+.remove-char {
+    background: #FEE2E2;
+    border: none;
+    color: #DC2626;
+    border-radius: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.add-char-btn {
+    background: #EDE9FE;
+    color: #6D28D9;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+/* ================================
+   SUBMIT
+================================ */
+
+.form-actions {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.btn-primary {
+    background: #7C3AED;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background: #6D28D9;
+}
+
+/* ================================
+   EMPTY STATE
+================================ */
+
+.empty-state {
+    text-align: center;
+    padding: 60px 0;
+    color: #7C7A8A;
+    font-size: 16px;
+}
+
+/* =========================
+   MODAL 
+========================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 999;
+
+  /* FIX CLICK BUG */
+  pointer-events: none;
+}
+
+.modal-overlay[style*="flex"] {
+  pointer-events: all;
+}
+
+.modal {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 18px;
+  width: 320px;
+  text-align: center;
+
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal h3 {
+  font-family: 'Merriweather', serif;
+  font-size: 18px;
+  color: #1F1B2E;
+  margin-bottom: 10px;
+}
+
+.modal p {
+  font-size: 14px;
+  color: #6B7280;
+  margin-bottom: 20px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* BUTTONS */
+
+.btn-secondary {
+  background: #F3F4F6;
+  color: #1F1B2E;
+
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-secondary:hover {
+  background: #E5E7EB;
+}
+
+.btn-danger {
+  background: #DC2626;
+  color: #ffffff;
+
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-danger:hover {
+  background: #B91C1C;
+}

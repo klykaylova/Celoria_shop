@@ -1,0 +1,214 @@
+/* ==============================
+   ОСНОВА
+============================== */
+
+.about-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px 80px;
+
+  font-family: 'Montserrat', sans-serif; /* 🔥 БАЗОВИЙ ТЕКСТ */
+}
+
+/* ==============================
+   HERO
+============================== */
+
+.about-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  margin-bottom: 80px;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-title {
+  font-family: 'Merriweather', serif; /* 🔥 ЗАГОЛОВОК */
+  font-size: 42px;
+  font-weight: 700;
+  color: #1f1b2e;
+  margin-bottom: 20px;
+}
+
+.about-description {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #7c7a8a;
+  margin-bottom: 16px;
+}
+
+/* ==============================
+   IMAGE
+============================== */
+
+.about-image-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.about-image {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 24px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+/* ==============================
+   HISTORY
+============================== */
+
+.history-section {
+  background: #f5f1ff;
+  padding: 50px;
+  border-radius: 24px;
+  margin-bottom: 80px;
+}
+
+.section-title {
+  font-family: 'Merriweather', serif; /* 🔥 */
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f1b2e;
+  margin-bottom: 25px;
+}
+
+.history-text {
+  font-size: 16px;
+  color: #7c7a8a;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+/* ==============================
+   VALUES
+============================== */
+
+.values-title {
+  font-family: 'Merriweather', serif; /* 🔥 */
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: #1f1b2e;
+  margin-bottom: 35px;
+}
+
+.values-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-bottom: 80px;
+}
+
+.value-card {
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  transition: 0.25s;
+}
+
+.value-card:hover {
+  transform: translateY(-6px);
+}
+
+.value-icon {
+  font-size: 32px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.value-card h3 {
+  font-family: 'Merriweather', serif; /* 🔥 */
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f1b2e;
+  margin-bottom: 8px;
+}
+
+.value-card p {
+  font-size: 15px;
+  color: #7c7a8a;
+  line-height: 1.6;
+}
+
+/* ==============================
+   WHY US
+============================== */
+
+.why-us-section {
+  margin-top: 50px;
+}
+
+.why-grid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.why-item {
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  transition: 0.25s;
+}
+
+.why-item:hover {
+  transform: translateY(-6px);
+}
+
+.why-icon {
+  font-size: 32px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.why-item h4 {
+  font-family: 'Merriweather', serif; /* 🔥 */
+  font-size: 17px;
+  font-weight: 600;
+  color: #1f1b2e;
+  margin-bottom: 8px;
+}
+
+.why-item p {
+  font-size: 15px;
+  color: #7c7a8a;
+  line-height: 1.6;
+}
+
+/* ==============================
+   АДАПТИВ
+============================== */
+
+@media (max-width: 992px) {
+  .about-hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .values-cards,
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .values-cards,
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-title {
+    font-size: 32px;
+  }
+}

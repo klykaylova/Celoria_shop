@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel</title>
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "navbar", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "admin/admin_base", media: "all" %>
+
+  <%= javascript_importmap_tags %>
+</head>
+
+<body>
+
+<nav class="main-navbar">
+
+  <!-- ЛОГО (перехід на сайт) -->
+  <div class="nav-left">
+    <%= link_to root_path, class: "logo-link" do %>
+      <%= image_tag "logo.png", class: "logo-image" %>
+    <% end %>
+  </div>
+
+  <!-- ПУСТИЙ ЦЕНТР -->
+  <div class="nav-center"></div>
+
+  <!-- ПРАВА ЧАСТИНА -->
+  <div class="nav-right">
+
+    <span class="nav-item">
+      👤 <%= current_user.name %>
+    </span>
+
+    <%= button_to "Вийти",
+      logout_path,
+      method: :delete,
+      form: { style: "display:inline;" },
+      class: "nav-btn-outline logout-link" %>
+
+  </div>
+
+</nav>
+
+<!-- КОНТЕНТ -->
+<div class="admin-container">
+  <%= yield %>
+</div>
+
+</body>
+</html>

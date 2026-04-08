@@ -1,0 +1,294 @@
+/* ==============================
+   ОСНОВА
+============================== */
+
+.cart-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 60px;
+
+  font-family: 'Montserrat', sans-serif; /* 🔥 БАЗА */
+}
+
+/* ==============================
+   ЗАГОЛОВОК
+============================== */
+
+.cart-title {
+  font-family: 'Merriweather', serif; /* 🔥 */
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f1b2e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 40px 0;
+}
+
+/* ==============================
+   EMPTY CART
+============================== */
+
+.empty-cart-box {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.empty-cart {
+  font-size: 20px;
+  color: #7c7a8a;
+  margin-bottom: 20px;
+}
+
+.go-shop-btn {
+  background: #7C3AED;
+  color: white;
+  padding: 12px 26px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: 0.2s;
+
+  font-family: 'Montserrat', sans-serif;
+}
+
+.go-shop-btn:hover {
+  background: #6d28d9;
+}
+
+/* ==============================
+   TABLE WRAPPER
+============================== */
+
+.cart-table-wrapper {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+/* ==============================
+   TABLE
+============================== */
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+/* ШИРИНА КОЛОНОК */
+.cart-table th:nth-child(1),
+.cart-table td:nth-child(1) { width: 110px; }
+
+.cart-table th:nth-child(2),
+.cart-table td:nth-child(2) { width: 32%; }
+
+.cart-table th:nth-child(3),
+.cart-table td:nth-child(3) { width: 140px; }
+
+.cart-table th:nth-child(4),
+.cart-table td:nth-child(4) { width: 180px; }
+
+.cart-table th:nth-child(5),
+.cart-table td:nth-child(5) { width: 160px; }
+
+.cart-table th:nth-child(6),
+.cart-table td:nth-child(6) { width: 80px; }
+
+/* HEADER */
+
+.cart-table thead {
+  background: #faf9ff;
+}
+
+.cart-table thead th {
+  font-family: 'Montserrat', sans-serif; /* 🔥 */
+  padding: 16px 20px;
+  font-weight: 600;
+  color: #7c7a8a;
+  font-size: 14px;
+  text-align: left;
+}
+
+/* ROWS */
+
+.cart-table tbody tr {
+  border-bottom: 1px solid #f0eefc;
+  transition: 0.2s;
+}
+
+.cart-table tbody tr:hover {
+  background: #faf9ff;
+}
+
+.cart-table td {
+  padding: 18px 20px;
+  font-size: 15px;
+  vertical-align: middle;
+}
+
+/* ==============================
+   IMAGE
+============================== */
+
+.cart-thumb {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* ==============================
+   TEXT
+============================== */
+
+.cart-product-link {
+  color: #1f1b2e;
+  font-weight: 600;
+  text-decoration: none;
+  display: block;
+
+  font-family: 'Montserrat', sans-serif;
+}
+
+.cart-product-link:hover {
+  color: #7C3AED;
+}
+
+.cart-price,
+.cart-line-total {
+  font-weight: 600;
+  color: #1f1b2e;
+}
+
+/* ==============================
+   QUANTITY
+============================== */
+
+.quantity-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-input {
+  width: 60px;
+  height: 40px;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+
+  font-family: 'Montserrat', sans-serif;
+}
+
+.btn-update-row {
+  height: 40px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ede9fe;
+  color: #7C3AED;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+
+  font-family: 'Montserrat', sans-serif;
+  transition: 0.2s;
+}
+
+.btn-update-row:hover {
+  background: #ddd6fe;
+}
+
+/* ==============================
+   REMOVE
+============================== */
+
+.cart-remove {
+  text-align: center;
+}
+
+.remove-btn {
+  background: #f3f4f6;
+  color: #7c7a8a;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+
+  font-family: 'Montserrat', sans-serif;
+}
+
+.remove-btn:hover {
+  background: #e5e7eb;
+}
+
+/* ==============================
+   SUMMARY
+============================== */
+
+.cart-summary {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.total-line {
+  font-family: 'Merriweather', serif; /* 🔥 */
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.total-amount {
+  color: #7C3AED;
+  font-weight: 700;
+}
+
+/* ==============================
+   BUTTONS
+============================== */
+
+.cart-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.cart-action-btn-outline {
+  background: transparent;
+  border: 1px solid #7C3AED;
+  color: #7C3AED;
+  padding: 10px 22px;
+  border-radius: 30px;
+  cursor: pointer;
+
+  font-family: 'Montserrat', sans-serif;
+}
+
+.cart-action-btn-outline:hover {
+  background: #f5f3ff;
+}
+
+.cart-action-btn-main {
+  background: #7C3AED;
+  color: white;
+  padding: 10px 24px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+
+  font-family: 'Montserrat', sans-serif;
+}
+
+.cart-action-btn-main:hover {
+  background: #6d28d9;
+}

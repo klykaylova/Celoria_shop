@@ -1,0 +1,22 @@
+<h1><%= @category.name %></h1>
+<p><%= @category.description %></p>
+
+<% if @products.any? %>
+  <ul style="list-style:none; padding:0;">
+    <% @products.each do |product| %>
+      <li style="margin-bottom:15px; border:1px solid #ddd; padding:10px; border-radius:8px;">
+        <h3><%= product.name %></h3>
+        <p><%= product.description %></p>
+        <p><strong>Ціна:</strong> <%= number_to_currency(product.price, unit: "₴") %></p>
+        <%= button_to "🛒 Додати до кошика",
+                      add_to_cart_path(product_id: product.id),
+                      method: :post,
+                      style: "background-color:#007bff;color:white;padding:6px 12px;border:none;border-radius:5px;" %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>У цій категорії ще немає товарів.</p>
+<% end %>
+
+<%= link_to "⬅️ Назад до категорій", categories_path, style: "text-decoration:none; color:#007bff;" %>

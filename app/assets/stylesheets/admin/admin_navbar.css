@@ -1,0 +1,110 @@
+/* =======================
+   ADMIN NAVBAR 
+   ======================= */
+
+.admin-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  width: 100%;
+  padding: 12px 30px;
+
+  background-color: #faf9ff;
+  border-bottom: 1px solid rgba(124, 58, 237, 0.08);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ЛІВА ЧАСТИНА */
+.admin-nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.admin-logo-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: #3f3c4a;
+  text-decoration: none;
+
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  display: flex;
+  align-items: center;
+}
+
+.admin-logo-link:hover {
+  color: #7C3AED;
+}
+
+/* ПРАВА ЧАСТИНА */
+.admin-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding-right: 65px;
+}
+
+/*  прибирає відступи від button_to */
+.admin-nav-right form {
+  margin: 0;
+  padding: 0;
+}
+
+/* USER */
+.admin-user-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #3f3c4a;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* КНОПКА */
+.admin-btn-outline.admin-logout-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 18px;
+  border-radius: 999px;
+
+  border: 1px solid #7C3AED;
+  background: #ffffff;
+  color: #7C3AED;
+
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  cursor: pointer;
+  text-decoration: none;
+
+  transition: all 0.2s ease;
+}
+
+.admin-btn-outline.admin-logout-btn:hover {
+  background: #7C3AED;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.admin-user-label {
+  position: relative;
+  top: -1px; /* 👈 піднімає */
+}
+
+.admin-btn-outline.admin-logout-btn {
+  position: relative;
+  top: -2px;
+}

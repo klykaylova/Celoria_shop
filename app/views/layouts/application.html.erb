@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "navbar", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "footer", "data-turbo-track": "reload" %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <%= javascript_importmap_tags %>
+</head>
+
+<body>
+
+<!-- ================================
+     💻 ДЕСКТОПНЕ МЕНЮ
+================================ -->
+<% unless controller.class.name.start_with?("Admin::") %>
+<nav class="main-navbar">
+
+  <!-- ЛОГО -->
+  <div class="nav-left">
+    <%= link_to root_path, class: "logo-link" do %>
+      <%= image_tag "logo.png", alt: "Celoria", class: "logo-image" %>
+    <% end %>
+  </div>
+
+  <!-- ЦЕНТР -->
+  <div class="nav-center">
+    <%= link_to "Головна", root_path,
+      class: "nav-item #{'active' if current_page?(root_path)}" %>
+
+    <%= link_to "Каталог", products_path,
+      class: "nav-item #{'active' if current_page?(products_path)}" %>
+
+    <%= link_to "Кошик", cart_path,
+      class: "nav-item #{'active' if current_page?(cart_path)}" %>
+
+    <% if current_user %>
+      <%= link_to "Замовлення", orders_path,
+        class: "nav-item #{'active' if current_page?(orders_path)}" %>
+    <% end %>
+
+    <%= link_to "Контакти", contacts_path,
+      class: "nav-item #{'active' if current_page?(contacts_path)}" %>
+
+    <%= link_to "Про нас", about_path,
+      class: "nav-item #{'active' if current_page?(about_path)}" %>
+  </div>
+
+  <!-- ПРАВО -->
+  <div class="nav-right">
+    <% if current_user.present? %>
+
+      <%= link_to "Профіль", profile_path,
+        class: "nav-item #{'active' if current_page?(profile_path)}" %>
+
+      <% if current_user.admin? %>
+        <%= link_to "Адмін-панель", admin_dashboard_path, class: "nav-btn-outline" %>
+      <% end %>
+
+      <%= button_to "Вийти",
+        logout_path,
+        method: :delete,
+        form: { style: "display:inline;" },
+        class: "nav-btn-outline logout-link" %>
+
+    <% else %>
+      <%= link_to "Увійти", login_path,
+        class: "nav-item #{'active' if current_page?(login_path)}" %>
+
+      <%= link_to "Реєстрація", new_user_path,
+        class: "nav-item #{'active' if current_page?(new_user_path)}" %>
+    <% end %>
+  </div>
+
+</nav>
+<% end %>
+
+<!-- ================================
+     📱 МОБІЛЬНЕ МЕНЮ
+================================ -->
+<nav class="mobile-navbar" style="display:none;">
+
+  <div class="mobile-nav-top">
+    <div class="mobile-logo">
+      <%= link_to root_path do %>
+        <%= image_tag "logo.png", class: "mobile-logo-img" %>
+        <span class="mobile-logo-text">CELORIA</span>
+      <% end %>
+    </div>
+
+    <div class="burger">☰</div>
+  </div>
+
+  <div class="mobile-menu">
+    <%= link_to "Головна", root_path %>
+    <%= link_to "Каталог", products_path %>
+    <%= link_to "Кошик", cart_path %>
+
+    <% if current_user %>
+      <%= link_to "Замовлення", orders_path %>
+      <%= link_to "Профіль", profile_path %>
+
+      <% if current_user.admin? %>
+        <%= link_to "Адмін-панель", admin_dashboard_path %>
+      <% end %>
+
+      <%= button_to "Вийти", logout_path, method: :delete, class: "logout-btn" %>
+    <% else %>
+      <%= link_to "Увійти", login_path %>
+      <%= link_to "Реєстрація", new_user_path %>
+    <% end %>
+
+    <%= link_to "Контакти", contacts_path %>
+    <%= link_to "Про нас", about_path %>
+  </div>
+
+</nav>
+
+<!-- FLASH -->
+<div class="flash-wrapper">
+  <% flash.each do |type, msg| %>
+    <% flash_class =
+         case type.to_sym
+         when :notice then "flash-notice"
+         when :alert  then "flash-alert"
+         else "flash-notice"
+       end %>
+
+    <div class="flash-message <%= flash_class %>">
+      <%= msg %>
+    </div>
+  <% end %>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+  <%= yield %>
+</div>
+
+<%= render "shared/footer" %>
+
+<!-- BURGER JS -->
+<script>
+document.addEventListener("turbo:load", () => {
+  const burger = document.querySelector(".burger");
+  const menu = document.querySelector(".mobile-menu");
+
+  if (!burger || !menu) return;
+
+  burger.replaceWith(burger.cloneNode(true));
+  const newBurger = document.querySelector(".burger");
+
+  newBurger.addEventListener("click", () => {
+    menu.classList.toggle("open");
+  });
+});
+</script>
+
+</body>
+</html>

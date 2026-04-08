@@ -1,0 +1,93 @@
+<%= stylesheet_link_tag "orders", media: "all" %>
+
+<div class="order-page">
+
+  <div class="order-container">
+
+    <h1 class="order-title">
+      Деталі замовлення №<%= @order.id %>
+    </h1>
+
+    <div class="order-info-block">
+
+      <p><strong>Ім’я:</strong> <%= @order.name %></p>
+      <p><strong>Адреса:</strong> <%= @order.address %></p>
+      <p><strong>Телефон:</strong> <%= @order.phone %></p>
+
+      <p><strong>Метод оплати:</strong> <%= @order.payment_method %></p>
+      <p><strong>Спосіб доставки:</strong> <%= @order.delivery_method %></p>
+
+      <% if @order.postcode.present? %>
+        <p><strong>Поштовий індекс:</strong> <%= @order.postcode %></p>
+      <% end %>
+
+      <!-- 🔥 СТАТУС -->
+      <p>
+        <strong>Статус:</strong>
+        <span class="order-status-badge <%= @order.status %>">
+          <%= order_status_label(@order) %>
+        </span>
+      </p>
+
+      <hr>
+
+      <h2 class="order-subtitle">👜 Товари у замовленні:</h2>
+
+      <% @order_items.each do |item| %>
+        <div class="order-item">
+
+          <div class="order-item-image">
+            <% if item.product.images.attached? %>
+              <%= image_tag item.product.images.first, class: "order-img" %>
+            <% end %>
+          </div>
+
+          <div class="order-item-details">
+            <p class="order-item-name">
+              <%= item.product.name %>
+            </p>
+
+            <p class="order-item-qty">
+              <%= item.quantity %> шт × ₴<%= item.price %> =
+              <span class="order-bold">
+                ₴<%= item.price * item.quantity %>
+              </span>
+            </p>
+          </div>
+
+        </div>
+      <% end %>
+
+      <p class="order-total">
+        Разом: <span>₴<%= @order.total %></span>
+      </p>
+
+      <!-- 🔥 ДІЇ -->
+      <div class="order-actions">
+
+        <% if @order.status_new? || @order.status_confirmed? %>
+          <%= button_to "💳 Оплатити зараз",
+                pay_order_path(@order),
+                method: :patch,
+                class: "order-btn order-pay" %>
+        <% end %>
+
+        <% if @order.user_can_cancel? %>
+          <%= button_to "❌ Скасувати замовлення",
+                cancel_order_order_path(@order),
+                method: :patch,
+                data: { confirm: "Ви впевнені?" },
+                class: "order-btn order-cancel" %>
+        <% end %>
+
+      </div>
+
+      <%= link_to "↩️ Повернутись до списку замовлень",
+            orders_path,
+            class: "order-back-link" %>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,15 @@
+one:
+  id: 1
+  name: "Product One"
+  price: 199.99
+  description: "Опис №1"
+  characteristics: {}
+  category: 1
+
+two:
+  id: 2
+  name: "Product Two"
+  price: 299.99
+  description: "Опис №2"
+  characteristics: {}
+  category: 1

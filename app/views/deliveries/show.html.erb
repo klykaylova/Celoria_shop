@@ -1,0 +1,19 @@
+<h1>📦 Інформація про доставку</h1>
+
+<p><strong>Замовлення №:</strong> <%= @delivery.order_id %></p>
+<p><strong>Адреса:</strong> <%= @delivery.address %></p>
+<p><strong>Статус:</strong> <%= @delivery.status %></p>
+
+<%= form_with model: @delivery, local: true do |f| %>
+  <div>
+    <%= f.label :status, "Змінити статус доставки:" %><br>
+    <%= f.select :status, ["очікує", "в дорозі", "доставлено"] %>
+  </div>
+
+  <br>
+
+  <%= f.submit "🔄 Оновити статус", style: "background-color:#007bff;color:white;padding:10px 15px;border:none;border-radius:5px;cursor:pointer;" %>
+<% end %>
+
+<hr>
+<%= link_to "⬅️ Повернутися до списку доставок", deliveries_path, style: "text-decoration:none;color:#007bff;" %>

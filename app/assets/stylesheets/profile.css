@@ -1,0 +1,343 @@
+/* -------------------------------------------------
+   PROFILE PAGE
+---------------------------------------------------*/
+
+.profile-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 60px 0;
+    background: #faf9ff;
+
+    font-family: 'Montserrat', sans-serif; /* 🔥 БАЗА */
+}
+
+.profile-card {
+    width: 450px;
+    background: #ffffff;
+    padding: 40px 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.08);
+    text-align: center;
+}
+
+/* ----------- HEADER ----------- */
+
+.profile-avatar {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    margin-bottom: 12px;
+}
+
+.profile-title {
+    font-family: 'Merriweather', serif; /* 🔥 */
+    font-size: 26px;
+    font-weight: 700;
+    color: #1f1b2e;
+    margin-bottom: 4px;
+}
+
+.profile-subtitle {
+    font-size: 15px;
+    color: #7c7a8a;
+    margin-bottom: 25px;
+}
+
+/* ----------- INFO ----------- */
+
+.profile-info {
+    text-align: left;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.profile-info span {
+    font-weight: 600;
+    color: #7C3AED;
+}
+
+.profile-created {
+    margin-top: 6px;
+    color: #7c7a8a;
+    font-size: 14px;
+}
+
+/* ----------- DIVIDER ----------- */
+
+.divider {
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background: #eee;
+    margin: 25px 0;
+}
+
+/* ----------- PROFILE LINKS ----------- */
+
+.profile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.profile-link-btn {
+    display: block;
+    padding: 12px 0;
+    background: #f5f3ff;
+    border-radius: 12px;
+    color: #7C3AED;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s;
+
+    font-family: 'Montserrat', sans-serif;
+}
+
+.profile-link-btn:hover {
+    background: #ede9fe;
+}
+
+/* ----------- ACTION BUTTONS ----------- */
+
+.profile-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.profile-btn {
+    width: 48%;
+    padding: 12px 0;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    transition: 0.2s;
+
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Edit */
+.profile-btn.edit {
+    background: linear-gradient(135deg, #7C3AED, #6D28D9);
+    color: white;
+}
+
+.profile-btn.edit:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(124, 58, 237, 0.25);
+}
+
+/* Logout */
+.profile-btn.logout {
+    background: #f3f4f6;
+    color: #4b4860;
+}
+
+.profile-btn.logout:hover {
+    background: #e5e7eb;
+}
+
+/* ----------- FEEDBACK SECTION ----------- */
+
+.feedback-list {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.feedback-item {
+    background: #ffffff;
+    padding: 18px 20px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    text-align: left;
+}
+
+.feedback-message strong,
+.feedback-reply strong {
+    color: #7C3AED;
+}
+
+.feedback-message,
+.feedback-reply {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: #333;
+
+    font-family: 'Montserrat', sans-serif;
+}
+
+.feedback-no-reply {
+    color: #7c7a8a;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.feedback-date {
+    text-align: right;
+    font-size: 13px;
+    color: #aaa;
+}
+
+/* -----------------------------------------
+   PROFILE EDIT PAGE
+------------------------------------------*/
+
+.profile-edit-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 60px 0;
+    background: #faf9ff;
+}
+
+.profile-edit-card {
+    width: 480px;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.08);
+}
+
+/* Заголовок */
+.profile-edit-card h1 {
+    font-family: 'Merriweather', serif; /* 🔥 */
+    text-align: center;
+    color: #1f1b2e;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+/* Лейбли */
+.profile-edit-card label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4b4860;
+
+    font-family: 'Montserrat', sans-serif;
+
+    margin-bottom: 6px;
+    display: block;
+}
+
+/* Поля */
+.profile-edit-card .form-control {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #e5e3f3;
+    margin-bottom: 18px;
+    background: #fff;
+    font-size: 15px;
+
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* focus */
+.profile-edit-card .form-control:focus {
+    border-color: #7C3AED;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12);
+}
+
+/* Пароль */
+.profile-edit-card h3 {
+    font-family: 'Merriweather', serif; /* 🔥 */
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f1b2e;
+    margin-top: 30px;
+    margin-bottom: 8px;
+}
+
+.password-note {
+    font-size: 14px;
+    color: #7c7a8a;
+    margin-bottom: 18px;
+}
+
+/* Кнопки */
+.profile-edit-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.profile-edit-btn {
+    width: 48%;
+    padding: 12px 0;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    font-size: 15px;
+    text-align: center;
+    transition: 0.2s;
+
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Save */
+.profile-edit-btn.save {
+    background: linear-gradient(135deg, #7C3AED, #6D28D9);
+    color: white;
+}
+
+.profile-edit-btn.save:hover {
+    box-shadow: 0 6px 18px rgba(124, 58, 237, 0.25);
+}
+
+/* Cancel */
+.profile-edit-btn.cancel {
+    background: #f3f4f6;
+    color: #4b4860;
+}
+
+.profile-edit-btn.cancel:hover {
+    background: #e5e7eb;
+}
+
+/* Logout */
+.logout-form {
+    width: 48%;
+}
+
+.logout-form button {
+    width: 100%;
+    border: none;
+    padding: 12px 0;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 15px;
+
+    font-family: 'Montserrat', sans-serif;
+
+    transition: 0.2s;
+    background: #f3f4f6;
+    color: #4b4860;
+}
+
+.logout-form button:hover {
+    background: #e5e7eb;
+}
+
+/* Помилки */
+.form-errors {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.form-errors li {
+  color: #b91c1c;
+  font-size: 14px;
+
+  font-family: 'Montserrat', sans-serif;
+}

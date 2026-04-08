@@ -1,0 +1,13 @@
+one:
+  id: 1
+  order: one
+  amount: 100.00
+  payment_type: "card"
+  status: "paid"
+
+two:
+  id: 2
+  order: one
+  amount: 200.00
+  payment_type: "cash"
+  status: "pending"

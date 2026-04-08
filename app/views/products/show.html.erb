@@ -1,0 +1,101 @@
+<%= stylesheet_link_tag "products_show", media: "all" %>
+
+<div class="product-show">
+
+  <!-- Ліві мініатюри -->
+  <div class="product-thumbnails">
+    <% @product.images.each_with_index do |photo, index| %>
+      <%= image_tag photo,
+          class: "thumb #{'active' if index == 0}",
+          data: { index: index } %>
+    <% end %>
+  </div>
+
+  <!-- Велике фото -->
+  <div class="product-main-image">
+    <% if @product.images.attached? %>
+      <%= image_tag @product.images.first, id: "mainImage" %>
+    <% end %>
+  </div>
+
+  <!-- Інформація -->
+  <div class="product-info">
+    <h1 class="product-title"><%= @product.name %></h1>
+
+    <p class="price">
+      <strong>Ціна:</strong>
+      <%= number_to_currency(@product.price, unit: "₴") %>
+    </p>
+
+    <p class="description">
+      <strong>Опис:</strong>
+      <%= @product.description %>
+    </p>
+
+    <p class="category">
+      <strong>Категорія:</strong>
+      <%= @product.category&.name %>
+    </p>
+
+    <%= button_to "Додати до кошика",
+        add_to_cart_path(product_id: @product.id),
+        method: :post,
+        class: "btn-add-cart" %>
+  </div>
+</div>
+
+
+<!-- ============================
+     ХАРАКТЕРИСТИКИ
+============================= -->
+
+<div class="characteristics-wrapper">
+  <h2 class="section-title">Характеристики</h2>
+
+  <div class="characteristics-card">
+    <ul class="characteristics-list">
+      <% (@product.characteristics || {}).each do |key, value| %>
+        <li>
+          <strong><%= key.capitalize %>:</strong> <%= value %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ============================
+     ВІДГУКИ
+============================= -->
+
+<div class="reviews-wrapper">
+
+  <h2 class="section-title">⭐️ Відгуки</h2>
+
+  <% if @product.reviews.any? %>
+    <div class="reviews-list">
+      <% @product.reviews.each do |review| %>
+        <div class="review-item">
+          <div class="review-rating"><%= "⭐️" * review.rating %></div>
+          <p class="review-text"><%= review.comment %></p>
+          <p class="review-date"><%= review.created_at.strftime("%d.%m.%Y") %></p>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="no-reviews-card">
+      <p>Поки що відгуків немає. Будьте першим 😊</p>
+    </div>
+  <% end %>
+
+  <h3 class="leave-review-title">✍️ Залишити відгук</h3>
+
+  <div class="review-form-wrapper">
+    <%= render "reviews/form", product: @product %>
+  </div>
+
+</div>
+
+<div class="back-link-wrapper">
+  <%= link_to "⬅️ Назад до каталогу", products_path, class: "back-link" %>
+</div>

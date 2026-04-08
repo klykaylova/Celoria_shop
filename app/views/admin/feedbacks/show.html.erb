@@ -1,0 +1,49 @@
+<%= stylesheet_link_tag "admin/admin_feedbacks", media: "all" %>
+
+<div class="admin-feedback-show-page">
+
+  <!-- BACK -->
+  <%= link_to "← Повернутись назад",
+        admin_feedbacks_path,
+        class: "admin-back-link" %>
+
+  <!-- TITLE CENTER -->
+  <h1 class="admin-title center">
+    Повідомлення від користувача
+  </h1>
+
+  <!-- INFO -->
+  <div class="feedback-card">
+    <p><strong>Користувач:</strong>
+      <%= @feedback.user&.name || "Гість" %>
+    </p>
+
+    <p><strong>Email:</strong>
+      <%= @feedback.user&.email || "немає" %>
+    </p>
+
+    <p><strong>Повідомлення:</strong></p>
+    <div class="message-box"><%= @feedback.message %></div>
+
+    <p class="muted">
+      Створено: <%= @feedback.created_at.strftime("%d.%m.%Y %H:%M") %>
+    </p>
+  </div>
+
+  <!-- REPLY -->
+  <div class="reply-card">
+    <h2>Відповідь адміна</h2>
+
+    <%= form_with model: [:admin, @feedback], method: :patch, local: true do |f| %>
+
+      <div class="form-group">
+        <%= f.label :reply, "Текст відповіді" %>
+        <%= f.text_area :reply, rows: 6, class: "reply-input" %>
+      </div>
+
+      <%= f.submit "Надіслати відповідь", class: "btn-primary" %>
+
+    <% end %>
+  </div>
+
+</div>

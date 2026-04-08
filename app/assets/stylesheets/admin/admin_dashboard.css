@@ -1,0 +1,167 @@
+/* ================================
+   ADMIN DASHBOARD 
+================================ */
+
+.admin-dashboard {
+    min-height: calc(100vh - 80px); /* висота мінус navbar */
+    display: flex;
+    align-items: center;           /* вертикально по центру */
+    justify-content: center;       /* горизонтально */
+    padding: 0 40px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* контейнер всередині */
+
+.admin-content {
+    width: 100%;
+    max-width: 1400px;
+}
+
+/* ================================
+   ROW (в один ряд)
+================================ */
+
+.admin-cards {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: nowrap;
+}
+
+/* ================================
+   CARD (як product-card)
+================================ */
+
+.admin-card {
+    position: relative;
+    width: 260px;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* hover */
+
+.admin-card:hover {
+    transform: translateY(-6px);
+}
+
+/* декоративний круг */
+
+.admin-card::after {
+    content: "";
+    position: absolute;
+    top: -35px;
+    right: -35px;
+    width: 90px;
+    height: 90px;
+    background: #EDE9FE;
+    border-radius: 50%;
+}
+
+/* ================================
+   ICON
+================================ */
+
+.admin-card-icon {
+    font-size: 26px;
+    margin-bottom: 12px;
+}
+
+/* ================================
+   TEXT
+================================ */
+
+.admin-card-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1F1B2E;
+}
+
+.admin-card-text {
+    font-size: 14px;
+    color: #7c7a8a;
+    margin-bottom: 18px;
+    line-height: 1.5;
+}
+
+/* ================================
+   BUTTON
+================================ */
+
+.admin-btn {
+    background: #7C3AED;
+    color: white;
+    padding: 12px 0;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+    margin-top: auto;
+    transition: 0.2s;
+}
+
+.admin-btn:hover {
+    background: #6D28D9;
+}
+
+/* ================================
+   ANALYTICS CARD
+================================ */
+
+.admin-card.highlight {
+    background: linear-gradient(135deg, #7C3AED, #6D28D9);
+    color: white;
+}
+
+/* декоративний круг для неї */
+
+.admin-card.highlight::after {
+    background: rgba(255,255,255,0.2);
+}
+
+/* текст */
+
+.admin-card.highlight .admin-card-text {
+    color: #EDE9FE;
+}
+
+/* кнопка */
+
+.admin-card.highlight .admin-btn {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+}
+
+.admin-card.highlight .admin-btn:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 1200px) {
+    .admin-cards {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .admin-card {
+        width: 45%;
+    }
+}
+
+@media (max-width: 600px) {
+    .admin-card {
+        width: 100%;
+    }
+}

@@ -1,0 +1,54 @@
+<%= stylesheet_link_tag "home", media: "all" %>
+
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- HERO -->
+<div class="hero" style="background-image: url('<%= asset_path "hero-block.png" %>');">
+  <div class="hero-content">
+    <h1>Celoria — стиль у кожному кроці</h1>
+    <p>Оберіть сумку, яка підкреслить вашу унікальність та стиль.</p>
+    <%= link_to "Перейти до каталогу", products_path, class: "hero-btn" %>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="hot-picks-section">
+  <h2 class="section-title">Популярні моделі</h2>
+  <p class="section-subtitle">Найкращі моделі, які обирають наші клієнти</p>
+  <div class="underline"></div>
+
+  <div class="products-grid">
+    <% @products.limit(4).each do |product| %>
+      <%= link_to product_path(product) do %>
+        <div class="product-card">
+
+          <div class="product-img-box">
+            <%= image_tag url_for(product.images.first), class: "product-image" %>
+          </div>
+
+          <h3 class="product-title"><%= product.name %></h3>
+          <p class="price"><%= number_to_currency(product.price, unit: "₴") %></p>
+          <div class="view-more">Переглянути →</div>
+
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<!-- STYLE -->
+<div class="style-section">
+  <div class="style-text">
+    <h2>Охоплення стилю та користі</h2>
+    <p>
+      В Celoria ми поєднуємо сучасний дизайн і практичність,
+      щоб кожна сумка доповнювала ваш стиль і залишалась зручною щодня.
+    </p>
+
+    <%= link_to "Переглянути колекцію", products_path, class: "single-btn" %>
+  </div>
+
+  <div>
+    <%= image_tag "style-section.jpg", class: "style-img" %>
+  </div>
+</div>

@@ -1,0 +1,575 @@
+/* ===== Основний контейнер ===== */
+.orders-page {
+  max-width: 1150px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.orders-container {
+  background: #FAF9FF;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.08);
+}
+
+/* ===== Заголовок ===== */
+.orders-title {
+  font-size: 34px;
+  font-weight: 700;
+  color: #1F1B2E;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+/* ===== Таблиця ===== */
+.orders-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #ffffff;
+  font-size: 15px;
+  box-shadow: 0 2px 10px rgba(124,58,237,0.06);
+}
+
+.orders-table th {
+  background: #F3E8FF;
+  padding: 14px;
+  font-weight: 700;
+  text-align: left;
+  color: #7C3AED;
+  border-bottom: 2px solid #EDE9FE;
+}
+
+.orders-table td {
+  padding: 14px;
+  border-bottom: 1px solid #F3E8FF;
+  vertical-align: middle;
+}
+
+/* ===== Бейджі статусів ===== */
+.status-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+/* Повні кольори */
+.status-badge.new        { background: #EDE9FE; color: #7C3AED; }
+.status-badge.confirmed  { background: #F3E8FF; color: #6D28D9; }
+.status-badge.paid       { background: #EDE9FE; color: #5B21B6; }
+.status-badge.shipped    { background: #F3E8FF; color: #7C3AED; }
+.status-badge.delivered  { background: #EDE9FE; color: #4C1D95; }
+.status-badge.cancelled  { background: #FEE2E2; color: #DC2626; }
+.status-badge.refunded   { background: #F3E8FF; color: #7C3AED; }
+
+/* ===== Кнопки дій ===== */
+.orders-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Переглянути */
+.orders-view {
+  background: #7C3AED;
+  color: #ffffff;
+  padding: 7px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: .2s;
+}
+
+.orders-view:hover {
+  background: #6D28D9;
+}
+
+/* Скасувати */
+.orders-cancel-btn {
+  background: #FEE2E2;
+  color: #DC2626;
+  padding: 7px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.orders-cancel-btn:hover {
+  background: #FECACA;
+}
+
+/* ===== Стиль повідомлення, якщо немає замовлень ===== */
+.no-orders {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 30px;
+  color: #7C7A8A;
+}
+
+/* ===============================
+        СТОРІНКА ЗАМОВЛЕННЯ
+================================ */
+
+.order-page {
+  max-width: 1150px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.order-container {
+  background: #FAF9FF;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.08);
+}
+
+/* ===== Заголовок ===== */
+.order-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1F1B2E;
+  margin-bottom: 25px;
+}
+
+/* ===== Блок інформації ===== */
+.order-info-block p {
+  font-size: 17px;
+  margin: 6px 0;
+  line-height: 1.6;
+}
+
+.order-info-block strong {
+  font-weight: 700;
+  color: #1F1B2E;
+}
+
+.order-info-block hr {
+  margin: 25px 0;
+  border: none;
+  border-top: 2px solid #EDE9FE;
+}
+
+/* ===== ПІДЗАГОЛОВОК ===== */
+.order-subtitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1F1B2E;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ===============================
+          ТОВАР У ЗАМОВЛЕННІ
+================================ */
+
+.order-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 3px 10px rgba(124,58,237,0.06);
+  margin-bottom: 18px;
+}
+
+.order-item-image {
+  flex-shrink: 0;
+}
+
+.order-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(124,58,237,0.08);
+}
+
+.order-item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.order-item-name {
+  font-size: 19px;
+  font-weight: 600;
+  color: #1F1B2E;
+}
+
+.order-item-qty {
+  font-size: 17px;
+}
+
+.order-bold {
+  font-weight: 700;
+  color: #1F1B2E;
+}
+
+/* ===== Разом ===== */
+.order-total {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 25px 0;
+  color: #7C3AED;
+}
+
+.order-total span {
+  color: #7C3AED;
+}
+
+/* ===============================
+            КНОПКИ
+================================ */
+
+.order-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.order-btn {
+  padding: 12px 26px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: .2s;
+  font-weight: 600;
+}
+
+/* Оплатити */
+.order-pay {
+  background: #7C3AED;
+  color: white;
+}
+
+.order-pay:hover {
+  background: #6D28D9;
+}
+
+/* Скасувати */
+.order-cancel {
+  background: #FEE2E2;
+  color: #DC2626;
+}
+
+.order-cancel:hover {
+  background: #FECACA;
+}
+
+/* Назад */
+.order-back-link {
+  display: inline-block;
+  margin-top: 25px;
+  font-size: 16px;
+  color: #7C3AED;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.order-back-link:hover {
+  text-decoration: underline;
+}
+
+.order-status-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: capitalize;
+  margin-left: 6px;
+}
+
+/* Повні кольори */
+.order-status-badge.new        { background: #EDE9FE; color: #7C3AED; }
+.order-status-badge.confirmed  { background: #F3E8FF; color: #6D28D9; }
+.order-status-badge.paid       { background: #EDE9FE; color: #5B21B6; }
+.order-status-badge.shipped    { background: #F3E8FF; color: #7C3AED; }
+.order-status-badge.delivered  { background: #EDE9FE; color: #4C1D95; }
+.order-status-badge.cancelled  { background: #FEE2E2; color: #DC2626; }
+.order-status-badge.refunded   { background: #F3E8FF; color: #7C3AED; }
+
+/* ОФОРМЛЕННЯ ЗАМОВЛЕННЯ*/
+/* ============================
+   ГОЛОВНИЙ КОНТЕЙНЕР
+============================ */
+
+.checkout-page {
+  max-width: 1250px;
+  margin: 40px auto;
+  padding: 0 25px;
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 40px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ============================
+   ЛІВА КОЛОНКА — ФОРМА
+============================ */
+
+.checkout-form {
+  background: #FAF9FF;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(124,58,237,0.08);
+}
+
+.checkout-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1F1B2E;
+  margin-bottom: 25px;
+}
+
+/* Групи інпутів */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #1F1B2E;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #EDE9FE;
+  background: #ffffff;
+  font-size: 15px;
+  transition: border .2s;
+}
+
+.form-control:focus {
+  border-color: #7C3AED;
+  outline: none;
+  background: #ffffff;
+}
+
+/* Кнопка */
+.checkout-submit {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  background: #7C3AED;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.checkout-submit:hover {
+  background: #6D28D9;
+}
+
+/* ============================
+   ПРАВА КОЛОНКА — ПІДСУМОК
+============================ */
+
+.checkout-summary {
+  background: #FAF9FF;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(124,58,237,0.08);
+}
+
+.checkout-summary h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1F1B2E;
+  margin-bottom: 18px;
+}
+
+/* Товар */
+.summary-item {
+  display: flex;
+  gap: 16px;
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 14px;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.summary-img-box {
+  width: 85px;
+  height: 85px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.summary-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Інформація */
+.summary-info p {
+  margin: 3px 0;
+}
+
+.summary-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: #1F1B2E;
+}
+
+.summary-qty {
+  font-size: 14px;
+  color: #7C7A8A;
+}
+
+.summary-price {
+  font-weight: 700;
+  color: #7C3AED;
+}
+
+/* Загальна сума */
+.summary-total {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 20px;
+  text-align: right;
+  color: #1F1B2E;
+}
+
+.summary-total span {
+  color: #7C3AED;
+}
+
+/* ===== ПІДКАЗКА ===== */
+.hint {
+  font-size: 12px;
+  color: #7C7A8A;
+  margin-top: 4px;
+}
+
+/* ===== КАРТА ===== */
+.card-box {
+  background: #F3E8FF;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 10px;
+  border: 1px solid #EDE9FE;
+}
+
+/* ряд карта */
+.card-row {
+  display: flex;
+  gap: 10px;
+}
+
+/* ===== ПІДСУМОК ===== */
+.summary-item {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.summary-img-box {
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.summary-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+}
+
+/* ===== ІНПУТИ ===== */
+.form-control {
+  transition: 0.2s;
+}
+
+.form-control:focus {
+  border-color: #7C3AED;
+  box-shadow: 0 0 0 2px rgba(124,58,237,0.1);
+}
+
+/* =========================
+   👁 ОКО ДЛЯ CVV 
+========================= */
+
+/* wrapper тільки для інпута */
+.input-with-icon {
+  position: relative;
+  width: 100%;
+}
+
+/* інпут */
+.input-with-icon input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+/* саме око */
+.input-with-icon .toggle-eye {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-size: 18px;
+  cursor: pointer;
+
+  opacity: 0.7;
+  user-select: none;
+  transition: 0.2s;
+}
+
+/* hover ефект */
+.input-with-icon .toggle-eye:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* =========================
+   ❌  БРАУЗЕРНЕ ОКО
+========================= */
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+
+input[type="password"]::-webkit-credentials-auto-fill-button {
+  display: none !important;
+}
+
+.error-text {
+  color: #DC2626;
+  font-size: 13px;
+  margin-top: 5px;
+  display: none;
+}
+
+.input-error {
+  border: 1px solid #DC2626 !important;
+}

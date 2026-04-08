@@ -1,0 +1,146 @@
+<%= stylesheet_link_tag "admin/admin_products", media: "all" %>
+
+<div class="admin-products-page">
+
+  <!-- HEADER -->
+  <div class="admin-users-header">
+    <%= link_to "← Назад", admin_dashboard_path, class: "admin-back-link" %>
+    <h1 class="admin-title">Товари</h1>
+  </div>
+
+  <!-- FILTERS -->
+  <%= form_with url: admin_products_path, method: :get, local: true, class: "admin-users-controls" do %>
+
+    <input type="text"
+           name="query"
+           value="<%= params[:query] %>"
+           placeholder="Пошук товару..."
+           class="admin-search">
+
+    <%= select_tag :category_id,
+        options_from_collection_for_select(Category.all, :id, :name, params[:category_id]),
+        include_blank: "Всі категорії",
+        class: "admin-filter",
+        onchange: "this.form.submit()" %>
+
+    <button type="submit" class="admin-search-btn">Пошук</button>
+
+  <% end %>
+
+  <!-- ADD BUTTON -->
+  <div class="top-actions">
+    <%= link_to "➕ Додати товар", new_admin_product_path, class: "add-product-btn" %>
+  </div>
+
+  <!-- TABLE -->
+  <% if @products.any? %>
+
+    <table class="admin-products-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Назва</th>
+          <th>Ціна</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+
+            <td class="muted"><%= product.id %></td>
+
+            <td class="product-name-cell">
+              <%= product.name %>
+            </td>
+
+            <td>
+              <%= number_to_currency(product.price, unit: "₴") %>
+            </td>
+
+            <td class="actions-col">
+
+              <%= link_to "✏️",
+                  edit_admin_product_path(product),
+                  class: "table-btn edit-btn" %>
+
+              <button class="table-btn delete-btn open-delete-modal"
+                      data-url="<%= admin_product_path(product) %>">
+                🗑
+              </button>
+
+            </td>
+
+          </tr>
+        <% end %>
+      </tbody>
+
+    </table>
+
+  <% else %>
+
+    <div class="empty-state">
+      <p>Товарів не знайдено</p>
+    </div>
+
+  <% end %>
+
+</div>
+
+<!-- ================================
+     DELETE MODAL
+================================ -->
+<div id="deleteModal" class="modal-overlay">
+  <div class="modal">
+
+    <h3>Підтвердження</h3>
+    <p>Видалити товар?</p>
+
+    <div class="modal-actions">
+
+      <button id="cancelDelete" class="btn-secondary">
+        Скасувати
+      </button>
+
+      <form id="deleteForm" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+        <button type="submit" class="btn-danger">
+          Видалити
+        </button>
+      </form>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- ================================
+     JS (TURBO SAFE)
+================================ -->
+<script>
+document.addEventListener("turbo:load", () => {
+
+  const modal = document.getElementById("deleteModal");
+  const form = document.getElementById("deleteForm");
+
+  document.querySelectorAll(".open-delete-modal").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      form.action = btn.dataset.url;
+      modal.style.display = "flex";
+    });
+  });
+
+  const cancelBtn = document.getElementById("cancelDelete");
+  if (cancelBtn) {
+    cancelBtn.onclick = () => {
+      modal.style.display = "none";
+    };
+  }
+
+});
+</script>
