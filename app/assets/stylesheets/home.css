@@ -17,6 +17,7 @@ h1, h2, h3 {
   padding-left: 30px;
   background-size: cover;
   position: relative;
+  z-index: 1;
   background-position: right center;
 }
 
@@ -30,6 +31,7 @@ h1, h2, h3 {
     rgba(250,249,255,0.1) 60%,
     transparent
   );
+  z-index: 0;
 }
 
 .hero-content {

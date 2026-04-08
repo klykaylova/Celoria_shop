@@ -12,10 +12,10 @@
 .main-navbar {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 1000;
   width: 100%;
   padding: 12px 30px;
-  background-color: #faf9ff;
+  background-color: #f5f1ff;
   border-bottom: 1px solid rgba(124, 58, 237, 0.08);
 
   display: flex;
