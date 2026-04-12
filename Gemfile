@@ -66,3 +66,6 @@ group :test do
 end
 
 gem "kaminari"
+
+gem 'cloudinary'
+gem 'activestorage-cloudinary-service'
