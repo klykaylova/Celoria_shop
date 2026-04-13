@@ -195,9 +195,10 @@
   /* ===== PAGE ===== */
   .about-page {
     padding: 30px 14px 40px;
+    overflow-x: hidden; 
   }
 
- 
+  /* ===== HERO ===== */
   .about-hero {
     flex-direction: column;
     align-items: flex-start;
@@ -213,7 +214,30 @@
     justify-content: center;
   }
 
-  /* ===== HERO TEXT ===== */
+  /* ===== IMAGE ===== */
+  .about-image {
+    width: 100%;
+    max-width: 100%;
+
+    height: auto; 
+    object-fit: contain; 
+    
+    border-radius: 16px;
+  }
+
+  /* ===== VALUES (🔥 2 В РЯД) ===== */
+  .values-cards {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 12px;
+  }
+
+  /* ===== WHY US (🔥 2 В РЯД) ===== */
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 12px;
+  }
+
+  /* ===== TEXT ===== */
   .about-title {
     font-size: 24px;
     margin-bottom: 12px;
@@ -223,16 +247,6 @@
     font-size: 13px;
     line-height: 1.5;
     margin-bottom: 10px;
-  }
-
-  /* ===== IMAGE ===== */
-  .about-image {
-    width: 100%;
-    max-width: 100%;
-    height: 180px; 
-    object-fit: cover;
-    object-position: center;
-    border-radius: 16px;
   }
 
   /* ===== HISTORY ===== */
@@ -253,45 +267,26 @@
     margin-bottom: 10px;
   }
 
-  /* ===== VALUES ===== */
-  .values-title {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-
-  .value-card {
-    padding: 18px;
-    border-radius: 16px;
-  }
-
-  .value-icon {
-    font-size: 26px;
-  }
-
-  .value-card h3 {
-    font-size: 14px;
-  }
-
-  .value-card p {
-    font-size: 12px;
-  }
-
-  /* ===== WHY US ===== */
+  /* ===== CARDS ===== */
+  .value-card,
   .why-item {
-    padding: 18px;
-    border-radius: 16px;
+    padding: 16px;
+    border-radius: 14px;
   }
 
+  .value-icon,
   .why-icon {
-    font-size: 26px;
+    font-size: 24px;
   }
 
+  .value-card h3,
   .why-item h4 {
-    font-size: 14px;
+    font-size: 13px;
   }
 
+  .value-card p,
   .why-item p {
-    font-size: 12px;
+    font-size: 11px;
   }
 
   /* ===== FOOTER ===== */
@@ -308,12 +303,6 @@
   .footer p,
   .footer a {
     font-size: 12px;
-    line-height: 1.4;
-  }
-
-  .footer .socials {
-    gap: 10px;
-    margin-top: 8px;
   }
 
 }
