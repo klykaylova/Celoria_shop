@@ -7,10 +7,6 @@
     <h1 class="auth-title">Вхід</h1>
     <p class="auth-subtitle">Введіть ваш email та пароль, щоб увійти до акаунта.</p>
 
-    <% if flash[:alert] %>
-      <div class="auth-alert"><%= flash[:alert] %></div>
-    <% end %>
-
     <%= form_with url: login_path,
                   method: :post,
                   local: true,
