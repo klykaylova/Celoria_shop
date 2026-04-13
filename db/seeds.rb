@@ -6,9 +6,9 @@ puts "🛍️ Створюємо категорії..."
 #clutches = Category.create!(name: "Клатчі")
 #phones = Category.create!(name: "Телефони")
 
-#puts "✅ Категорії створені!"
+puts "✅ Категорії створені!"
 
-puts "📦 Створюємо товари..."
+#puts "📦 Створюємо товари..."
 
 #Product.create!([
   #{ name: "Сумка жіноча бежева", price: 1500, description: "Містка шкіряна сумка з елегантним дизайном", category: bags },
