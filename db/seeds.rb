@@ -4,8 +4,6 @@ puts "🛍️ Створюємо категорії..."
 #bags = Category.create!(name: "Сумки")
 #backpacks = Category.create!(name: "Рюкзаки")
 #clutches = Category.create!(name: "Клатчі")
-#phones = Category.create!(name: "Телефони")
-
 puts "✅ Категорії створені!"
 
 #puts "📦 Створюємо товари..."
