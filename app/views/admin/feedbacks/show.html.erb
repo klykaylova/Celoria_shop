@@ -18,7 +18,7 @@
   <% if @feedback.user %>
     <%= @feedback.user.name %>
   <% else %>
-    <%= @feedback.name.presence || "Гість" %>
+    <%= "#{@feedback.name.presence || "Гість"} (гість)" %>
   <% end %>
 </p>
 
@@ -29,6 +29,7 @@
     <%= @feedback.email.presence || "немає" %>
   <% end %>
 </p>
+
     <p><strong>Повідомлення:</strong></p>
     <div class="message-box"><%= @feedback.message %></div>
 
