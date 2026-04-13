@@ -168,7 +168,7 @@ function initCharts() {
     ordersData.push(0);
   }
 
-  // 🔥 УБИВАЄМО СТАРІ ГРАФІКИ (ВАЖЛИВО)
+  
   Chart.getChart(revenueCanvas)?.destroy();
   Chart.getChart(ordersCanvas)?.destroy();
   Chart.getChart(statusCanvas)?.destroy();
@@ -219,7 +219,7 @@ function initCharts() {
   });
 }
 
-// 🔥 ВАЖЛИВО: 2 тригери
+
 document.addEventListener("turbo:load", initCharts);
 document.addEventListener("DOMContentLoaded", initCharts);
 </script>

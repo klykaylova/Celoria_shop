@@ -145,23 +145,3 @@
     background: rgba(255,255,255,0.3);
 }
 
-/* ================================
-   RESPONSIVE
-================================ */
-
-@media (max-width: 1200px) {
-    .admin-cards {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .admin-card {
-        width: 45%;
-    }
-}
-
-@media (max-width: 600px) {
-    .admin-card {
-        width: 100%;
-    }
-}

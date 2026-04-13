@@ -136,3 +136,99 @@
 
     font-size: 14px;
 }
+
+/* =====================================
+   📱 AUTH — MOBILE 
+===================================== */
+
+@media (max-width: 768px) {
+
+  /* ===== PAGE ===== */
+  .auth-page,
+  .auth-wrapper {
+    padding: 20px 12px;
+    min-height: unset; 
+  }
+
+  /* ===== CARD ===== */
+  .auth-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 22px 16px; 
+    border-radius: 16px;
+
+    box-shadow: 0 4px 18px rgba(124, 58, 237, 0.08);
+  }
+
+  /* ===== TITLE ===== */
+  .auth-title {
+    font-size: 20px; 
+    margin-bottom: 6px;
+  }
+
+  .auth-subtitle {
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+
+  /* ===== FORM ===== */
+  .form-group {
+    margin-bottom: 14px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+  }
+
+  .auth-input {
+    padding: 10px 12px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+
+  /* ===== BUTTON ===== */
+  .auth-btn {
+    padding: 11px 0;
+    font-size: 14px;
+    border-radius: 20px; 
+    margin-top: 6px;
+  }
+
+  /* ===== LINKS ===== */
+  .auth-footer,
+  .auth-foot {
+    font-size: 12px;
+    margin-top: 14px;
+  }
+
+  /* ===== ALERT ===== */
+  .auth-alert {
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    padding: 14px 12px;
+    text-align: center;
+  }
+
+  .footer h3 {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .footer p,
+  .footer a {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .footer .socials {
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+
+}

@@ -85,9 +85,8 @@ h1, h2, h3 {
 /* PRODUCTS */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-  padding: 0 100px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
 }
 
 .product-card {
@@ -103,7 +102,7 @@ h1, h2, h3 {
   transform: translateY(-6px);
 }
 
-/* 🔥 ВИПРАВЛЕНІ КАРТИНКИ */
+
 .product-img-box {
   height: 260px; 
   width: 100%;
@@ -180,3 +179,202 @@ h1, h2, h3 {
   border-radius: 20px;
 }
 
+.hero {
+  width: 100%;
+  min-height: 500px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+
+  margin: 0;
+  padding: 0;
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin-left: 0;      /* 🔥 ключ */
+  margin-right: auto;  /* 🔥 ключ */
+  padding: 0 16px;
+
+  text-align: left;
+}
+
+/* =====================================
+   📱  MOBILE 
+===================================== */
+
+@media (max-width: 768px) {
+
+  /* ===== HERO (НЕ ЧІПАЄМО) ===== */
+  .hero {
+    height: 320px;
+    min-height: unset;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .hero-content {
+    padding: 16px;
+    max-width: 240px;
+  }
+
+  .hero-content h1 {
+    font-size: 18px;
+  }
+
+  .hero-content p {
+    font-size: 12px;
+  }
+
+  .hero-btn {
+    font-size: 12px;
+    padding: 8px 14px;
+    border-radius: 20px;
+  }
+
+  /* ===== ГОЛОВНИЙ ФІКС ШИРИНИ ===== */
+  .section,
+  .products-grid,
+  .style-section {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  /* ===== SECTION ===== */
+  .section {
+    padding: 12px 14px;
+  }
+
+  .section-title {
+    font-size: 18px;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  .section-subtitle {
+    font-size: 12px;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+ /* ===== FINAL POLISH ===== */
+
+.product-card {
+  padding: 10px !important;
+}
+
+.product-img-box {
+  margin: 0 !important;
+}
+
+
+.product-title {
+  margin-top: 8px !important; 
+  margin-bottom: 4px !important;
+
+  font-size: 14px !important; 
+  line-height: 1.3;
+  text-align: center;
+}
+
+
+.price {
+  font-size: 14px !important;
+  margin-bottom: 6px !important;
+  text-align: center;
+}
+
+
+.view-more {
+  font-size: 14px !important;
+  margin-top: 2px !important;
+  opacity: 0.7;
+  text-align: center;
+}
+
+  
+  .style-section {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px 14px;
+    gap: 14px;
+  }
+
+  .style-text {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .style-text h2 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .style-text p {
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: left;
+  }
+
+  .single-btn {
+    display: block;
+    width: fit-content;
+    margin: 12px auto;
+    padding: 10px 20px;
+    border-radius: 24px;
+    font-size: 13px;
+  }
+
+  
+  .style-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    object-position: top center; 
+    border-radius: 16px;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    padding: 12px;
+    text-align: center;
+  }
+
+  .footer h3 {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .footer p,
+  .footer a {
+    font-size: 12px;
+  }
+
+  .footer .socials {
+    gap: 10px;
+    margin: 8px 0;
+  }
+
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.product-title {
+  min-height: 48px; /* 🔥 вирівнює назви */
+}
+
+.products-grid {
+  align-items: stretch;
+}

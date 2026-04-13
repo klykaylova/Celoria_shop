@@ -211,3 +211,135 @@
   background: #7C3AED;
   color: white;
 }
+
+/* =====================================
+   📱  MOBILE
+===================================== */
+
+@media (max-width: 768px) {
+
+  /* ===== PAGE ===== */
+  .catalog-page {
+    padding-top: 20px;
+  }
+
+  .catalog-title {
+    font-size: 22px;
+  }
+
+  .catalog-subtitle {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  /* ===== TOP BAR ===== */
+  .catalog-top-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+
+    padding: 0 14px;
+    margin: 15px auto 20px;
+  }
+
+  /* ===== CATEGORIES ===== */
+  .catalog-categories {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .catalog-categories .label {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .category-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 20px;
+  }
+
+  /* ===== SORT ===== */
+  .catalog-sort {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .catalog-sort label {
+    font-size: 12px;
+  }
+
+  .sort-select {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  /* ===== GRID ===== */
+  .products-grid {
+    grid-template-columns: 1fr; 
+    gap: 14px;
+
+    padding: 0 14px;
+    margin-bottom: 30px;
+  }
+
+  /* ===== CARD ===== */
+  .product-card {
+    padding: 10px;
+    border-radius: 16px;
+
+    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+  }
+
+  /* ===== IMAGE ===== */
+  .product-image-box {
+    height: 180px;
+    margin-bottom: 6px;
+  }
+
+  .product-image {
+    border-radius: 14px;
+  }
+
+  /* ===== TEXT ===== */
+  .product-name {
+    font-size: 14px;
+    margin: 6px 0 4px;
+    min-height: unset;
+  }
+
+  .product-price {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  /* ===== BUTTON ===== */
+  .product-view-btn {
+    padding: 10px;
+    font-size: 13px;
+    border-radius: 20px;
+  }
+
+  /* ===== PAGINATION ===== */
+  .pagination a,
+  .pagination span {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    padding: 14px 12px;
+    text-align: center;
+  }
+
+  .footer h3 {
+    font-size: 14px;
+  }
+
+  .footer p,
+  .footer a {
+    font-size: 12px;
+  }
+
+}

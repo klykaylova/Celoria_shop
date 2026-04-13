@@ -251,3 +251,158 @@
 .back-link:hover {
   color: #7C3AED;
 }
+
+/* =====================================
+   📱 PRODUCT SHOW — MOBILE
+===================================== */
+
+@media (max-width: 768px) {
+
+  /* ===== LAYOUT ===== */
+  .product-show {
+    grid-template-columns: 1fr; 
+    gap: 16px;
+    margin: 20px 0;
+    padding: 0 14px;
+  }
+
+  /* ===== THUMBNAILS ===== */
+  .product-thumbnails {
+    flex-direction: row;
+    gap: 8px;
+    overflow-x: auto;
+  }
+
+  .product-thumbnails .thumb {
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+  }
+
+  /* ===== MAIN IMAGE ===== */
+  .product-main-image img {
+    height: 260px;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+
+  /* ===== INFO ===== */
+  .product-info {
+    padding: 0;
+  }
+
+  .product-title {
+    font-size: 20px; 
+    margin-bottom: 10px;
+  }
+
+  .price {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .description,
+  .category {
+    font-size: 13px;
+    margin-top: 8px;
+  }
+
+  /* ===== BUTTON ===== */
+  .btn-add-cart {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 20px;
+  }
+
+  /* ===== CHARACTERISTICS ===== */
+  .characteristics-wrapper {
+    margin: 30px 14px;
+  }
+
+  .section-title {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .characteristics-card {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .characteristics-list li {
+    font-size: 13px;
+  }
+
+  /* ===== REVIEWS ===== */
+  .reviews-wrapper {
+    margin: 30px 14px;
+  }
+
+  .review-item {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .review-text {
+    font-size: 13px;
+  }
+
+  .review-date {
+    font-size: 11px;
+  }
+
+  /* ===== FORM ===== */
+  .leave-review-title {
+    font-size: 16px;
+    margin: 20px 0 10px;
+  }
+
+  .review-form-wrapper {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .review-form-wrapper input,
+  .review-form-wrapper textarea {
+    font-size: 13px;
+  }
+
+  .review-form-wrapper textarea {
+    height: 100px;
+  }
+
+  .review-form-wrapper input[type="submit"],
+  .review-form-wrapper button {
+    width: 100%;
+    padding: 10px;
+    font-size: 13px;
+    border-radius: 20px;
+  }
+
+  /* ===== BACK LINK ===== */
+  .back-link-wrapper {
+    margin: 30px 14px;
+    text-align: center;
+  }
+
+  .back-link {
+    font-size: 13px;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    padding: 14px 12px;
+    text-align: center;
+  }
+
+  .footer h3 {
+    font-size: 14px;
+  }
+
+  .footer p,
+  .footer a {
+    font-size: 12px;
+  }
+
+}

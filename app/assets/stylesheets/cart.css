@@ -292,3 +292,137 @@
 .cart-action-btn-main:hover {
   background: #6d28d9;
 }
+
+/* =====================================
+   📱 CART — MOBILE 
+===================================== */
+
+@media (max-width: 768px) {
+
+  /* ===== PAGE ===== */
+  .cart-page {
+    padding: 20px 12px 40px;
+  }
+
+  /* ===== TITLE ===== */
+  .cart-title {
+    font-size: 20px;
+    margin: 20px 0;
+  }
+
+  /* ===== EMPTY ===== */
+  .empty-cart {
+    font-size: 14px;
+  }
+
+  .go-shop-btn {
+    padding: 10px 18px;
+    font-size: 13px;
+    border-radius: 20px;
+  }
+
+  /* 🔥 ГОЛОВНИЙ ФІКС */
+  .cart-table-wrapper {
+    overflow-x: auto;
+  }
+
+  .cart-table {
+    min-width: 800px; 
+  }
+
+  /* ❌ ВАЖЛИВО — ПРИБИРАЄМО BLOCK */
+  .cart-table thead {
+    display: table-header-group; 
+  }
+
+  .cart-table,
+  .cart-table tbody,
+  .cart-table tr,
+  .cart-table td {
+    display: revert;
+  }
+
+  /* 🔥 ФІКС НАКЛАДКИ */
+  .cart-table td {
+    white-space: nowrap; 
+  }
+
+  .cart-product-link {
+    white-space: normal; 
+  }
+
+  /* ===== IMAGE ===== */
+  .cart-thumb {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  /* ===== QUANTITY ===== */
+  .quantity-form {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .quantity-input {
+    width: 45px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .btn-update-row {
+    height: 32px;
+    padding: 0 10px;
+    font-size: 11px;
+  }
+
+  /* ===== REMOVE ===== */
+  .remove-btn {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* ===== SUMMARY ===== */
+  .cart-summary {
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+  }
+
+  .total-line {
+    font-size: 16px;
+  }
+
+  /* ===== BUTTONS ===== */
+  .cart-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .cart-action-btn-outline,
+  .cart-action-btn-main {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 20px;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    padding: 14px 12px;
+    text-align: center;
+  }
+
+  .footer h3 {
+    font-size: 14px;
+  }
+
+  .footer p,
+  .footer a {
+    font-size: 12px;
+  }
+
+}

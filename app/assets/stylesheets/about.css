@@ -186,29 +186,134 @@
   line-height: 1.6;
 }
 
-/* ==============================
-   АДАПТИВ
-============================== */
+/* =====================================
+   📱 ABOUT — MOBILE 
+===================================== */
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
+
+  /* ===== PAGE ===== */
+  .about-page {
+    padding: 30px 14px 40px;
+  }
+
+ 
   .about-hero {
     flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .about-text {
+    width: 100%;
+  }
+
+  .about-image-wrapper {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ===== HERO TEXT ===== */
+  .about-title {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .about-description {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  /* ===== IMAGE ===== */
+  .about-image {
+    width: 100%;
+    max-width: 100%;
+    height: 180px; 
+    object-fit: cover;
+    object-position: center;
+    border-radius: 16px;
+  }
+
+  /* ===== HISTORY ===== */
+  .history-section {
+    padding: 20px 14px;
+    border-radius: 18px;
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .history-text {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  /* ===== VALUES ===== */
+  .values-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .value-card {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .value-icon {
+    font-size: 26px;
+  }
+
+  .value-card h3 {
+    font-size: 14px;
+  }
+
+  .value-card p {
+    font-size: 12px;
+  }
+
+  /* ===== WHY US ===== */
+  .why-item {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .why-icon {
+    font-size: 26px;
+  }
+
+  .why-item h4 {
+    font-size: 14px;
+  }
+
+  .why-item p {
+    font-size: 12px;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    padding: 14px 12px;
     text-align: center;
   }
 
-  .values-cards,
-  .why-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .values-cards,
-  .why-grid {
-    grid-template-columns: 1fr;
+  .footer h3 {
+    font-size: 14px;
+    margin-bottom: 6px;
   }
 
-  .about-title {
-    font-size: 32px;
+  .footer p,
+  .footer a {
+    font-size: 12px;
+    line-height: 1.4;
   }
+
+  .footer .socials {
+    gap: 10px;
+    margin-top: 8px;
+  }
+
 }

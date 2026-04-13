@@ -145,17 +145,93 @@
   background: #6d28d9;
 }
 
-/* ==============================
-   MOBILE
-============================== */
+/* =====================================
+   📱 CONTACT — MOBILE 
+===================================== */
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
 
-  .contact-card {
-    padding: 25px;
+  /* ===== PAGE ===== */
+  .contact-page {
+    padding: 30px 14px;
   }
 
+  /* ===== TITLES ===== */
   .contact-title {
-    font-size: 28px;
+    font-size: 22px; 
+    margin-bottom: 6px;
   }
+
+  .contact-subtitle {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  /* ===== ALERT ===== */
+  .contact-alert {
+    font-size: 12px;
+    padding: 10px 12px;
+    margin-bottom: 14px;
+  }
+
+  /* ===== CARD ===== */
+  .contact-card {
+    padding: 20px 14px; 
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+  }
+
+  /* ===== FORM ===== */
+  .contact-form {
+    gap: 14px;
+  }
+
+  .contact-label {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  /* ===== INPUT ===== */
+  .contact-input {
+    height: 40px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+
+  /* ===== TEXTAREA ===== */
+  .contact-textarea {
+    min-height: 110px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+
+  /* ===== BUTTON ===== */
+  .contact-submit-btn {
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 20px; 
+    margin-top: 6px;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    padding: 14px 12px;
+    text-align: center;
+  }
+
+  .footer h3 {
+    font-size: 14px;
+  }
+
+  .footer p,
+  .footer a {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .footer .socials {
+    gap: 10px;
+    margin-top: 8px;
+  }
+
 }

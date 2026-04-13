@@ -9,8 +9,11 @@
   <%= stylesheet_link_tag "navbar", "data-turbo-track": "reload" %>
   <%= stylesheet_link_tag "footer", "data-turbo-track": "reload" %>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <% if controller_path == "admin/analytics" %>
+  <meta name="viewport" content="width=1200">
+<% else %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<% end %>
   <%= javascript_importmap_tags %>
 </head>
 
@@ -20,7 +23,7 @@
      💻 ДЕСКТОПНЕ МЕНЮ
 ================================ -->
 <% unless controller.class.name.start_with?("Admin::") %>
-<nav class="main-navbar">
+<nav class="main-navbar <%= 'home-navbar' if current_page?(root_path) %>">
 
   <!-- ЛОГО -->
   <div class="nav-left">
@@ -84,7 +87,7 @@
 <!-- ================================
      📱 МОБІЛЬНЕ МЕНЮ
 ================================ -->
-<nav class="mobile-navbar" style="display:none;">
+<nav class="mobile-navbar">
 
   <div class="mobile-nav-top">
     <div class="mobile-logo">
@@ -143,7 +146,9 @@
   <%= yield %>
 </div>
 
-<%= render "shared/footer" %>
+<% unless controller_name == "analytics" %>
+  <%= render "shared/footer" %>
+<% end %>
 
 <!-- BURGER JS -->
 <script>
