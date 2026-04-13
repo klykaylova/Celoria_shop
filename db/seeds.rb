@@ -1,6 +1,6 @@
 # db/seeds.rb
 
-#puts "🛍️ Створюємо категорії..."
+puts "🛍️ Створюємо категорії..."
 #bags = Category.create!(name: "Сумки")
 #backpacks = Category.create!(name: "Рюкзаки")
 #clutches = Category.create!(name: "Клатчі")
@@ -8,7 +8,7 @@
 
 #puts "✅ Категорії створені!"
 
-#puts "📦 Створюємо товари..."
+puts "📦 Створюємо товари..."
 
 #Product.create!([
   #{ name: "Сумка жіноча бежева", price: 1500, description: "Містка шкіряна сумка з елегантним дизайном", category: bags },
