@@ -15,13 +15,20 @@
   <!-- INFO -->
   <div class="feedback-card">
     <p><strong>Користувач:</strong>
-      <%= @feedback.user&.name || "Гість" %>
-    </p>
+  <% if @feedback.user %>
+    <%= @feedback.user.name %>
+  <% else %>
+    <%= @feedback.name.presence || "Гість" %>
+  <% end %>
+</p>
 
-    <p><strong>Email:</strong>
-      <%= @feedback.user&.email || "немає" %>
-    </p>
-
+<p><strong>Email:</strong>
+  <% if @feedback.user %>
+    <%= @feedback.user.email %>
+  <% else %>
+    <%= @feedback.email.presence || "немає" %>
+  <% end %>
+</p>
     <p><strong>Повідомлення:</strong></p>
     <div class="message-box"><%= @feedback.message %></div>
 

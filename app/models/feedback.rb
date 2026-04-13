@@ -3,6 +3,5 @@ class Feedback < ApplicationRecord
 
   validates :message, presence: true
 
-  # Адмінська відповідь необов'язкова
   validates :reply, length: { maximum: 500 }
 end
