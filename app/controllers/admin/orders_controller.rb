@@ -22,7 +22,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   # =========================
-  # EDIT (опційно)
+  # EDIT 
   # =========================
   def edit
   end
@@ -38,8 +38,23 @@ class Admin::OrdersController < ApplicationController
                            alert: "Статус не вибрано!"
     end
 
-    # ❌ НЕ ДОЗВОЛЯЄМО ДІЇ БЕЗ ОПЛАТИ
-    if ["confirmed", "shipped", "delivered"].include?(new_status) && !@order.paid?
+    # ❌ заборона адміном виставляти paid
+    if new_status == "paid"
+      return redirect_back fallback_location: admin_orders_path,
+                           alert: "❌ Оплата виконується користувачем"
+    end
+
+    # ❌ заборона адміном виставляти refunded
+    if new_status == "refunded"
+      return redirect_back fallback_location: admin_orders_path,
+                           alert: "❌ Повернення коштів виконується користувачем"
+    end
+
+    # ❌ якщо картка і НЕ оплачено — не можна підтвердити
+    if @order.payment_method == "card" &&
+       @order.status == "new" &&
+       new_status == "confirmed"
+
       return redirect_back fallback_location: admin_orders_path,
                            alert: "❌ Замовлення не оплачено"
     end

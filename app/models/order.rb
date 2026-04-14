@@ -12,20 +12,13 @@ class Order < ApplicationRecord
     refunded: "refunded"
   }, prefix: true
 
-  # 🔥 СТАТУСИ
   ALLOWED_TRANSITIONS = {
-    "new" => ["paid", "cancelled"],
-
+    "new" => ["confirmed", "cancelled"],
     "paid" => ["confirmed"],
-
     "confirmed" => ["shipped"],
-
     "shipped" => ["delivered"],
-
     "delivered" => [],
-
     "cancelled" => [],
-
     "refunded" => []
   }
 
@@ -48,6 +41,43 @@ class Order < ApplicationRecord
       update!(status: "cancelled")
     else
       raise "Неможливо скасувати"
+    end
+  end
+
+  # 🔥  ЛОГІКА ДЛЯ АДМІНА
+  def available_transitions_for_admin
+    case payment_method
+
+    when "card"
+      case status
+      when "new"
+        []
+      when "paid"
+        ["confirmed"]
+      when "confirmed"
+        ["shipped"]
+      when "shipped"
+        ["delivered"]
+      else
+        []
+      end
+
+    when "cash_on_delivery"
+      case status
+      when "new"
+        ["confirmed"]
+      when "paid"           
+        ["confirmed"]
+      when "confirmed"
+        ["shipped"]
+      when "shipped"
+        ["delivered"]
+      else
+        []
+      end
+
+    else
+      []
     end
   end
 end

@@ -58,7 +58,7 @@
               <%= number_to_currency(order.total, unit: "₴") %>
             </td>
 
-            <!-- 🔥 КРАСИВИЙ INLINE STATUS -->
+            <!-- ✅ ВИПРАВЛЕНИЙ STATUS -->
             <td>
               <%= form_with url: update_status_admin_order_path(order),
                             method: :patch,
@@ -67,9 +67,10 @@
 
                 <select name="order[status]"
                         class="status-select"
-                        onchange="this.form.submit()">
+                        onchange="this.form.submit()"
+                        <%= "disabled" if order.available_transitions_for_admin.empty? %>>
 
-                  <% Order.statuses.keys.each do |s| %>
+                  <% ([order.status] + order.available_transitions_for_admin).uniq.each do |s| %>
                     <option value="<%= s %>" <%= "selected" if order.status == s %>>
                       <%= s.humanize %>
                     </option>

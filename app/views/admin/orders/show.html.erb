@@ -18,6 +18,17 @@
         <%= number_to_currency(@order.total, unit: "₴") %>
       </p>
 
+      <p><strong>Спосіб оплати:</strong>
+        <% case @order.payment_method %>
+        <% when "card" %>
+        💳 Картка
+        <% when "cash_on_delivery" %>
+        📦 Післяплата
+        <% else %>
+        <%= @order.payment_method %>
+      <% end %>
+      </p>
+
       <p><strong>Поточний статус:</strong>
         <span class="status-badge status-<%= @order.status %>">
           <%= @order.status.humanize %>
@@ -59,7 +70,7 @@
                     class: "status-form" do |f| %>
 
         <%= f.select :status,
-          Order.statuses.keys.map { |s| [s.humanize, s] },
+          @order.available_transitions_for_admin.map { |s| [s.humanize, s] },
           {},
           class: "form-control select-control" %>
 

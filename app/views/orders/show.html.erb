@@ -14,7 +14,17 @@
       <p><strong>Адреса:</strong> <%= @order.address %></p>
       <p><strong>Телефон:</strong> <%= @order.phone %></p>
 
-      <p><strong>Метод оплати:</strong> <%= @order.payment_method %></p>
+      <p><strong>Метод оплати:</strong>
+        <% case @order.payment_method %>
+        <% when "card" %>
+          💳 Картка
+        <% when "cash_on_delivery" %>
+          📦 Післяплата
+        <% else %>
+          <%= @order.payment_method %>
+        <% end %>
+      </p>
+
       <p><strong>Спосіб доставки:</strong> <%= @order.delivery_method %></p>
 
       <% if @order.postcode.present? %>
@@ -65,13 +75,15 @@
       <!-- 🔥 ДІЇ -->
       <div class="order-actions">
 
-        <% if @order.status_new? || @order.status_confirmed? %>
+        <!-- ✅ ОПЛАТА ТІЛЬКИ ДЛЯ КАРТКИ -->
+        <% if @order.status_new? && @order.payment_method == "card" %>
           <%= button_to "💳 Оплатити зараз",
                 pay_order_path(@order),
                 method: :patch,
                 class: "order-btn order-pay" %>
         <% end %>
 
+        <!-- ❌ СКАСУВАННЯ -->
         <% if @order.user_can_cancel? %>
           <%= button_to "❌ Скасувати замовлення",
                 cancel_order_order_path(@order),
