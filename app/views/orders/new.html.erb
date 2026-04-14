@@ -28,6 +28,11 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :email, "Email" %>
+        <%= f.email_field :email, class: "form-control", required: true %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :delivery_method, "Доставка" %>
         <%= f.select :delivery_method,
           [["Нова Пошта", "nova_poshta"], ["Укрпошта", "ukrposhta"], ["Кур’єр", "courier"]],

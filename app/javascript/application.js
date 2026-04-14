@@ -18,7 +18,7 @@ function initFlashFade() {
       flash.style.transition = "opacity 0.5s ease";
       flash.style.opacity = "0";
 
-      setTimeout(() => flash.remove(), 600);
+      setTimeout(() => flash.remove(), 6000);
     }, 2000); // ⏳ висить 2 сек
   });
 }

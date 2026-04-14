@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :require_login, only: [:index, :new, :create, :show, :pay, :cancel_order]
+  before_action :require_login, only: [:index, :show, :pay, :cancel_order]
   before_action :load_cart, only: [:new, :create]
 
   def index
@@ -26,10 +26,37 @@ class OrdersController < ApplicationController
       return
     end
 
+    new_user_created = false
+
+    # 🔥 ВИЗНАЧЕННЯ КОРИСТУВАЧА
+    if current_user
+      user = current_user
+    else
+      user = User.find_by(email: params[:order][:email])
+
+      unless user
+        password = SecureRandom.hex(6)
+
+        user = User.create(
+          name: "#{params[:order][:first_name]} #{params[:order][:last_name]}",
+          email: params[:order][:email],
+          password: password,
+          password_confirmation: password
+        )
+
+        new_user_created = true
+      end
+
+      # 🔥 авто-логін
+      session[:user_id] = user.id
+    end
+
+    # 🔥 СТВОРЕННЯ ЗАМОВЛЕННЯ
     @order = Order.new(order_params)
+    @order.name = "#{params[:order][:first_name]} #{params[:order][:last_name]}"
     @order.status = :new
     @order.total = calculate_total
-    @order.user = current_user
+    @order.user = user
 
     if @order.save
       @cart.each do |product_id, quantity|
@@ -43,10 +70,18 @@ class OrdersController < ApplicationController
         )
       end
 
-      key = current_user.id.to_s
+      # 🔥 очищення кошика
+      key = current_user ? current_user.id.to_s : "guest"
       session[:cart][key] = {}
+      session[:cart].delete("guest")
 
-      redirect_to @order, notice: "✅ Замовлення створене!"
+      # 🔥 повідомлення
+      notice = "✅ Замовлення створене!"
+      if new_user_created
+        notice += " Ми створили для вас акаунт. Ви можете змінити пароль у профілі."
+      end
+
+      redirect_to @order, notice: notice
     else
       render :new, status: :unprocessable_entity
     end
@@ -71,6 +106,7 @@ class OrdersController < ApplicationController
       return
     end
 
+    # 🔥 ВИПРАВЛЕНО ЛОГІКУ
     if @order.status_new? || @order.status_confirmed?
       @order.update(status: :paid)
       redirect_to @order, notice: "💳 Оплачено"
@@ -97,18 +133,19 @@ class OrdersController < ApplicationController
 
   private
 
-  # 🔥 ОСНОВНЕ 
   def require_login
-  unless current_user
-    session[:return_to] = new_order_path
-    redirect_to login_path, alert: "Увійдіть для продовження"
+    unless current_user
+      session[:return_to] = new_order_path
+      redirect_to login_path, alert: "Увійдіть для продовження"
+    end
   end
-end
 
   def load_cart
-    session[:cart] ||= {}
+    session[:cart] ||= {}   # 🔥 ВИПРАВЛЕНО
+
     key = current_user ? current_user.id.to_s : "guest"
     session[:cart][key] ||= {}
+
     @cart = session[:cart][key]
   end
 
@@ -121,7 +158,7 @@ end
 
   def order_params
     params.require(:order).permit(
-      :name, :address, :phone,
+      :address, :phone,
       :payment_method, :delivery_method, :postcode
     )
   end

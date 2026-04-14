@@ -12,37 +12,35 @@ class Order < ApplicationRecord
     refunded: "refunded"
   }, prefix: true
 
-  # 🔥 ПРАВИЛЬНА ЛОГІКА ПЕРЕХОДІВ
+  # 🔥 СТАТУСИ
   ALLOWED_TRANSITIONS = {
-    "new" => ["cancelled"],
+    "new" => ["paid", "cancelled"],
 
-    # 👉 після оплати
-    "paid" => ["confirmed", "cancelled"],
+    "paid" => ["confirmed"],
 
-    "confirmed" => ["shipped", "cancelled"],
+    "confirmed" => ["shipped"],
+
     "shipped" => ["delivered"],
 
-    "delivered" => ["refunded"],
+    "delivered" => [],
+
     "cancelled" => [],
+
     "refunded" => []
   }
 
-  # 🔥 перевірка переходу
   def can_transition_to?(new_status)
     ALLOWED_TRANSITIONS[status]&.include?(new_status)
   end
 
-  # 🔥 ВИПРАВЛЕНО: чи оплачено
   def paid?
     ["paid", "confirmed", "shipped", "delivered"].include?(status)
   end
 
-  # 👤 чи може користувач скасувати
   def user_can_cancel?
     ["new", "paid"].include?(status)
   end
 
-  # 👤 логіка скасування
   def cancel_by_user!
     if status == "paid"
       update!(status: "refunded")
