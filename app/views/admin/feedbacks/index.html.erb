@@ -52,7 +52,7 @@
 
             <td>
               <span class="user-name">
-                <%= fb.user&.name || "Анонім" %>
+                <%= fb.user&.name || "#{fb.name || "Гість"} (гість)" %>
               </span><br>
               <span class="sub-email">
                 <%= fb.user&.email %>
