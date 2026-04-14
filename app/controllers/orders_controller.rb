@@ -99,11 +99,11 @@ class OrdersController < ApplicationController
 
   # 🔥 ОСНОВНЕ 
   def require_login
-    unless current_user
-      session[:return_to] = request.fullpath
-      redirect_to login_path, alert: "Увійдіть для продовження"
-    end
+  unless current_user
+    session[:return_to] = new_order_path
+    redirect_to login_path, alert: "Увійдіть для продовження"
   end
+end
 
   def load_cart
     session[:cart] ||= {}
