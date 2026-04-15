@@ -73,6 +73,9 @@
   display: flex;
   justify-content: flex-end;
   gap: 10px;
+
+  align-items: center;
+  min-height: 40px;
 }
 
 /* Переглянути */
@@ -574,6 +577,14 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
   border: 1px solid #DC2626 !important;
 }
 
+.orders-view,
+.orders-cancel-btn {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* =====================================
    📱 ORDERS — MOBILE 
 ===================================== */
@@ -786,3 +797,4 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
   }
 
 }
+
