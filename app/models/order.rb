@@ -66,8 +66,6 @@ class Order < ApplicationRecord
       case status
       when "new"
         ["confirmed"]
-      when "paid"           
-        ["confirmed"]
       when "confirmed"
         ["shipped"]
       when "shipped"
