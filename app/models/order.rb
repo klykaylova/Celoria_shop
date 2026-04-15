@@ -51,7 +51,7 @@ class Order < ApplicationRecord
     when "card"
       case status
       when "new"
-        []
+        ["cancelled"]
       when "paid"
         ["confirmed"]
       when "confirmed"
@@ -65,7 +65,7 @@ class Order < ApplicationRecord
     when "cash_on_delivery"
       case status
       when "new"
-        ["confirmed"]
+        ["confirmed", "cancelled"]
       when "confirmed"
         ["shipped"]
       when "shipped"
